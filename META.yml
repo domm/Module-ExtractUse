@@ -1,0 +1,32 @@
+---
+name: Module-ExtractUse
+version: 0.23
+author:
+  - 'Thomas Klausner <domm@zsi.at>'
+abstract: Find out what modules are used
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  Parse::RecDescent: 1.94
+  Pod::Strip: 1.00
+  perl: 5.008
+build_requires:
+  Test::Deep: 0.087
+  Test::More: 0
+  Test::NoWarnings: 0
+  Test::Pod: 0
+  Test::Pod::Coverage: 0
+  UNIVERSAL::require: 0
+provides:
+  Module::ExtractUse:
+    file: lib/Module/ExtractUse.pm
+    version: 0.23
+  Module::ExtractUse::Grammar:
+    file: lib/Module/ExtractUse/Grammar.pm
+  Parse::RecDescent::Module::ExtractUse::Grammar:
+    file: lib/Module/ExtractUse/Grammar.pm
+generated_by: Module::Build version 0.280801
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

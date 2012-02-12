@@ -1,0 +1,64 @@
+#-----------------------------------------------------------------
+# Rules for use
+#-----------------------------------------------------------------
+
+token_use:		/\buse\s/ use_stuff ';'
+		{ $return=$item{use_stuff} }
+
+use_stuff:	(base | pragma | version | module)
+
+base:		"base" import_list
+
+pragma:		/[a-z\d]+/ import_list
+		{ $return=$item[1]}
+
+module:		module_name module_more
+		{ $return=$item{module_name} }
+
+module_name: 	/[\w:]+/
+
+module_more:	eos | version(?) var(?) import_list(?)
+
+#-----------------------------------------------------------------
+# Rules for require
+#-----------------------------------------------------------------
+
+token_require:	/\brequire\s/ require_stuff ';'
+		{ $return=$item{require_stuff} }
+
+require_stuff:	(version | require_name | module)
+
+require_name:	<perl_quotelike>
+		{ my $name=$item[1][2];
+		  return 1 if ($name=~/\.pl$/);
+		  $name=~s(/)(::)g;
+		  $name=~s/\.pm//;
+		  $return=$name;
+		}
+
+#-----------------------------------------------------------------
+# General Rules
+#-----------------------------------------------------------------
+
+version:	/[\d\._v]+/
+
+eos:		{ $text=~/^[\s;]+$/ ? 1 : undef;}
+
+var:        /\$[\w+]/
+
+import_list:	/[(]?/
+		list_item
+		comma_list_item(s?)
+		/[)]?/
+		{ $return=$item[2];
+		  $return.=" ".join(" ",@{$item[3]}) if $item[3];
+		}
+
+list_item:	<perl_quotelike> { $return=$item[1][2] }
+		|
+		/\w+/            { $return=$item[1] }
+
+comma_list_item: comma list_item
+		{ $return=$item{list_item} }
+
+comma:		(',' | '=>')

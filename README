@@ -1,0 +1,29 @@
+Module/ExtractUse version 0.04
+==============================
+
+Module::ExtractUse is basically a Parse::RecDescent grammar to parse
+Perl code. It tries very hard to find all modules (whether pragmas,
+Core, or from CPAN) used by the parsed code.
+
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+
+  Parse::RecDescent
+  Pod::Simple
+  Test::More (only for the testsuite)
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2003 Thomas Klausner
+

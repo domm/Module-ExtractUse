@@ -1,0 +1,99 @@
+#-----------------------------------------------------------------
+# Changes for Module::ExtractUse
+#-----------------------------------------------------------------
+
+TODO:
+    - autogenerate the grammer during ./Build
+    - take a look at 'use parent'
+
+
+0.23   2008-04-26 22:14:28
+    - fixed bug regarding 'use utf8' which was interpreted as 'utf'
+
+
+0.22    2007-11-16
+    - added 'use warnings' again to the Grammer... grr, stupid grammer
+      generator
+
+
+0.21    2007-11-14
+    - fixed Bug reported by hanekomu via IRC:
+      Modules::ExtractUse breaks if it is used with UNIVERSAL::require
+      so I renamed the grammer tokens 'use' and 'require'. No API changes, 
+      but if you use the grammer directly, you'll have to adapt to the new 
+      names ('token_use' and 'token_reqire')
+
+
+0.20    2007-11-07
+    - resolved RT #30414 by applying the patch submitted by
+      David Landgren
+    - rearranged code to better fit my current Perl style      
+    - added 'use warnings' to Module::ExtractUse::Grammer for that
+      extra kwalitee point
+
+
+0.19    2007-04-21
+    - resolved RT #22953 reported by David R Throop
+      documentation error in SYNOPSIS
+    - resolved RT #24066 reported by Jose Pedro Oliveira
+      license clarification
+    - some doc cleanup
+    - added more Test modules to build_requires
+    - no actual code changes where done in this release
+
+
+0.18    2006-06-19
+    - resolved [rt.cpan.org #19302] reported by DAGOLDEN@cpan.org
+      (thanks for the hint!)
+      we can now handle stuff like:
+          my $ver=1.22;
+          eval "use Test::Pod $ver;"
+    - moved Test::* prereq into build_requires
+
+
+0.17	2005-11-07
+    - switched to new Changes format
+    - updated dependencies (Pod::Strip instead of Pod::Simple)
+
+
+0.16	2005-09-01
+    - added test provided by  BRICAS (thanks a lot)
+    - removed bug reported by BRICAS
+    - updated docs and various stuff
+    - find uses in eval
+
+
+0.15	2004-10-01
+    - use Pod::Strip instead of Pod::Simple subclass hack
+    - added accessor method C<files>
+    - updated docs
+    - added t/pod.t and t/pod_coverage.t
+    - adapted test suite to new data structure / accessors
+    - resolved rt.cpan.org ticket #7013 "Parser should remember previously
+      scanned modules" (Michael G. Schwern) by shuffling various data
+      structures around
+    - switched to Module::Build
+
+
+0.11	2004-07-20
+    - resolved rt.cpan.org ticket #7012 "uses preceded by a comment can be
+      ignored" by applying the patch by Michael G. Schwern. Thanks!
+
+
+0.10	2003-06-08
+   - accelerated the parsing:
+     - Parse a statement instead of a whole module
+     - Befor parsing, check with a regex if the statement
+       contains 'use' or 'require'
+     - Enhanced grammer (thanks to $::RD_TRACE)
+
+
+0.5	2003-04-18
+    - added precompilation of grammar to Makefile.PL
+    - changed @found to @::found
+    - init @::found in start-rule instead via startup-action
+
+
+0.3	2003-03-31
+    - sort of working
+
