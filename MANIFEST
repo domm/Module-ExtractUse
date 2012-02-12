@@ -17,6 +17,5 @@ t/23_universal_require.t
 t/24_version.t
 t/25_utf8.t
 t/80_failing.t
-TODO
 xt/pod.t
 xt/pod_coverage.t
