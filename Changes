@@ -8,8 +8,8 @@ TODO:
 
 0.24    2012-02-12T14:27:36+0100
     - regenerated Grammer to work with new Parse::RecDescent
-      (thanks to cpan-testers, TMUELLER, KENTNL and paul@city-fan.org
-      for reporting the problem)
+      (thanks to cpan-testers, TMUELLER, KENTNL, dirkus@yo****.com and
+      paul@city****.org for reporting the problem)
 
 
 0.23   2008-04-26 22:14:28
