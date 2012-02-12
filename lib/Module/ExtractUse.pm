@@ -10,12 +10,10 @@ use Module::ExtractUse::Grammar;
 use Carp;
 use version; our $VERSION=version->new('0.24');
 
+# ABSTRACT: Find out what modules are used
+
 #$::RD_TRACE=1;
 #$::RD_HINT=1;
-
-=head1 NAME
-
-Module::ExtractUse - Find out what modules are used
 
 =head1 SYNOPSIS
 
@@ -281,24 +279,6 @@ Nothing.
 =head1 SEE ALSO
 
 Parse::RecDescent, Module::ScanDeps, Module::Info, Module::CPANTS::Analyse
-
-=head1 AUTHOR
-
-Thomas Klausner <domm@zsi.at>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-module-extractuse@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org>.  I will be notified, and then you'll automatically
-be notified of progress on your bug as I make changes.
-
-=head1 LICENSE
-
-Module::ExtractUse is Copyright (c) 2003-2008, Thomas Klausner.
-
-You may use and distribute this module according to the same terms
-that Perl is distributed under.
 
 =cut
 
