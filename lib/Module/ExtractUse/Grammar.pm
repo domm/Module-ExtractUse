@@ -1,4 +1,6 @@
 package Module::ExtractUse::Grammar;
+our $VERSION = 0.25;
+# ABSTRACT: Module::ExtractUse::Grammar
 use Parse::RecDescent;
 { my $ERRORS;
 
@@ -16,13 +18,14 @@ local $SIG{__WARN__} = sub {0};
 *Parse::RecDescent::Module::ExtractUse::Grammar::AUTOLOAD   = sub
 {
     no strict 'refs';
-    $AUTOLOAD =~ s/^Parse::RecDescent::Module::ExtractUse::Grammar/Parse::RecDescent/;
-    goto &{$AUTOLOAD};
+
+    ${"AUTOLOAD"} =~ s/^Parse::RecDescent::Module::ExtractUse::Grammar/Parse::RecDescent/;
+    goto &{${"AUTOLOAD"}};
 }
 }
 
 push @Parse::RecDescent::Module::ExtractUse::Grammar::ISA, 'Parse::RecDescent';
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_require_stuff
 {
 	my $thisparser = $_[0];
@@ -50,8 +53,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -87,7 +90,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::version($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::version($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [version]>>},
@@ -146,7 +149,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::require_name($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::require_name($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [require_name]>>},
@@ -205,7 +208,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [module]>>},
@@ -279,7 +282,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::eos
 {
 	my $thisparser = $_[0];
@@ -307,8 +310,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::eos
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -410,7 +413,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::eos
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::token_use
 {
 	my $thisparser = $_[0];
@@ -438,8 +441,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_use
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -502,7 +505,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_use
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{use_stuff})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [use_stuff]>>},
@@ -626,7 +629,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_use
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::list_item
 {
 	my $thisparser = $_[0];
@@ -654,8 +657,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::list_item
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -865,7 +868,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::list_item
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::comma_list_item
 {
 	my $thisparser = $_[0];
@@ -893,8 +896,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::comma_list_item
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -930,7 +933,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::comma_list_item
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::comma($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::comma($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [comma]>>},
@@ -960,7 +963,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::comma_list_item
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{list_item})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::list_item($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::list_item($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [list_item]>>},
@@ -1056,7 +1059,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::comma_list_item
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::pragma
 {
 	my $thisparser = $_[0];
@@ -1084,8 +1087,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::pragma
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -1148,7 +1151,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::pragma
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{import_list})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::import_list($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::import_list($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [import_list]>>},
@@ -1244,7 +1247,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::pragma
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::module_more
 {
 	my $thisparser = $_[0];
@@ -1272,8 +1275,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_more
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -1309,7 +1312,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_more
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::eos($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::eos($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [eos]>>},
@@ -1368,7 +1371,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_more
                     if defined $::RD_TRACE;
         $expectation->is(q{})->at($text);
         
-        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::version, 0, 1, $_noactions,undef,$expectation,sub { \@arg })))
+        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::version, 0, 1, $_noactions,$expectation,sub { \@arg },undef)))
         {
             Parse::RecDescent::_trace(q{<<Didn't match repeated subrule: [version]>>},
                           Parse::RecDescent::_tracefirst($text),
@@ -1396,7 +1399,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_more
                     if defined $::RD_TRACE;
         $expectation->is(q{var})->at($text);
         
-        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::var, 0, 1, $_noactions,undef,$expectation,sub { \@arg })))
+        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::var, 0, 1, $_noactions,$expectation,sub { \@arg },undef)))
         {
             Parse::RecDescent::_trace(q{<<Didn't match repeated subrule: [var]>>},
                           Parse::RecDescent::_tracefirst($text),
@@ -1424,7 +1427,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_more
                     if defined $::RD_TRACE;
         $expectation->is(q{import_list})->at($text);
         
-        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::import_list, 0, 1, $_noactions,undef,$expectation,sub { \@arg })))
+        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::import_list, 0, 1, $_noactions,$expectation,sub { \@arg },undef)))
         {
             Parse::RecDescent::_trace(q{<<Didn't match repeated subrule: [import_list]>>},
                           Parse::RecDescent::_tracefirst($text),
@@ -1496,7 +1499,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_more
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::module_name
 {
 	my $thisparser = $_[0];
@@ -1524,8 +1527,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_name
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -1632,7 +1635,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_name
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::var
 {
 	my $thisparser = $_[0];
@@ -1660,8 +1663,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::var
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -1768,7 +1771,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::var
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::module
 {
 	my $thisparser = $_[0];
@@ -1796,8 +1799,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -1833,7 +1836,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_name($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_name($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [module_name]>>},
@@ -1863,7 +1866,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{module_more})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_more($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_more($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [module_more]>>},
@@ -1959,7 +1962,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_comma
 {
 	my $thisparser = $_[0];
@@ -1987,8 +1990,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -2153,7 +2156,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::base
 {
 	my $thisparser = $_[0];
@@ -2181,8 +2184,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::base
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -2247,7 +2250,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::base
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{import_list})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::import_list($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::import_list($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [import_list]>>},
@@ -2321,7 +2324,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::base
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::require_stuff
 {
 	my $thisparser = $_[0];
@@ -2349,8 +2352,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::require_stuff
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -2386,7 +2389,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::require_stuff
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_require_stuff($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_require_stuff($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_1_of_rule_require_stuff]>>},
@@ -2460,7 +2463,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::require_stuff
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::comma
 {
 	my $thisparser = $_[0];
@@ -2488,8 +2491,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::comma
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -2525,7 +2528,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::comma
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_comma($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_comma($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_1_of_rule_comma]>>},
@@ -2599,7 +2602,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::comma
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::version
 {
 	my $thisparser = $_[0];
@@ -2627,8 +2630,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::version
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -2735,7 +2738,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::version
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff
 {
 	my $thisparser = $_[0];
@@ -2763,8 +2766,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -2800,7 +2803,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_use_stuff($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_use_stuff($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_1_of_rule_use_stuff]>>},
@@ -2874,7 +2877,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::import_list
 {
 	my $thisparser = $_[0];
@@ -2902,8 +2905,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::import_list
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -2966,7 +2969,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::import_list
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{list_item})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::list_item($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::list_item($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [list_item]>>},
@@ -2996,7 +2999,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::import_list
                     if defined $::RD_TRACE;
         $expectation->is(q{comma_list_item})->at($text);
         
-        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::comma_list_item, 0, 100000000, $_noactions,undef,$expectation,sub { \@arg })))
+        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::comma_list_item, 0, 100000000, $_noactions,$expectation,sub { \@arg },undef)))
         {
             Parse::RecDescent::_trace(q{<<Didn't match repeated subrule: [comma_list_item]>>},
                           Parse::RecDescent::_tracefirst($text),
@@ -3119,7 +3122,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::import_list
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_use_stuff
 {
 	my $thisparser = $_[0];
@@ -3147,8 +3150,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -3184,7 +3187,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::base($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::base($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [base]>>},
@@ -3243,7 +3246,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::pragma($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::pragma($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [pragma]>>},
@@ -3302,7 +3305,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::version($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::version($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [version]>>},
@@ -3361,7 +3364,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [module]>>},
@@ -3435,7 +3438,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::token_require
 {
 	my $thisparser = $_[0];
@@ -3463,8 +3466,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_require
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -3527,7 +3530,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_require
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{require_stuff})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::require_stuff($thisparser,$text,$repeating,$_noactions,undef,sub { \@arg })))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::require_stuff($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
             Parse::RecDescent::_trace(q{<<Didn't match subrule: [require_stuff]>>},
@@ -3651,7 +3654,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_require
     return $return;
 }
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, $_itempos, \@args)
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::require_name
 {
 	my $thisparser = $_[0];
@@ -3679,8 +3682,8 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::require_name
     my %item = ();
     my $repeating =  $_[2];
     my $_noactions = $_[3];
-    my $_itempos = $_[4];
-    my @arg =    defined $_[5] ? @{ &{$_[5]} } : ();
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
     my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
     my $text;
     my $lastsep;
@@ -3818,7 +3821,6 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::require_name
 }
 }
 package Module::ExtractUse::Grammar; sub new { my $self = bless( {
-                 '_precompiled' => 1,
                  'localvars' => '',
                  'startcode' => '',
                  'namespace' => 'Parse::RecDescent::Module::ExtractUse::Grammar',
