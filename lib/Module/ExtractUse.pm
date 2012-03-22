@@ -76,7 +76,7 @@ $code_to_parse. Or a reference to a SCALAR, in which case
 Module::ExtractUse assumes the referenced scalar contains the source
 code.
 
-The code will be stripped from POD (using Pod::Strip) and splitted on ";"
+The code will be stripped from POD (using Pod::Strip) and split on ";"
 (semicolon). Each statement (i.e. the stuff between two semicolons) is
 checked by a simple regular expression.
 
@@ -180,7 +180,7 @@ of times they were used.
 If called with an argument, looks up the value of the argument in the
 hash and returns the number of times it was found during parsing.
 
-This is the prefered accessor.
+This is the preferred accessor.
 
 =cut
 
