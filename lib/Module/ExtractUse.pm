@@ -5,7 +5,7 @@ use warnings;
 use 5.008;
 
 use Pod::Strip;
-use Parse::RecDescent;
+use Parse::RecDescent 1.967009;
 use Module::ExtractUse::Grammar;
 use Carp;
 use version; our $VERSION=version->new('0.24');
