@@ -55,8 +55,7 @@ all_pod_files_ok();},[qw(strict Test::More Test::Pod Test::Pod::Coverage)]],
    );
 
 
-plan tests => (scalar @tests)+1;
-
+plan tests => scalar @tests;
 
 foreach my $t (@tests) {
     my ($code,$expected)=@$t;
