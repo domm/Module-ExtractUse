@@ -2,7 +2,6 @@
 use strict;
 use Test::More;
 use Test::Deep;
-use Test::NoWarnings;
 use Module::ExtractUse;
 
 eval "use UNIVERSAL::require";
