@@ -2,6 +2,11 @@
 # Changes for Module::ExtractUse
 #-----------------------------------------------------------------
 
+0.27	2012-03-23T12:40:44+0100
+    - fixed 23_universal_require.t for real (RT75342) (reported by
+      Manoj Kumar and Paul Howarth)
+
+
 0.26    2012-03-23T08:42:25+0100
     - removed Test::NoWarning from a t/23_universal_require.t because
       it upsets the (manual) plan if the tests are skipped
