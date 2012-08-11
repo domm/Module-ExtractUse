@@ -43,6 +43,7 @@ my @tests=
    ['use base ("Class::DBI6","Foo::Bar7");',[qw(Class::DBI6 Foo::Bar7)]],
 #26
    ['use base "Class::DBI8","Foo::Bar9";',[qw(Class::DBI8 Foo::Bar9)]],
+   ['use base qw(   Class::DBI10   Foo::Bar11   );',[qw(Class::DBI10 Foo::Bar11)]],
    ['eval "use Test::Pod 1.06";',['Test::Pod']],
    [q{#!/usr/bin/perl -w
 use strict;
