@@ -48,6 +48,8 @@ eval "use Test::Pod 1.06";
 eval 'use Test::Pod::Coverage 1.06;';
 plan skip_all => "Test::Pod 1.06 required for testing POD" if $@;
 all_pod_files_ok();},[qw(strict Test::More Test::Pod Test::Pod::Coverage)]],
+    # reported & fixed by barbie (b56e244da)
+   ["use base qw( Data::Phrasebook::Loader::Base Data::Phrasebook::Debug );",[qw(Data::Phrasebook::Loader::Base Data::Phrasebook::Debug)]],
 );
 
 

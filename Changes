@@ -2,6 +2,10 @@
 # Changes for Module::ExtractUse
 #-----------------------------------------------------------------
 
+0.28   2012-08-21T14:41:15+0200
+    - whitespace in use base is valid (Barbie)
+
+
 0.27	2012-03-23T12:40:44+0100
     - fixed 23_universal_require.t for real (RT75342) (reported by
       Manoj Kumar and Paul Howarth)
