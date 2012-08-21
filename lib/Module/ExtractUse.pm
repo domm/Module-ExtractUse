@@ -147,8 +147,8 @@ sub extract_use {
 
         next unless $result;
 
-        foreach (split(/ /,$result)) {
-            $self->_add($_);
+        foreach (split(/\s+/,$result)) {
+            $self->_add($_) if($_);
         }
     }
 
