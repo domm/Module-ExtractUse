@@ -107,14 +107,35 @@ sub extract_use {
     # Strip obvious comments.
     $podless =~ s/^\s*#.*$//mg;
 
+    # Regular expression to detect eval block
+    # Eval string is handled after
+    my $re = qr{
+        \G(.*?)                   # group 1 : predecessor
+        eval\s*(                  # group 2 : blocks
+            {
+                (?:
+                    (?> [^{}]+ )  # Non-braces without backtracking
+                |
+                    (?2)          # Recurse to start of group 2
+                )*
+            }
+        )
+    }xs;
+    my @statements;
+    while($podless =~ /$re/gc) {
     # to keep parsing time short, split code in statements
     # (I know that this is not very exact, patches welcome!)
-    my @statements=split(/;/,$podless);
+        push @statements, map { [ 0, $_ ] } split(/;/, $1); # non-eval context
+        push @statements, map { [ 1, $_ ] } split(/;/, $2); # eval context
+    }
+    push @statements, map { [ 0, $_ ] } split(/;/, substr($podless, pos($podless) || 0)); # non-eval context
 
-    foreach my $statement (@statements) {
+    foreach my $statement_ (@statements) {
+        my ($eval, $statement) = @$statement_;
         $statement=~s/\n+/ /gs;
         my $result;
 
+# TODO: This is not precise because it expects one eval in one statement
         # check for string eval in ' ', " " strings
         if ($statement !~ s/eval\s*(['"])(.*?)\1/$2;/) {
             # if that didn't work, try q and qq strings
@@ -124,6 +145,7 @@ sub extract_use {
                 while (my ($l, $r) = map {quotemeta} each %pair) {
                     last if $statement =~ s/eval\s+qq?$l(.*?)$r/$1;/;
                 }
+                $eval_ = 0;
             }
         }
 
@@ -148,7 +170,7 @@ sub extract_use {
         next unless $result;
 
         foreach (split(/\s+/,$result)) {
-            $self->_add($_) if($_);
+            $self->_add($_, $eval) if($_);
         }
     }
 
@@ -248,7 +270,10 @@ sub files {
 sub _add {
     my $self=shift;
     my $found=shift;
+    my $eval=shift;
     $self->{found}{$found}++;
+    $self->{found_in_eval}{$found}++ if $eval;
+    $self->{found_not_in_eval}{$found}++ unless $eval;
 }
 
 sub _found {
