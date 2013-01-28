@@ -1,4 +1,4 @@
-use Test::More tests => 9;
+use Test::More tests => 11;
 
 use strict;
 use warnings;
@@ -76,3 +76,18 @@ eval 'use Test::Pod $ver';};
 }
 
 
+{
+    my $semi   = 'eval"use Test::Pod 1.00;";';
+    my $p = Module::ExtractUse->new;
+    $p->extract_use( \$semi );
+
+    ok( $p->used( 'Test::Pod' ), 'no spaces between eval and expr with semicolon' );
+}
+
+{
+    my $nosemi = "eval'use Test::Pod 1.00';";
+    my $p = Module::ExtractUse->new;
+    $p->extract_use( \$nosemi );
+
+    ok( $p->used( 'Test::Pod' ), 'no spaces between eval and expr w/o semicolon' );
+}

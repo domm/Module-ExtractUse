@@ -116,7 +116,7 @@ sub extract_use {
         my $result;
 
         # check for string eval in ' ', " " strings
-        if ($statement !~ s/eval\s+(['"])(.*?)\1/$2;/) {
+        if ($statement !~ s/eval\s*(['"])(.*?)\1/$2;/) {
             # if that didn't work, try q and qq strings
             if ($statement !~ s/eval\s+qq?(\S)(.*?)\1/$2;/) {
                 # finally try paired delims like qq< >, q( ), ...
