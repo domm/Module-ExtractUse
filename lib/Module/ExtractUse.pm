@@ -104,6 +104,41 @@ count how many files where examined and how often each module was used.
 
 =cut
 
+# Regular expression to detect eval
+my $re = qr{
+    \G(?<pre>.*?)
+    eval
+    (?:
+        (?:\s+
+            (?:
+                qq?\((?<eval>.*?)\) # eval q()
+                |
+                qq?\[(?<eval>.*?)\] # eval q[]
+                |
+                qq?{(?<eval>.*?)}   # eval q{}
+                |
+                qq?<(?<eval>.*?)>   # eval q<>
+                |
+                qq?(?<quote>\S)(?<eval>.*?)\k<quote> # eval q'' or so
+            )
+        )
+        |
+        (?:\s*(?:
+            (?:(?<quote>['"])(?<eval>.*?)\k<quote>) # eval '' or eval ""
+            |
+            (?<block> # eval BLOCK
+                {
+                    (?<eval>(?:
+                        (?> [^{}]+ )  # Non-braces without backtracking
+                    |
+                        (?&block)     # Recurse to group: `block'
+                    )*)
+                }
+            )
+        ))
+    )
+}xs;
+
 sub extract_use {
     my $self=shift;
     my $code_to_parse=shift;
@@ -121,26 +156,12 @@ sub extract_use {
     # Strip obvious comments.
     $podless =~ s/^\s*#.*$//mg;
 
-    # Regular expression to detect eval block
-    # Eval string is handled after
-    my $re = qr{
-        \G(.*?)                   # group 1 : predecessor
-        eval\s*(                  # group 2 : blocks
-            {
-                (?:
-                    (?> [^{}]+ )  # Non-braces without backtracking
-                |
-                    (?2)          # Recurse to start of group 2
-                )*
-            }
-        )
-    }xs;
     my @statements;
     while($podless =~ /$re/gc) {
     # to keep parsing time short, split code in statements
     # (I know that this is not very exact, patches welcome!)
-        push @statements, map { [ 0, $_ ] } split(/;/, $1); # non-eval context
-        push @statements, map { [ 1, $_ ] } split(/;/, $2); # eval context
+        push @statements, map { [ 0, $_ ] } split(/;/, $+{pre}); # non-eval context
+        push @statements, map { [ 1, $_ ] } split(/;/, $+{eval}); # eval context
     }
     push @statements, map { [ 0, $_ ] } split(/;/, substr($podless, pos($podless) || 0)); # non-eval context
 
@@ -148,20 +169,6 @@ sub extract_use {
         my ($eval, $statement) = @$statement_;
         $statement=~s/\n+/ /gs;
         my $result;
-
-# TODO: This is not precise because it expects one eval in one statement
-        # check for string eval in ' ', " " strings
-        if ($statement !~ s/eval\s*(['"])(.*?)\1/$2;/) {
-            # if that didn't work, try q and qq strings
-            if ($statement !~ s/eval\s+qq?(\S)(.*?)\1/$2;/) {
-                # finally try paired delims like qq< >, q( ), ...
-                my %pair = qw| ( ) [ ] { } < > |;
-                while (my ($l, $r) = map {quotemeta} each %pair) {
-                    last if $statement =~ s/eval\s+qq?$l(.*?)$r/$1;/;
-                }
-                $eval_ = 0;
-            }
-        }
 
         # now that we've got some code containing 'use' or 'require',
         # parse it! (using different entry point to save some more
