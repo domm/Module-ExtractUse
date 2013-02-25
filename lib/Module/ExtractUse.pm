@@ -126,19 +126,19 @@ sub extract_use {
                 }
             }
         }
-    
+
         # now that we've got some code containing 'use' or 'require',
         # parse it! (using different entry point to save some more
         # time)
         if ($statement=~/\buse/) {
-            $statement=~s/^(.*?)use/use/;
+            $statement=~s/^(.*?)use\b/use/;
             eval {
                 my $parser=Module::ExtractUse::Grammar->new();
                 $result=$parser->token_use($statement.';');
             };
         }
         elsif ($statement=~/\brequire/) {
-            $statement=~s/^(.*?)require/require/;
+            $statement=~s/^(.*?)require\b/require/s;
             eval {
                 my $parser=Module::ExtractUse::Grammar->new();
                 $result=$parser->token_require($statement.';');
