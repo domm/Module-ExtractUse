@@ -73,6 +73,9 @@ require Test::Pod;
 my $generated_pod_dir = 'maint/.Generated_Pod';
 Test::Pod::all_pod_files_ok( 'lib', -d $generated_pod_dir ? $generated_pod_dir : () );
 ],[qw(warnings strict Test::More lib DBIx::Class DBICTest Test::Pod)]],
+[q[use Foo;say "Failed to load the release-testing modules we require: Bar;"],[qw(Foo)]],
+[q[use Foo;say "Failed to load the release-testing modules we require: Bar";],[qw(Foo)]],
+[q[use Foo;say "Failed to load the release-testing modules we require: Bar;"],[qw(Foo)]],
 );
 
 
