@@ -88,8 +88,8 @@ foreach my $t (@tests) {
     my $p=Module::ExtractUse->new;
     my @used = (
         $p->extract_use(\$code)->arrayref || undef,
-        $p->extract_use(\$code)->optional_arrayref || undef,
-        $p->extract_use(\$code)->mandatory_arrayref || undef,
+        $p->extract_use(\$code)->arrayref_in_eval || undef,
+        $p->extract_use(\$code)->arrayref_out_of_eval || undef,
     );
 
     for(my $i = 0; $i < @used; ++$i) {

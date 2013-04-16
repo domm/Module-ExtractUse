@@ -13,12 +13,12 @@ use Module::ExtractUse;
 	       bag(qw(strict Test::More Test::Deep Test::NoWarnings Module::ExtractUse)),
 	       'modules used in this test script'
 	      );
-    @used=$p->extract_use($0)->optional_array;
+    @used=$p->extract_use($0)->array_in_eval;
     cmp_deeply(\@used,
 	       [],
 	       'optional modules used in this test script'
 	      );
-    @used=$p->extract_use($0)->mandatory_array;
+    @used=$p->extract_use($0)->array_out_of_eval;
     cmp_deeply(\@used,
 	       bag(qw(strict Test::More Test::Deep Test::NoWarnings Module::ExtractUse)),
 	       'mandatory modules used in this test script'
@@ -32,10 +32,10 @@ use Module::ExtractUse;
     cmp_deeply($p->arrayref,
 	       bag(qw(strict warnings Pod::Strip Parse::RecDescent Module::ExtractUse::Grammar Carp 5.008)),
 	       'modules used in this Module::ExtractUsed');
-    cmp_deeply([$p->optional_arrayref],
+    cmp_deeply([$p->arrayref_in_eval],
 	       [],
 	       'optional modules used in this Module::ExtractUsed');
-    cmp_deeply($p->mandatory_arrayref,
+    cmp_deeply($p->arrayref_out_of_eval,
 	       bag(qw(strict warnings Pod::Strip Parse::RecDescent Module::ExtractUse::Grammar Carp 5.008)),
 	       'mandatory modules used in this Module::ExtractUsed');
 
@@ -44,15 +44,15 @@ use Module::ExtractUse;
 
     is($p->used('strict'),1,'strict via used method');
 
-    my $optional_used=$p->optional_used;
-    is(!$optional_used->{'strict'},1,'strict via optional hash lookup');
+    my $used_in_eval=$p->used_in_eval;
+    is(!$used_in_eval->{'strict'},1,'strict via in-eval hash lookup');
 
-    is(!$p->optional_used('strict'),1,'strict via optional_used method');
+    is(!$p->used_in_eval('strict'),1,'strict via used_in_eval method');
 
-    my $mandatory_used=$p->mandatory_used;
-    is($mandatory_used->{'strict'},1,'strict via mandatory hash lookup');
+    my $used_out_of_eval=$p->used_out_of_eval;
+    is($used_out_of_eval->{'strict'},1,'strict via out-of-eval hash lookup');
 
-    is($p->mandatory_used('strict'),1,'strict via mandatory_used method');
+    is($p->used_out_of_eval('strict'),1,'strict via used_out_of_eval method');
 
 }
 

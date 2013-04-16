@@ -35,19 +35,19 @@ use version; our $VERSION=version->new('0.29');
   my @used=$p->array;
   my $used=$p->string;
   
-  # you can get optional, that is in eval context, use in the same style
-  my $used=$p->optional_used;           # $used is a HASHREF
-  print $p->optional_used('strict')     # true if code includes 'use strict'
+  # you can get optional modules, that is use in eval context, in the same style
+  my $used=$p->used_in_eval;           # $used is a HASHREF
+  print $p->used_in_eval('strict')     # true if code includes 'use strict'
   
-  my @used=$p->optional_array;
-  my $used=$p->optional_string;
+  my @used=$p->array_in_eval;
+  my $used=$p->string_in_eval;
   
-  # and mandatory, that is outside eval context, use in the same style, also.
-  my $used=$p->mandatory_used;           # $used is a HASHREF
-  print $p->mandatory_used('strict')     # true if code includes 'use strict'
+  # and mandatory modules, that is use out of eval context, in the same style, also.
+  my $used=$p->used_out_of_eval;           # $used is a HASHREF
+  print $p->used_out_of_eval('strict')     # true if code includes 'use strict'
   
-  my @used=$p->mandatory_array;
-  my $used=$p->mandatory_string;
+  my @used=$p->array_out_of_eval;
+  my $used=$p->string_out_of_eval;
 
 =head1 DESCRIPTION
 
@@ -234,26 +234,26 @@ sub used {
     return $self->{found};
 }
 
-=head3 optional_used
+=head3 used_in_eval
 
 Same as C<used>, except for considering in-eval-context only.
 
 =cut
 
-sub optional_used {
+sub used_in_eval {
     my $self=shift;
     my $key=shift;
     return $self->{found_in_eval}{$key} if ($key);
     return $self->{found_in_eval};
 }
 
-=head3 mandatory_used
+=head3 used_out_of_eval
 
 Same as C<used>, except for considering NOT-in-eval-context only.
 
 =cut
 
-sub mandatory_used {
+sub used_out_of_eval {
     my $self=shift;
     my $key=shift;
     return $self->{found_not_in_eval}{$key} if ($key);
@@ -277,25 +277,25 @@ sub string {
     return join($sep,sort keys(%{$self->{found}}));
 }
 
-=head3 optional_string
+=head3 string_in_eval
 
 Same as C<string>, except for considering in-eval-context only.
 
 =cut
 
-sub optional_string {
+sub string_in_eval {
     my $self=shift;
     my $sep=shift || ' ';
     return join($sep,sort keys(%{$self->{found_in_eval}}));
 }
 
-=head3 mandatory_string
+=head3 string_out_of_eval
 
 Same as C<string>, except for considering NOT-in-eval-context only.
 
 =cut
 
-sub mandatory_string {
+sub string_out_of_eval {
     my $self=shift;
     my $sep=shift || ' ';
     return join($sep,sort keys(%{$self->{found_not_in_eval}}));
@@ -313,23 +313,23 @@ sub array {
     return keys(%{shift->{found}})
 }
 
-=head3 optional_array
+=head3 array_in_eval
 
 Same as C<array>, except for considering in-eval-context only.
 
 =cut
 
-sub optional_array {
+sub array_in_eval {
     return keys(%{shift->{found_in_eval}})
 }
 
-=head3 mandatory_array
+=head3 array_out_of_eval
 
 Same as C<array>, except for considering NOT-in-eval-context only.
 
 =cut
 
-sub mandatory_array {
+sub array_out_of_eval {
     return keys(%{shift->{found_not_in_eval}})
 }
 
@@ -347,26 +347,26 @@ sub arrayref {
     return;
 }
 
-=head3 optional_arrayref
+=head3 arrayref_in_eval
 
 Same as C<array_ref>, except for considering in-eval-context only.
 
 =cut
 
-sub optional_arrayref {
-    my @a=shift->optional_array;
+sub arrayref_in_eval {
+    my @a=shift->array_in_eval;
     return \@a if @a;
     return;
 }
 
-=head3 mandatory_arrayref
+=head3 arrayref_out_of_eval
 
 Same as C<array_ref>, except for considering NOT-in-eval-context only.
 
 =cut
 
-sub mandatory_arrayref {
-    my @a=shift->mandatory_array;
+sub arrayref_out_of_eval {
+    my @a=shift->array_out_of_eval;
     return \@a if @a;
     return;
 }
