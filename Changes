@@ -2,6 +2,14 @@
 # Changes for Module::ExtractUse
 #-----------------------------------------------------------------
 
+0.30	2013-04-18T08:57:49+0200
+    - Add accessors and tests for _in_eval/_out_of_eval. (Yasutaka ATARASHI)
+    - reworked 80_failig.t to TODO tests; (Thomas Klausner)
+    - added more require-in-string corner test cases (suggested by Buddy Burden)
+      (Thomas Klausner)
+    - Fix the case for eval["']expr["'] and add regression tests.
+      (Yasutaka ATARASHI)
+
 0.29    2013-02-25T20:25:44+0100
     - fixed regex to filter use/require (RT83569) (reported by
       ribasushi)
