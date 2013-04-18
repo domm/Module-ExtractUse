@@ -77,6 +77,9 @@ Test::Pod::all_pod_files_ok( 'lib', -d $generated_pod_dir ? $generated_pod_dir :
 [q[use Foo;say "Failed to load the release-testing modules we require: Bar;"],[qw(Foo)],undef,[qw(Foo)]],
 [q[use Foo;say "Failed to load the release-testing modules we require: Bar";],[qw(Foo)],undef,[qw(Foo)]],
 [q[use Foo;say "Failed to load the release-testing modules we require: Bar;"],[qw(Foo)],undef,[qw(Foo)]],
+[q[use Data::Section -setup;],[qw(Data::Section)],undef,[qw(Data::Section)]],
+[q[use Data::Section { installer => method_installer }, -setup;],[qw(Data::Section)],undef,[qw(Data::Section)]],
+[q[use Data::Section -setup => { header_re => qr/^\@\@\s*(\S+)/ };],[qw(Data::Section)],undef,[qw(Data::Section)]],
 );
 
 

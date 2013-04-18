@@ -56,7 +56,9 @@ import_list:	/[(]?/
 
 list_item:	<perl_quotelike> { $return=$item[1][2] }
 		|
-		/\w+/            { $return=$item[1] }
+		<perl_codeblock (){}[]> { $return=$item[1] }
+		|
+		/-?\w+/            { $return=$item[1] }
 
 comma_list_item: comma list_item
 		{ $return=$item{list_item} }
