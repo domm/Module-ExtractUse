@@ -127,12 +127,12 @@
      - Enhanced grammer (thanks to $::RD_TRACE)
 
 
-0.5	2003-04-18
+0.05	2003-04-18
     - added precompilation of grammar to Makefile.PL
     - changed @found to @::found
     - init @::found in start-rule instead via startup-action
 
 
-0.3	2003-03-31
+0.03	2003-03-31
     - sort of working
 
