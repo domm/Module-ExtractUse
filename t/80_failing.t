@@ -13,6 +13,8 @@ my @tests=
    [q[use Foo;say "Failed to load the release-testing modules we require Bar;";],'Foo','"require" in some string']
   );
 
+plan tests => scalar @tests;
+
 foreach my $t (@tests) {
     my ($code,$expected,$testname)=@$t;
     $testname ||=$code;
@@ -26,6 +28,3 @@ foreach my $t (@tests) {
         }
     }
 }
-
-done_testing();
-
