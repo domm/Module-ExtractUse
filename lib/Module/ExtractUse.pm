@@ -114,7 +114,7 @@ $re_block = qr {
             ((?:
                 (?> [^{}]+ )  # Non-braces without backtracking
             |
-                (?{{$re_block}}) # Recurse to group 10
+                (??{$re_block}) # Recurse to group 10
             )*)
         }
     )
@@ -145,7 +145,7 @@ my $re = qr{
                     ((?: # group 11
                         (?> [^{}]+ )  # Non-braces without backtracking
                     |
-                        (?{{$re_block}}) # Recurse to group 10
+                        (??{$re_block}) # Recurse to group 10
                     )*)
                 }
             )
