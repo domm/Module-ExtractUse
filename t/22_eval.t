@@ -1,4 +1,4 @@
-use Test::More tests => 33;
+use Test::More tests => 48;
 
 use strict;
 use warnings;
@@ -112,4 +112,37 @@ eval 'use Test::Pod $ver';};
     ok( $p->used( 'Test::Pod' ), 'no spaces between eval and expr w/o semicolon' );
     ok( $p->used_in_eval( 'Test::Pod' ) );
     ok(!$p->used_out_of_eval( 'Test::Pod' ) );
+}
+
+{
+    my $q = "eval { use Test::Pod }";
+    my $p = Module::ExtractUse->new;
+    $p->extract_use( \$q );
+    ok( $p->used( 'Test::Pod' ), 'block' );
+    ok( $p->used_in_eval( 'Test::Pod' ), 'block' );
+    ok(!$p->used_out_of_eval( 'Test::Pod' ), 'block' );
+}
+
+{
+    my $q = "eval { use Test::Pod; { use Test::Pod::Coverage; } }";
+    my $p = Module::ExtractUse->new;
+    $p->extract_use( \$q );
+    ok( $p->used( 'Test::Pod' ), 'block in block 1' );
+    ok( $p->used_in_eval( 'Test::Pod' ), 'block in block 1' );
+    ok(!$p->used_out_of_eval( 'Test::Pod' ), 'block in block 1' );
+    ok( $p->used( 'Test::Pod::Coverage' ), 'block in block 1' );
+    ok( $p->used_in_eval( 'Test::Pod::Coverage' ), 'block in block 1' );
+    ok(!$p->used_out_of_eval( 'Test::Pod::Coverage' ), 'block in block 1' );
+}
+
+{
+    my $q = "eval { { use Test::Pod; } use Test::Pod::Coverage }";
+    my $p = Module::ExtractUse->new;
+    $p->extract_use( \$q );
+    ok( $p->used( 'Test::Pod' ), 'block in block 2' );
+    ok( $p->used_in_eval( 'Test::Pod' ), 'block in block 2' );
+    ok(!$p->used_out_of_eval( 'Test::Pod' ), 'block in block 2' );
+    ok( $p->used( 'Test::Pod::Coverage' ), 'block in block 2' );
+    ok( $p->used_in_eval( 'Test::Pod::Coverage' ), 'block in block 2' );
+    ok(!$p->used_out_of_eval( 'Test::Pod::Coverage' ), 'block in block 2' );
 }

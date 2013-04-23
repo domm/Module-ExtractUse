@@ -10,8 +10,11 @@ my @tests=
   (
    ['use base (Class::DBI,FooBar);','Class::DBI Foo::Bar'],
    ['use constant lib_ext => $Config{lib_ext};','constant'],
-   [q[use Foo;say "Failed to load the release-testing modules we require Bar;";],'Foo','"require" in some string']
+   [q[use Foo;say "Failed to load the release-testing modules we require Bar;";],'Foo','"require" in some string'],
+   [q[eval { { use Test::Pod } use Test::Pod::Coverage }],'Test::Pod Test::Pod::Coverage','without semicolon at the end of the BLOCK'],
   );
+
+plan tests => scalar @tests;
 
 foreach my $t (@tests) {
     my ($code,$expected,$testname)=@$t;
@@ -26,6 +29,3 @@ foreach my $t (@tests) {
         }
     }
 }
-
-done_testing();
-
