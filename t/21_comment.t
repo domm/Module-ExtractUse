@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 use strict;
-use Test::More tests => 7;
+use Test::More tests => 8;
 
 use Module::ExtractUse;
 
@@ -71,5 +71,18 @@ my $p = Module::ExtractUse->new;
 is $p->extract_use(\(<<'CODE'))->string, 'Apache::DBI';
 # yo, require Apache::DBI
 require Apache::DBI
+CODE
+}
+
+# Handle trailing comments which become comment lines after the split on
+# ';'.
+{
+my $p = Module::ExtractUse->new;
+is $p->extract_use(\(<<'CODE'))->string, '5.008 strict warnings';
+use 5.008; # Because we want to
+# Another comment
+
+use strict;
+use warnings;
 CODE
 }
