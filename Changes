@@ -2,6 +2,21 @@
 # Changes for Module::ExtractUse
 #-----------------------------------------------------------------
 
+0.31	2013-05-31T10:21:06+0200
+    - applied a patch from cjm with slight modification to resolve RT#50723
+      (support use Foo::Bar (); etc) (Kenichi Ishigaki)
+    - fixed RT#71761 (Kenichi Ishigaki)
+    - applied a patch from wyant (RT#71761) (Kenichi Ishigaki)
+    - fixed the Pod::Simple encoding issue (Kenichi Ishigaki)
+    - Fix incorrect regexp (ref gh-5). (Yasutaka ATARASHI)
+    - Avoid regex features introduced only in later perl (close gh-5).
+      (Yasutaka ATARASHI)
+    - Use plan() instead of done_testing() (ref gh-5). (Yasutaka ATARASHI)
+    - Add support for bareword leading hyphyen, in-place arrayref and hashref.
+      (Yasutaka ATARASHI)
+    - proper version number for older releases (Brian Cassidy)
+
+
 0.30	2013-04-18T08:57:49+0200
     - Add accessors and tests for _in_eval/_out_of_eval. (Yasutaka ATARASHI)
     - reworked 80_failig.t to TODO tests; (Thomas Klausner)
