@@ -169,7 +169,7 @@ sub extract_use {
     }
 
     # Strip obvious comments.
-    $podless =~ s/^\s*#.*$//mg;
+    $podless =~ s/(^|[\};])\s*#.*$/$1/mg;
 
     my @statements;
     while($podless =~ /$re/gc) {
