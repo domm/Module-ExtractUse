@@ -80,6 +80,11 @@ Test::Pod::all_pod_files_ok( 'lib', -d $generated_pod_dir ? $generated_pod_dir :
 [q[use Data::Section -setup;],[qw(Data::Section)],undef,[qw(Data::Section)]],
 [q[use Data::Section { installer => method_installer }, -setup;],[qw(Data::Section)],undef,[qw(Data::Section)]],
 [q[use Data::Section -setup => { header_re => qr/^\@\@\s*(\S+)/ };],[qw(Data::Section)],undef,[qw(Data::Section)]],
+['use Foo::Bar29 ();',[qw(Foo::Bar29)],undef,[qw(Foo::Bar29)]],
+['use Min::Version30 1.2 ();',[qw(Min::Version30)],undef,[qw(Min::Version30)]],
+['use MooseX::Types -declare => [qw(BorderStyle Component Container)];',[qw(MooseX::Types)],undef,[qw(MooseX::Types)]],
+['eval { require Foo::Bar32 };',[qw(Foo::Bar32)],[qw(Foo::Bar32)],undef],
+['do { use Foo::Bar33 };',[qw(Foo::Bar33)],undef,[qw(Foo::Bar33)]],
 );
 
 
@@ -97,7 +102,7 @@ foreach my $t (@tests) {
 
     for(my $i = 0; $i < @used; ++$i) {
         if (ref($expected[$i]) eq 'ARRAY') {
-            cmp_bag($used[$i],$expected[$i]);
+            cmp_bag($used[$i]||[],$expected[$i]);
         } elsif (!defined $expected[$i]) {
             is(undef,$used[$i],'');
         } else {

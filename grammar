@@ -2,7 +2,7 @@
 # Rules for use
 #-----------------------------------------------------------------
 
-token_use:		/\buse\s/ use_stuff ';'
+token_use:		/\buse\s/ use_stuff /[;}]/
 		{ $return=$item{use_stuff} }
 
 use_stuff:	(base | pragma | version | module)
@@ -23,7 +23,7 @@ module_more:	eos | version(?) var(?) import_list(?)
 # Rules for require
 #-----------------------------------------------------------------
 
-token_require:	/\brequire\s/ require_stuff ';'
+token_require:	/\brequire\s/ require_stuff /[;}]/
 		{ $return=$item{require_stuff} }
 
 require_stuff:	(version | require_name | module)
@@ -53,6 +53,8 @@ import_list:	/[(]?/
 		{ $return=$item[2];
 		  $return.=" ".join(" ",@{$item[3]}) if $item[3];
 		}
+		|
+		/[(]\s*[)]/      { $return='' }
 
 list_item:	<perl_quotelike> { $return=$item[1][2] }
 		|
