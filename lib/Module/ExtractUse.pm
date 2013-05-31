@@ -160,6 +160,7 @@ sub extract_use {
     my $podless;
     my $pod_parser=Pod::Strip->new;
     $pod_parser->output_string(\$podless);
+    $pod_parser->parse_characters(1) if $pod_parser->can('parse_characters');
     if (ref($code_to_parse) eq 'SCALAR') {
         $pod_parser->parse_string_document($$code_to_parse);
     }
