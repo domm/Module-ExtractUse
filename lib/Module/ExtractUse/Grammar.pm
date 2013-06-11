@@ -2400,6 +2400,196 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::base
 }
 
 # ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
+sub Parse::RecDescent::Module::ExtractUse::Grammar::parent
+{
+	my $thisparser = $_[0];
+	use vars q{$tracelevel};
+	local $tracelevel = ($tracelevel||0)+1;
+	$ERRORS = 0;
+    my $thisrule = $thisparser->{"rules"}{"parent"};
+
+    Parse::RecDescent::_trace(q{Trying rule: [parent]},
+                  Parse::RecDescent::_tracefirst($_[1]),
+                  q{parent},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+
+    
+    my $err_at = @{$thisparser->{errors}};
+
+    my $score;
+    my $score_return;
+    my $_tok;
+    my $return = undef;
+    my $_matched=0;
+    my $commit=0;
+    my @item = ();
+    my %item = ();
+    my $repeating =  $_[2];
+    my $_noactions = $_[3];
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
+    my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
+    my $text;
+    my $lastsep;
+    my $current_match;
+    my $expectation = new Parse::RecDescent::Expectation(q{'parent'});
+    $expectation->at($_[1]);
+    
+    my $thisline;
+    tie $thisline, q{Parse::RecDescent::LineCounter}, \$text, $thisparser;
+
+    
+
+    while (!$_matched && !$commit)
+    {
+        
+        Parse::RecDescent::_trace(q{Trying production: ['parent' import_list]},
+                      Parse::RecDescent::_tracefirst($_[1]),
+                      q{parent},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        my $thisprod = $thisrule->{"prods"}[0];
+        $text = $_[1];
+        my $_savetext;
+        @item = (q{parent});
+        %item = (__RULE__ => q{parent});
+        my $repcount = 0;
+
+
+        Parse::RecDescent::_trace(q{Trying terminal: ['parent']},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{parent},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        undef $lastsep;
+        $expectation->is(q{})->at($text);
+        
+
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   do { $_tok = "parent"; 1 } and
+             substr($text,0,length($_tok)) eq $_tok and
+             do { substr($text,0,length($_tok)) = ""; 1; }
+        )
+        {
+            $text = $lastsep . $text if defined $lastsep;
+            
+            $expectation->failed();
+            Parse::RecDescent::_trace(q{<<Didn't match terminal>>},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+            last;
+        }
+        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
+                        . $_tok . q{])},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+        push @item, $item{__STRING1__}=$_tok;
+        
+
+        Parse::RecDescent::_trace(q{Trying subrule: [import_list]},
+                  Parse::RecDescent::_tracefirst($text),
+                  q{parent},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+        if (1) { no strict qw{refs};
+        $expectation->is(q{import_list})->at($text);
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::import_list($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        {
+            
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [import_list]>>},
+                          Parse::RecDescent::_tracefirst($text),
+                          q{parent},
+                          $tracelevel)
+                            if defined $::RD_TRACE;
+            $expectation->failed();
+            last;
+        }
+        Parse::RecDescent::_trace(q{>>Matched subrule: [import_list]<< (return value: [}
+                    . $_tok . q{]},
+
+                      Parse::RecDescent::_tracefirst($text),
+                      q{parent},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $item{q{import_list}} = $_tok;
+        push @item, $_tok;
+        
+        }
+
+        Parse::RecDescent::_trace(q{Trying action},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{parent},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        
+
+        $_tok = ($_noactions) ? 0 : do { $return='parent'; $return.=' '.$item[2] if $item[2] !~ /^\s*-norequire\b/; };
+        unless (defined $_tok)
+        {
+            Parse::RecDescent::_trace(q{<<Didn't match action>> (return value: [undef])})
+                    if defined $::RD_TRACE;
+            last;
+        }
+        Parse::RecDescent::_trace(q{>>Matched action<< (return value: [}
+                      . $_tok . q{])},
+                      Parse::RecDescent::_tracefirst($text))
+                        if defined $::RD_TRACE;
+        push @item, $_tok;
+        $item{__ACTION1__}=$_tok;
+        
+
+        Parse::RecDescent::_trace(q{>>Matched production: ['parent' import_list]<<},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{parent},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+
+
+
+        $_matched = 1;
+        last;
+    }
+
+
+    unless ( $_matched || defined($score) )
+    {
+        
+
+        $_[1] = $text;  # NOT SURE THIS IS NEEDED
+        Parse::RecDescent::_trace(q{<<Didn't match rule>>},
+                     Parse::RecDescent::_tracefirst($_[1]),
+                     q{parent},
+                     $tracelevel)
+                    if defined $::RD_TRACE;
+        return undef;
+    }
+    if (!defined($return) && defined($score))
+    {
+        Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
+                      q{parent},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $return = $score_return;
+    }
+    splice @{$thisparser->{errors}}, $err_at;
+    $return = $item[$#item] unless defined $return;
+    if (defined $::RD_TRACE)
+    {
+        Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
+                      $return . q{])}, "",
+                      q{parent},
+                      $tracelevel);
+        Parse::RecDescent::_trace(q{(consumed: [} .
+                      Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
+                      Parse::RecDescent::_tracefirst($text),
+                      , q{parent},
+                      $tracelevel)
+    }
+    $_[1] = $text;
+    return $return;
+}
+
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::require_stuff
 {
 	my $thisparser = $_[0];
@@ -2847,7 +3037,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{base, or pragma, or version, or module});
+    my $expectation = new Parse::RecDescent::Expectation(q{base, or parent, or pragma, or version, or module});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -2858,7 +3048,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: [base, or pragma, or version, or module]},
+        Parse::RecDescent::_trace(q{Trying production: [base, or parent, or pragma, or version, or module]},
                       Parse::RecDescent::_tracefirst($_[1]),
                       q{use_stuff},
                       $tracelevel)
@@ -2901,7 +3091,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::use_stuff
         
         }
 
-        Parse::RecDescent::_trace(q{>>Matched production: [base, or pragma, or version, or module]<<},
+        Parse::RecDescent::_trace(q{>>Matched production: [base, or parent, or pragma, or version, or module]<<},
                       Parse::RecDescent::_tracefirst($text),
                       q{use_stuff},
                       $tracelevel)
@@ -3309,7 +3499,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{base, or pragma, or version, or module});
+    my $expectation = new Parse::RecDescent::Expectation(q{base, or parent, or pragma, or version, or module});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -3379,12 +3569,71 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: [pragma]},
+        Parse::RecDescent::_trace(q{Trying production: [parent]},
                       Parse::RecDescent::_tracefirst($_[1]),
                       q{_alternation_1_of_production_1_of_rule_use_stuff},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[1];
+        $text = $_[1];
+        my $_savetext;
+        @item = (q{_alternation_1_of_production_1_of_rule_use_stuff});
+        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_use_stuff});
+        my $repcount = 0;
+
+
+        Parse::RecDescent::_trace(q{Trying subrule: [parent]},
+                  Parse::RecDescent::_tracefirst($text),
+                  q{_alternation_1_of_production_1_of_rule_use_stuff},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+        if (1) { no strict qw{refs};
+        $expectation->is(q{})->at($text);
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::parent($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        {
+            
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [parent]>>},
+                          Parse::RecDescent::_tracefirst($text),
+                          q{_alternation_1_of_production_1_of_rule_use_stuff},
+                          $tracelevel)
+                            if defined $::RD_TRACE;
+            $expectation->failed();
+            last;
+        }
+        Parse::RecDescent::_trace(q{>>Matched subrule: [parent]<< (return value: [}
+                    . $_tok . q{]},
+
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule_use_stuff},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $item{q{parent}} = $_tok;
+        push @item, $_tok;
+        
+        }
+
+        Parse::RecDescent::_trace(q{>>Matched production: [parent]<<},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule_use_stuff},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+
+
+
+        $_matched = 1;
+        last;
+    }
+
+
+    while (!$_matched && !$commit)
+    {
+        
+        Parse::RecDescent::_trace(q{Trying production: [pragma]},
+                      Parse::RecDescent::_tracefirst($_[1]),
+                      q{_alternation_1_of_production_1_of_rule_use_stuff},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        my $thisprod = $thisrule->{"prods"}[2];
         $text = $_[1];
         my $_savetext;
         @item = (q{_alternation_1_of_production_1_of_rule_use_stuff});
@@ -3443,7 +3692,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                       q{_alternation_1_of_production_1_of_rule_use_stuff},
                       $tracelevel)
                         if defined $::RD_TRACE;
-        my $thisprod = $thisrule->{"prods"}[2];
+        my $thisprod = $thisrule->{"prods"}[3];
         $text = $_[1];
         my $_savetext;
         @item = (q{_alternation_1_of_production_1_of_rule_use_stuff});
@@ -3502,7 +3751,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                       q{_alternation_1_of_production_1_of_rule_use_stuff},
                       $tracelevel)
                         if defined $::RD_TRACE;
-        my $thisprod = $thisrule->{"prods"}[3];
+        my $thisprod = $thisrule->{"prods"}[4];
         $text = $_[1];
         my $_savetext;
         @item = (q{_alternation_1_of_production_1_of_rule_use_stuff});
@@ -4002,7 +4251,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                              'implicit' => undef,
                                                                                                                                              'argcode' => undef,
                                                                                                                                              'lookahead' => 0,
-                                                                                                                                             'line' => 69
+                                                                                                                                             'line' => 72
                                                                                                                                            }, 'Parse::RecDescent::Subrule' )
                                                                                                                                   ],
                                                                                                                        'line' => undef
@@ -4022,10 +4271,10 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                              'implicit' => undef,
                                                                                                                                              'argcode' => undef,
                                                                                                                                              'lookahead' => 0,
-                                                                                                                                             'line' => 69
+                                                                                                                                             'line' => 72
                                                                                                                                            }, 'Parse::RecDescent::Subrule' )
                                                                                                                                   ],
-                                                                                                                       'line' => 69
+                                                                                                                       'line' => 72
                                                                                                                      }, 'Parse::RecDescent::Production' ),
                                                                                                               bless( {
                                                                                                                        'number' => 2,
@@ -4042,15 +4291,15 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                              'implicit' => undef,
                                                                                                                                              'argcode' => undef,
                                                                                                                                              'lookahead' => 0,
-                                                                                                                                             'line' => 69
+                                                                                                                                             'line' => 72
                                                                                                                                            }, 'Parse::RecDescent::Subrule' )
                                                                                                                                   ],
-                                                                                                                       'line' => 69
+                                                                                                                       'line' => 72
                                                                                                                      }, 'Parse::RecDescent::Production' )
                                                                                                             ],
                                                                                                  'name' => '_alternation_1_of_production_1_of_rule_require_stuff',
                                                                                                  'vars' => '',
-                                                                                                 'line' => 69
+                                                                                                 'line' => 72
                                                                                                }, 'Parse::RecDescent::Rule' ),
                               'eos' => bless( {
                                                 'impcount' => 0,
@@ -4070,7 +4319,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                    bless( {
                                                                                             'hashname' => '__ACTION1__',
                                                                                             'lookahead' => 0,
-                                                                                            'line' => 45,
+                                                                                            'line' => 48,
                                                                                             'code' => '{ $text=~/^[\\s;]+$/ ? 1 : undef;}'
                                                                                           }, 'Parse::RecDescent::Action' )
                                                                                  ],
@@ -4079,7 +4328,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                            ],
                                                 'name' => 'eos',
                                                 'vars' => '',
-                                                'line' => 45
+                                                'line' => 48
                                               }, 'Parse::RecDescent::Rule' ),
                               'token_use' => bless( {
                                                       'impcount' => 0,
@@ -4159,7 +4408,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                   'hashname' => '__DIRECTIVE1__',
                                                                                                   'name' => '<perl_quotelike>',
                                                                                                   'lookahead' => 0,
-                                                                                                  'line' => 59,
+                                                                                                  'line' => 62,
                                                                                                   'code' => 'my ($match,@res);
                      ($match,$text,undef,@res) =
                           Text::Balanced::extract_quotelike($text,$skip);
@@ -4169,7 +4418,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                          bless( {
                                                                                                   'hashname' => '__ACTION1__',
                                                                                                   'lookahead' => 0,
-                                                                                                  'line' => 59,
+                                                                                                  'line' => 62,
                                                                                                   'code' => '{ $return=$item[1][2] }'
                                                                                                 }, 'Parse::RecDescent::Action' )
                                                                                        ],
@@ -4188,18 +4437,18 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                   'hashname' => '__DIRECTIVE1__',
                                                                                                   'name' => '<perl_codeblock>',
                                                                                                   'lookahead' => 0,
-                                                                                                  'line' => 61,
+                                                                                                  'line' => 64,
                                                                                                   'code' => 'Text::Balanced::extract_codeblock($text,undef,$skip,\'(){}[]\');
                     '
                                                                                                 }, 'Parse::RecDescent::Directive' ),
                                                                                          bless( {
                                                                                                   'hashname' => '__ACTION1__',
                                                                                                   'lookahead' => 0,
-                                                                                                  'line' => 61,
+                                                                                                  'line' => 64,
                                                                                                   'code' => '{ $return=$item[1] }'
                                                                                                 }, 'Parse::RecDescent::Action' )
                                                                                        ],
-                                                                            'line' => 60
+                                                                            'line' => 63
                                                                           }, 'Parse::RecDescent::Production' ),
                                                                    bless( {
                                                                             'number' => 2,
@@ -4216,23 +4465,23 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                   'description' => '/-?\\\\w+/',
                                                                                                   'lookahead' => 0,
                                                                                                   'rdelim' => '/',
-                                                                                                  'line' => 63,
+                                                                                                  'line' => 66,
                                                                                                   'mod' => '',
                                                                                                   'ldelim' => '/'
                                                                                                 }, 'Parse::RecDescent::Token' ),
                                                                                          bless( {
                                                                                                   'hashname' => '__ACTION1__',
                                                                                                   'lookahead' => 0,
-                                                                                                  'line' => 63,
+                                                                                                  'line' => 66,
                                                                                                   'code' => '{ $return=$item[1] }'
                                                                                                 }, 'Parse::RecDescent::Action' )
                                                                                        ],
-                                                                            'line' => 62
+                                                                            'line' => 65
                                                                           }, 'Parse::RecDescent::Production' )
                                                                  ],
                                                       'name' => 'list_item',
                                                       'vars' => '',
-                                                      'line' => 59
+                                                      'line' => 62
                                                     }, 'Parse::RecDescent::Rule' ),
                               'comma_list_item' => bless( {
                                                             'impcount' => 0,
@@ -4258,7 +4507,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                         'implicit' => undef,
                                                                                                         'argcode' => undef,
                                                                                                         'lookahead' => 0,
-                                                                                                        'line' => 65
+                                                                                                        'line' => 68
                                                                                                       }, 'Parse::RecDescent::Subrule' ),
                                                                                                bless( {
                                                                                                         'subrule' => 'list_item',
@@ -4266,12 +4515,12 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                         'implicit' => undef,
                                                                                                         'argcode' => undef,
                                                                                                         'lookahead' => 0,
-                                                                                                        'line' => 65
+                                                                                                        'line' => 68
                                                                                                       }, 'Parse::RecDescent::Subrule' ),
                                                                                                bless( {
                                                                                                         'hashname' => '__ACTION1__',
                                                                                                         'lookahead' => 0,
-                                                                                                        'line' => 66,
+                                                                                                        'line' => 69,
                                                                                                         'code' => '{ $return=$item{list_item} }'
                                                                                                       }, 'Parse::RecDescent::Action' )
                                                                                              ],
@@ -4280,7 +4529,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                        ],
                                                             'name' => 'comma_list_item',
                                                             'vars' => '',
-                                                            'line' => 65
+                                                            'line' => 68
                                                           }, 'Parse::RecDescent::Rule' ),
                               'pragma' => bless( {
                                                    'impcount' => 0,
@@ -4305,7 +4554,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                'description' => '/[a-z\\\\d]+/',
                                                                                                'lookahead' => 0,
                                                                                                'rdelim' => '/',
-                                                                                               'line' => 12,
+                                                                                               'line' => 15,
                                                                                                'mod' => '',
                                                                                                'ldelim' => '/'
                                                                                              }, 'Parse::RecDescent::Token' ),
@@ -4315,12 +4564,12 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                'implicit' => undef,
                                                                                                'argcode' => undef,
                                                                                                'lookahead' => 0,
-                                                                                               'line' => 12
+                                                                                               'line' => 15
                                                                                              }, 'Parse::RecDescent::Subrule' ),
                                                                                       bless( {
                                                                                                'hashname' => '__ACTION1__',
                                                                                                'lookahead' => 0,
-                                                                                               'line' => 13,
+                                                                                               'line' => 16,
                                                                                                'code' => '{ $return=$item[1]}'
                                                                                              }, 'Parse::RecDescent::Action' )
                                                                                     ],
@@ -4329,7 +4578,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                               ],
                                                    'name' => 'pragma',
                                                    'vars' => '',
-                                                   'line' => 12
+                                                   'line' => 15
                                                  }, 'Parse::RecDescent::Rule' ),
                               'module_more' => bless( {
                                                         'impcount' => 0,
@@ -4357,7 +4606,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'implicit' => undef,
                                                                                                     'argcode' => undef,
                                                                                                     'lookahead' => 0,
-                                                                                                    'line' => 20
+                                                                                                    'line' => 23
                                                                                                   }, 'Parse::RecDescent::Subrule' )
                                                                                          ],
                                                                               'line' => undef
@@ -4380,7 +4629,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'matchrule' => 0,
                                                                                                     'repspec' => '?',
                                                                                                     'lookahead' => 0,
-                                                                                                    'line' => 20
+                                                                                                    'line' => 23
                                                                                                   }, 'Parse::RecDescent::Repetition' ),
                                                                                            bless( {
                                                                                                     'subrule' => 'var',
@@ -4391,7 +4640,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'matchrule' => 0,
                                                                                                     'repspec' => '?',
                                                                                                     'lookahead' => 0,
-                                                                                                    'line' => 20
+                                                                                                    'line' => 23
                                                                                                   }, 'Parse::RecDescent::Repetition' ),
                                                                                            bless( {
                                                                                                     'subrule' => 'import_list',
@@ -4402,15 +4651,15 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'matchrule' => 0,
                                                                                                     'repspec' => '?',
                                                                                                     'lookahead' => 0,
-                                                                                                    'line' => 20
+                                                                                                    'line' => 23
                                                                                                   }, 'Parse::RecDescent::Repetition' )
                                                                                          ],
-                                                                              'line' => 20
+                                                                              'line' => 23
                                                                             }, 'Parse::RecDescent::Production' )
                                                                    ],
                                                         'name' => 'module_more',
                                                         'vars' => '',
-                                                        'line' => 20
+                                                        'line' => 23
                                                       }, 'Parse::RecDescent::Rule' ),
                               'module_name' => bless( {
                                                         'impcount' => 0,
@@ -4433,7 +4682,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'description' => '/[\\\\w:]+/',
                                                                                                     'lookahead' => 0,
                                                                                                     'rdelim' => '/',
-                                                                                                    'line' => 18,
+                                                                                                    'line' => 21,
                                                                                                     'mod' => '',
                                                                                                     'ldelim' => '/'
                                                                                                   }, 'Parse::RecDescent::Token' )
@@ -4443,7 +4692,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                    ],
                                                         'name' => 'module_name',
                                                         'vars' => '',
-                                                        'line' => 18
+                                                        'line' => 21
                                                       }, 'Parse::RecDescent::Rule' ),
                               'var' => bless( {
                                                 'impcount' => 0,
@@ -4466,7 +4715,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                             'description' => '/\\\\$[\\\\w+]/',
                                                                                             'lookahead' => 0,
                                                                                             'rdelim' => '/',
-                                                                                            'line' => 47,
+                                                                                            'line' => 50,
                                                                                             'mod' => '',
                                                                                             'ldelim' => '/'
                                                                                           }, 'Parse::RecDescent::Token' )
@@ -4476,7 +4725,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                            ],
                                                 'name' => 'var',
                                                 'vars' => '',
-                                                'line' => 47
+                                                'line' => 50
                                               }, 'Parse::RecDescent::Rule' ),
                               'module' => bless( {
                                                    'impcount' => 0,
@@ -4502,7 +4751,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                'implicit' => undef,
                                                                                                'argcode' => undef,
                                                                                                'lookahead' => 0,
-                                                                                               'line' => 15
+                                                                                               'line' => 18
                                                                                              }, 'Parse::RecDescent::Subrule' ),
                                                                                       bless( {
                                                                                                'subrule' => 'module_more',
@@ -4510,12 +4759,12 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                'implicit' => undef,
                                                                                                'argcode' => undef,
                                                                                                'lookahead' => 0,
-                                                                                               'line' => 15
+                                                                                               'line' => 18
                                                                                              }, 'Parse::RecDescent::Subrule' ),
                                                                                       bless( {
                                                                                                'hashname' => '__ACTION1__',
                                                                                                'lookahead' => 0,
-                                                                                               'line' => 16,
+                                                                                               'line' => 19,
                                                                                                'code' => '{ $return=$item{module_name} }'
                                                                                              }, 'Parse::RecDescent::Action' )
                                                                                     ],
@@ -4524,7 +4773,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                               ],
                                                    'name' => 'module',
                                                    'vars' => '',
-                                                   'line' => 15
+                                                   'line' => 18
                                                  }, 'Parse::RecDescent::Rule' ),
                               '_alternation_1_of_production_1_of_rule_comma' => bless( {
                                                                                          'impcount' => 0,
@@ -4546,7 +4795,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                      'hashname' => '__STRING1__',
                                                                                                                                      'description' => '\',\'',
                                                                                                                                      'lookahead' => 0,
-                                                                                                                                     'line' => 69
+                                                                                                                                     'line' => 72
                                                                                                                                    }, 'Parse::RecDescent::Literal' )
                                                                                                                           ],
                                                                                                                'line' => undef
@@ -4565,15 +4814,15 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                      'hashname' => '__STRING1__',
                                                                                                                                      'description' => '\'=>\'',
                                                                                                                                      'lookahead' => 0,
-                                                                                                                                     'line' => 69
+                                                                                                                                     'line' => 72
                                                                                                                                    }, 'Parse::RecDescent::Literal' )
                                                                                                                           ],
-                                                                                                               'line' => 69
+                                                                                                               'line' => 72
                                                                                                              }, 'Parse::RecDescent::Production' )
                                                                                                     ],
                                                                                          'name' => '_alternation_1_of_production_1_of_rule_comma',
                                                                                          'vars' => '',
-                                                                                         'line' => 69
+                                                                                         'line' => 72
                                                                                        }, 'Parse::RecDescent::Rule' ),
                               'base' => bless( {
                                                  'impcount' => 0,
@@ -4615,6 +4864,52 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                  'vars' => '',
                                                  'line' => 10
                                                }, 'Parse::RecDescent::Rule' ),
+                              'parent' => bless( {
+                                                   'impcount' => 0,
+                                                   'calls' => [
+                                                                'import_list'
+                                                              ],
+                                                   'changed' => 0,
+                                                   'opcount' => 0,
+                                                   'prods' => [
+                                                                bless( {
+                                                                         'number' => 0,
+                                                                         'strcount' => 1,
+                                                                         'dircount' => 0,
+                                                                         'uncommit' => undef,
+                                                                         'error' => undef,
+                                                                         'patcount' => 0,
+                                                                         'actcount' => 1,
+                                                                         'items' => [
+                                                                                      bless( {
+                                                                                               'pattern' => 'parent',
+                                                                                               'hashname' => '__STRING1__',
+                                                                                               'description' => '\'parent\'',
+                                                                                               'lookahead' => 0,
+                                                                                               'line' => 12
+                                                                                             }, 'Parse::RecDescent::InterpLit' ),
+                                                                                      bless( {
+                                                                                               'subrule' => 'import_list',
+                                                                                               'matchrule' => 0,
+                                                                                               'implicit' => undef,
+                                                                                               'argcode' => undef,
+                                                                                               'lookahead' => 0,
+                                                                                               'line' => 12
+                                                                                             }, 'Parse::RecDescent::Subrule' ),
+                                                                                      bless( {
+                                                                                               'hashname' => '__ACTION1__',
+                                                                                               'lookahead' => 0,
+                                                                                               'line' => 13,
+                                                                                               'code' => '{ $return=\'parent\'; $return.=\' \'.$item[2] if $item[2] !~ /^\\s*-norequire\\b/; }'
+                                                                                             }, 'Parse::RecDescent::Action' )
+                                                                                    ],
+                                                                         'line' => undef
+                                                                       }, 'Parse::RecDescent::Production' )
+                                                              ],
+                                                   'name' => 'parent',
+                                                   'vars' => '',
+                                                   'line' => 12
+                                                 }, 'Parse::RecDescent::Rule' ),
                               'require_stuff' => bless( {
                                                           'impcount' => 1,
                                                           'calls' => [
@@ -4638,7 +4933,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                       'implicit' => 'version, or require_name, or module',
                                                                                                       'argcode' => undef,
                                                                                                       'lookahead' => 0,
-                                                                                                      'line' => 29
+                                                                                                      'line' => 32
                                                                                                     }, 'Parse::RecDescent::Subrule' )
                                                                                            ],
                                                                                 'line' => undef
@@ -4646,7 +4941,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                      ],
                                                           'name' => 'require_stuff',
                                                           'vars' => '',
-                                                          'line' => 29
+                                                          'line' => 32
                                                         }, 'Parse::RecDescent::Rule' ),
                               'comma' => bless( {
                                                   'impcount' => 1,
@@ -4671,7 +4966,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                               'implicit' => '\',\', or \'=>\'',
                                                                                               'argcode' => undef,
                                                                                               'lookahead' => 0,
-                                                                                              'line' => 68
+                                                                                              'line' => 71
                                                                                             }, 'Parse::RecDescent::Subrule' )
                                                                                    ],
                                                                         'line' => undef
@@ -4679,7 +4974,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                              ],
                                                   'name' => 'comma',
                                                   'vars' => '',
-                                                  'line' => 68
+                                                  'line' => 71
                                                 }, 'Parse::RecDescent::Rule' ),
                               'version' => bless( {
                                                     'impcount' => 0,
@@ -4702,7 +4997,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                 'description' => '/[\\\\d\\\\._v]+/',
                                                                                                 'lookahead' => 0,
                                                                                                 'rdelim' => '/',
-                                                                                                'line' => 43,
+                                                                                                'line' => 46,
                                                                                                 'mod' => '',
                                                                                                 'ldelim' => '/'
                                                                                               }, 'Parse::RecDescent::Token' )
@@ -4712,7 +5007,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                ],
                                                     'name' => 'version',
                                                     'vars' => '',
-                                                    'line' => 41
+                                                    'line' => 44
                                                   }, 'Parse::RecDescent::Rule' ),
                               'use_stuff' => bless( {
                                                       'impcount' => 1,
@@ -4734,7 +5029,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                          bless( {
                                                                                                   'subrule' => '_alternation_1_of_production_1_of_rule_use_stuff',
                                                                                                   'matchrule' => 0,
-                                                                                                  'implicit' => 'base, or pragma, or version, or module',
+                                                                                                  'implicit' => 'base, or parent, or pragma, or version, or module',
                                                                                                   'argcode' => undef,
                                                                                                   'lookahead' => 0,
                                                                                                   'line' => 8
@@ -4771,7 +5066,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'description' => '/[(]?/',
                                                                                                     'lookahead' => 0,
                                                                                                     'rdelim' => '/',
-                                                                                                    'line' => 49,
+                                                                                                    'line' => 52,
                                                                                                     'mod' => '',
                                                                                                     'ldelim' => '/'
                                                                                                   }, 'Parse::RecDescent::Token' ),
@@ -4781,7 +5076,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'implicit' => undef,
                                                                                                     'argcode' => undef,
                                                                                                     'lookahead' => 0,
-                                                                                                    'line' => 50
+                                                                                                    'line' => 53
                                                                                                   }, 'Parse::RecDescent::Subrule' ),
                                                                                            bless( {
                                                                                                     'subrule' => 'comma_list_item',
@@ -4792,7 +5087,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'matchrule' => 0,
                                                                                                     'repspec' => 's?',
                                                                                                     'lookahead' => 0,
-                                                                                                    'line' => 51
+                                                                                                    'line' => 54
                                                                                                   }, 'Parse::RecDescent::Repetition' ),
                                                                                            bless( {
                                                                                                     'pattern' => '[)]?',
@@ -4800,14 +5095,14 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'description' => '/[)]?/',
                                                                                                     'lookahead' => 0,
                                                                                                     'rdelim' => '/',
-                                                                                                    'line' => 52,
+                                                                                                    'line' => 55,
                                                                                                     'mod' => '',
                                                                                                     'ldelim' => '/'
                                                                                                   }, 'Parse::RecDescent::Token' ),
                                                                                            bless( {
                                                                                                     'hashname' => '__ACTION1__',
                                                                                                     'lookahead' => 0,
-                                                                                                    'line' => 53,
+                                                                                                    'line' => 56,
                                                                                                     'code' => '{ $return=$item[2];
 		  $return.=" ".join(" ",@{$item[3]}) if $item[3];
 		}'
@@ -4830,28 +5125,29 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'description' => '/[(]\\\\s*[)]/',
                                                                                                     'lookahead' => 0,
                                                                                                     'rdelim' => '/',
-                                                                                                    'line' => 57,
+                                                                                                    'line' => 60,
                                                                                                     'mod' => '',
                                                                                                     'ldelim' => '/'
                                                                                                   }, 'Parse::RecDescent::Token' ),
                                                                                            bless( {
                                                                                                     'hashname' => '__ACTION1__',
                                                                                                     'lookahead' => 0,
-                                                                                                    'line' => 57,
+                                                                                                    'line' => 60,
                                                                                                     'code' => '{ $return=\'\' }'
                                                                                                   }, 'Parse::RecDescent::Action' )
                                                                                          ],
-                                                                              'line' => 56
+                                                                              'line' => 59
                                                                             }, 'Parse::RecDescent::Production' )
                                                                    ],
                                                         'name' => 'import_list',
                                                         'vars' => '',
-                                                        'line' => 49
+                                                        'line' => 52
                                                       }, 'Parse::RecDescent::Rule' ),
                               '_alternation_1_of_production_1_of_rule_use_stuff' => bless( {
                                                                                              'impcount' => 0,
                                                                                              'calls' => [
                                                                                                           'base',
+                                                                                                          'parent',
                                                                                                           'pragma',
                                                                                                           'version',
                                                                                                           'module'
@@ -4874,7 +5170,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                          'implicit' => undef,
                                                                                                                                          'argcode' => undef,
                                                                                                                                          'lookahead' => 0,
-                                                                                                                                         'line' => 69
+                                                                                                                                         'line' => 72
                                                                                                                                        }, 'Parse::RecDescent::Subrule' )
                                                                                                                               ],
                                                                                                                    'line' => undef
@@ -4889,18 +5185,38 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                    'actcount' => 0,
                                                                                                                    'items' => [
                                                                                                                                 bless( {
+                                                                                                                                         'subrule' => 'parent',
+                                                                                                                                         'matchrule' => 0,
+                                                                                                                                         'implicit' => undef,
+                                                                                                                                         'argcode' => undef,
+                                                                                                                                         'lookahead' => 0,
+                                                                                                                                         'line' => 72
+                                                                                                                                       }, 'Parse::RecDescent::Subrule' )
+                                                                                                                              ],
+                                                                                                                   'line' => 72
+                                                                                                                 }, 'Parse::RecDescent::Production' ),
+                                                                                                          bless( {
+                                                                                                                   'number' => 2,
+                                                                                                                   'strcount' => 0,
+                                                                                                                   'dircount' => 0,
+                                                                                                                   'uncommit' => undef,
+                                                                                                                   'error' => undef,
+                                                                                                                   'patcount' => 0,
+                                                                                                                   'actcount' => 0,
+                                                                                                                   'items' => [
+                                                                                                                                bless( {
                                                                                                                                          'subrule' => 'pragma',
                                                                                                                                          'matchrule' => 0,
                                                                                                                                          'implicit' => undef,
                                                                                                                                          'argcode' => undef,
                                                                                                                                          'lookahead' => 0,
-                                                                                                                                         'line' => 69
+                                                                                                                                         'line' => 72
                                                                                                                                        }, 'Parse::RecDescent::Subrule' )
                                                                                                                               ],
-                                                                                                                   'line' => 69
+                                                                                                                   'line' => 72
                                                                                                                  }, 'Parse::RecDescent::Production' ),
                                                                                                           bless( {
-                                                                                                                   'number' => 2,
+                                                                                                                   'number' => 3,
                                                                                                                    'strcount' => 0,
                                                                                                                    'dircount' => 0,
                                                                                                                    'uncommit' => undef,
@@ -4914,13 +5230,13 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                          'implicit' => undef,
                                                                                                                                          'argcode' => undef,
                                                                                                                                          'lookahead' => 0,
-                                                                                                                                         'line' => 69
+                                                                                                                                         'line' => 72
                                                                                                                                        }, 'Parse::RecDescent::Subrule' )
                                                                                                                               ],
-                                                                                                                   'line' => 69
+                                                                                                                   'line' => 72
                                                                                                                  }, 'Parse::RecDescent::Production' ),
                                                                                                           bless( {
-                                                                                                                   'number' => 3,
+                                                                                                                   'number' => 4,
                                                                                                                    'strcount' => 0,
                                                                                                                    'dircount' => 0,
                                                                                                                    'uncommit' => undef,
@@ -4934,15 +5250,15 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                          'implicit' => undef,
                                                                                                                                          'argcode' => undef,
                                                                                                                                          'lookahead' => 0,
-                                                                                                                                         'line' => 69
+                                                                                                                                         'line' => 72
                                                                                                                                        }, 'Parse::RecDescent::Subrule' )
                                                                                                                               ],
-                                                                                                                   'line' => 69
+                                                                                                                   'line' => 72
                                                                                                                  }, 'Parse::RecDescent::Production' )
                                                                                                         ],
                                                                                              'name' => '_alternation_1_of_production_1_of_rule_use_stuff',
                                                                                              'vars' => '',
-                                                                                             'line' => 69
+                                                                                             'line' => 72
                                                                                            }, 'Parse::RecDescent::Rule' ),
                               'token_require' => bless( {
                                                           'impcount' => 0,
@@ -4967,7 +5283,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                       'description' => '/\\\\brequire\\\\s/',
                                                                                                       'lookahead' => 0,
                                                                                                       'rdelim' => '/',
-                                                                                                      'line' => 26,
+                                                                                                      'line' => 29,
                                                                                                       'mod' => '',
                                                                                                       'ldelim' => '/'
                                                                                                     }, 'Parse::RecDescent::Token' ),
@@ -4977,7 +5293,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                       'implicit' => undef,
                                                                                                       'argcode' => undef,
                                                                                                       'lookahead' => 0,
-                                                                                                      'line' => 26
+                                                                                                      'line' => 29
                                                                                                     }, 'Parse::RecDescent::Subrule' ),
                                                                                              bless( {
                                                                                                       'pattern' => '[;}]',
@@ -4985,14 +5301,14 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                       'description' => '/[;\\}]/',
                                                                                                       'lookahead' => 0,
                                                                                                       'rdelim' => '/',
-                                                                                                      'line' => 26,
+                                                                                                      'line' => 29,
                                                                                                       'mod' => '',
                                                                                                       'ldelim' => '/'
                                                                                                     }, 'Parse::RecDescent::Token' ),
                                                                                              bless( {
                                                                                                       'hashname' => '__ACTION1__',
                                                                                                       'lookahead' => 0,
-                                                                                                      'line' => 27,
+                                                                                                      'line' => 30,
                                                                                                       'code' => '{ $return=$item{require_stuff} }'
                                                                                                     }, 'Parse::RecDescent::Action' )
                                                                                            ],
@@ -5001,7 +5317,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                      ],
                                                           'name' => 'token_require',
                                                           'vars' => '',
-                                                          'line' => 24
+                                                          'line' => 27
                                                         }, 'Parse::RecDescent::Rule' ),
                               'require_name' => bless( {
                                                          'impcount' => 0,
@@ -5022,7 +5338,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                      'hashname' => '__DIRECTIVE1__',
                                                                                                      'name' => '<perl_quotelike>',
                                                                                                      'lookahead' => 0,
-                                                                                                     'line' => 31,
+                                                                                                     'line' => 34,
                                                                                                      'code' => 'my ($match,@res);
                      ($match,$text,undef,@res) =
                           Text::Balanced::extract_quotelike($text,$skip);
@@ -5032,7 +5348,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                             bless( {
                                                                                                      'hashname' => '__ACTION1__',
                                                                                                      'lookahead' => 0,
-                                                                                                     'line' => 32,
+                                                                                                     'line' => 35,
                                                                                                      'code' => '{ my $name=$item[1][2];
 		  return 1 if ($name=~/\\.pl$/);
 		  $name=~s(/)(::)g;
@@ -5046,7 +5362,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                     ],
                                                          'name' => 'require_name',
                                                          'vars' => '',
-                                                         'line' => 31
+                                                         'line' => 34
                                                        }, 'Parse::RecDescent::Rule' )
                             },
                  '_AUTOTREE' => undef,

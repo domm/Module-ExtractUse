@@ -5,9 +5,12 @@
 token_use:		/\buse\s/ use_stuff /[;}]/
 		{ $return=$item{use_stuff} }
 
-use_stuff:	(base | pragma | version | module)
+use_stuff:	(base | parent | pragma | version | module)
 
 base:		"base" import_list
+
+parent:		"parent" import_list
+		{ $return='parent'; $return.=' '.$item[2] if $item[2] !~ /^\s*-norequire\b/; }
 
 pragma:		/[a-z\d]+/ import_list
 		{ $return=$item[1]}
