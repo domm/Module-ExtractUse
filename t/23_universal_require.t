@@ -44,6 +44,23 @@ my @tests=
 #26
    ['use base "Class::DBI8","Foo::Bar9";',[qw(Class::DBI8 Foo::Bar9)],undef,[qw(Class::DBI8 Foo::Bar9)]],
    ['use base qw(   Class::DBI10   Foo::Bar11   );',[qw(Class::DBI10 Foo::Bar11)],undef,[qw(Class::DBI10 Foo::Bar11)]],
+   ["use parent 'Exporter1';",[qw(parent Exporter1)],undef,[qw(parent Exporter1)]],
+   ['use parent ("Class::DBI2");',[qw(parent Class::DBI2)],undef,[qw(parent Class::DBI2)]],
+   ['use parent "Class::DBI3";',[qw(parent Class::DBI3)],undef,[qw(parent Class::DBI3)]],
+#31
+   ['use parent qw/Class::DBI4 Foo::Bar5/;',[qw(parent Class::DBI4 Foo::Bar5)],undef,[qw(parent Class::DBI4 Foo::Bar5)]],
+   ['use parent ("Class::DBI6","Foo::Bar7");',[qw(parent Class::DBI6 Foo::Bar7)],undef,[qw(parent Class::DBI6 Foo::Bar7)]],
+   ['use parent "Class::DBI8","Foo::Bar9";',[qw(parent Class::DBI8 Foo::Bar9)],undef,[qw(parent Class::DBI8 Foo::Bar9)]],
+   ['use parent qw(   Class::DBI10   Foo::Bar11   );',[qw(parent Class::DBI10 Foo::Bar11)],undef,[qw(parent Class::DBI10 Foo::Bar11)]],
+   ["use parent -norequire,'Exporter1';",[qw(parent)],undef,[qw(parent)]],
+#36
+   ['use parent ("-norequire","Class::DBI2");',[qw(parent)],undef,[qw(parent)]],
+   ['use parent "-norequire","Class::DBI3";',[qw(parent)],undef,[qw(parent)]],
+   ['use parent qw/-norequire Class::DBI4 Foo::Bar5/;',[qw(parent)],undef,[qw(parent)]],
+   ['use parent ("-norequire","Class::DBI6","Foo::Bar7");',[qw(parent)],undef,[qw(parent)]],
+   ['use parent "-norequire","Class::DBI8","Foo::Bar9";',[qw(parent)],undef,[qw(parent)]],
+#41
+   ['use parent qw(   -norequire   Class::DBI10   Foo::Bar11   );',[qw(parent)],undef,[qw(parent)]],
    ['eval "use Test::Pod 1.06";',['Test::Pod'],['Test::Pod'],undef],
    [q{#!/usr/bin/perl -w
 use strict;

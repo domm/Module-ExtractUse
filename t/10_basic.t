@@ -40,6 +40,20 @@ my @tests=
    ['use base ("Class::DBI6","Foo::Bar7");',[qw(Class::DBI6 Foo::Bar7)],undef,[qw(Class::DBI6 Foo::Bar7)]],
 #26
    ['use base "Class::DBI8","Foo::Bar9";',[qw(Class::DBI8 Foo::Bar9)],undef,[qw(Class::DBI8 Foo::Bar9)]],
+   ["use parent 'Exporter1';",[qw(parent Exporter1)],undef,[qw(parent Exporter1)]],
+   ['use parent ("Class::DBI2");',[qw(parent Class::DBI2)],undef,[qw(parent Class::DBI2)]],
+   ['use parent "Class::DBI3";',[qw(parent Class::DBI3)],undef,[qw(parent Class::DBI3)]],
+   ['use parent qw/Class::DBI4 Foo::Bar5/;',[qw(parent Class::DBI4 Foo::Bar5)],undef,[qw(parent Class::DBI4 Foo::Bar5)]],
+#31
+   ['use parent ("Class::DBI6","Foo::Bar7");',[qw(parent Class::DBI6 Foo::Bar7)],undef,[qw(parent Class::DBI6 Foo::Bar7)]],
+   ['use parent "Class::DBI8","Foo::Bar9";',[qw(parent Class::DBI8 Foo::Bar9)],undef,[qw(parent Class::DBI8 Foo::Bar9)]],
+   ["use parent -norequire, 'Exporter1';",[qw(parent)],undef,[qw(parent)]],
+   ['use parent (-norequire, "Class::DBI2");',[qw(parent)],undef,[qw(parent)]],
+   ['use parent "-norequire", "Class::DBI3";',[qw(parent)],undef,[qw(parent)]],
+#36
+   ['use parent qw/-norequire Class::DBI4 Foo::Bar5/;',[qw(parent)],undef,[qw(parent)]],
+   ['use parent (-norequire,"Class::DBI6","Foo::Bar7");',[qw(parent)],undef,[qw(parent)]],
+   ['use parent -norequire,"Class::DBI8","Foo::Bar9";',[qw(parent)],undef,[qw(parent)]],
    ['eval "use Test::Pod 1.06";',['Test::Pod'],['Test::Pod'],undef],
    [q{#!/usr/bin/perl -w
 use strict;
@@ -49,6 +63,7 @@ eval 'use Test::Pod::Coverage 1.06;';
 plan skip_all => "Test::Pod 1.06 required for testing POD" if $@;
 all_pod_files_ok();},[qw(strict Test::More Test::Pod Test::Pod::Coverage)],[qw(Test::Pod Test::Pod::Coverage)],[qw(strict Test::More)]],
     # reported & fixed by barbie (b56e244da)
+#41
    ["use base qw( Data::Phrasebook::Loader::Base Data::Phrasebook::Debug );",[qw(Data::Phrasebook::Loader::Base Data::Phrasebook::Debug)],
     undef,[qw(Data::Phrasebook::Loader::Base Data::Phrasebook::Debug)]],
     # RT83569 (ribasushi)
