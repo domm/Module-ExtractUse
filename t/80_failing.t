@@ -4,8 +4,6 @@ use strict;
 use Test::More;
 use Module::ExtractUse;
 
-my $p=Module::ExtractUse->new;
-
 my @tests=
   (
    ['use base (Class::DBI,FooBar);','Class::DBI Foo::Bar'],
@@ -19,6 +17,7 @@ plan tests => scalar @tests;
 foreach my $t (@tests) {
     my ($code,$expected,$testname)=@$t;
     $testname ||=$code;
+    my $p=Module::ExtractUse->new;
     my $used=$p->extract_use(\$code)->string;
     TODO: {
         local $TODO='known to not work';
