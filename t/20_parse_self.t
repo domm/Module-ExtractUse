@@ -30,13 +30,13 @@ use Module::ExtractUse;
     my $p=Module::ExtractUse->new;
     $p->extract_use('lib/Module/ExtractUse.pm');
     cmp_deeply($p->arrayref,
-	       bag(qw(strict warnings Pod::Strip Parse::RecDescent Module::ExtractUse::Grammar Carp 5.008)),
+	       bag(qw(strict version warnings Pod::Strip Parse::RecDescent Module::ExtractUse::Grammar Carp 5.008)),
 	       'modules used in this Module::ExtractUsed');
     cmp_deeply([$p->arrayref_in_eval],
 	       [],
 	       'optional modules used in this Module::ExtractUsed');
     cmp_deeply($p->arrayref_out_of_eval,
-	       bag(qw(strict warnings Pod::Strip Parse::RecDescent Module::ExtractUse::Grammar Carp 5.008)),
+	       bag(qw(strict version warnings Pod::Strip Parse::RecDescent Module::ExtractUse::Grammar Carp 5.008)),
 	       'mandatory modules used in this Module::ExtractUsed');
 
     my $used=$p->used;
@@ -55,6 +55,4 @@ use Module::ExtractUse;
     is($p->used_out_of_eval('strict'),1,'strict via used_out_of_eval method');
 
 }
-
-
 

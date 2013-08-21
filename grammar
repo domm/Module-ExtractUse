@@ -5,15 +5,12 @@
 token_use:		/\buse\s/ use_stuff /[;}]/
 		{ $return=$item{use_stuff} }
 
-use_stuff:	(base | parent | pragma | version | module)
+use_stuff:	(base | parent | version | module)
 
 base:		"base" import_list
 
 parent:		"parent" import_list
 		{ $return='parent'; $return.=' '.$item[2] if $item[2] !~ /^\s*-norequire\b/; }
-
-pragma:		/[a-z\d]+/ import_list
-		{ $return=$item[1]}
 
 module:		module_name module_more
 		{ $return=$item{module_name} }
@@ -43,7 +40,7 @@ require_name:	<perl_quotelike>
 # General Rules
 #-----------------------------------------------------------------
 
-version:	/[\d\._v]+/
+version:	/v?[\d\._]+/
 
 eos:		{ $text=~/^[\s;]+$/ ? 1 : undef;}
 

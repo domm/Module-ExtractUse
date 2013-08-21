@@ -100,6 +100,8 @@ Test::Pod::all_pod_files_ok( 'lib', -d $generated_pod_dir ? $generated_pod_dir :
 ['use MooseX::Types -declare => [qw(BorderStyle Component Container)];',[qw(MooseX::Types)],undef,[qw(MooseX::Types)]],
 ['eval { require Foo::Bar32 };',[qw(Foo::Bar32)],[qw(Foo::Bar32)],undef],
 ['do { use Foo::Bar33 };',[qw(Foo::Bar33)],undef,[qw(Foo::Bar33)]],
+['use version;',[qw(version)],undef,[qw(version)]],
+['use version 0.77;',[qw(version)],undef,[qw(version)]],
 );
 
 
