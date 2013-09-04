@@ -8,7 +8,7 @@ use Pod::Strip;
 use Parse::RecDescent 1.967009;
 use Module::ExtractUse::Grammar;
 use Carp;
-use version; our $VERSION=version->new('0.31');
+use version; our $VERSION=version->new('0.32');
 
 # ABSTRACT: Find out what modules are used
 
