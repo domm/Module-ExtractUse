@@ -102,6 +102,8 @@ Test::Pod::all_pod_files_ok( 'lib', -d $generated_pod_dir ? $generated_pod_dir :
 ['do { use Foo::Bar33 };',[qw(Foo::Bar33)],undef,[qw(Foo::Bar33)]],
 ['use version;',[qw(version)],undef,[qw(version)]],
 ['use version 0.77;',[qw(version)],undef,[qw(version)]],
+['$config->use or die;',undef,undef,undef],
+['$config->require or die;',undef,undef,undef],
 );
 
 

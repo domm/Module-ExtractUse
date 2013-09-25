@@ -192,6 +192,7 @@ sub extract_use {
         # time)
         if ($statement=~/\buse/) {
             $statement=~s/^(.*?)use\b/use/;
+            next if $1 && $1 =~ /->\s*$/;
             eval {
                 my $parser=Module::ExtractUse::Grammar->new();
                 $result=$parser->token_use($statement.';');
@@ -199,6 +200,7 @@ sub extract_use {
         }
         elsif ($statement=~/\brequire/) {
             $statement=~s/^(.*?)require\b/require/s;
+            next if $1 && $1 =~ /->\s*$/;
             eval {
                 my $parser=Module::ExtractUse::Grammar->new();
                 $result=$parser->token_require($statement.';');
