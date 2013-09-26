@@ -171,6 +171,9 @@ sub extract_use {
     # Strip obvious comments.
     $podless =~ s/(^|[\};])\s*#.*$/$1/mg;
 
+    # Strip __(DATA|END)__ sections.
+    $podless =~ s/\n__(?:DATA|END)__\b.*$//s;
+
     my @statements;
     while($podless =~ /$re/gc) {
     # to keep parsing time short, split code in statements
