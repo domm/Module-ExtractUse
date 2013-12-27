@@ -94,7 +94,7 @@ The code will be stripped from POD (using Pod::Strip) and split on ";"
 (semicolon). Each statement (i.e. the stuff between two semicolons) is
 checked by a simple regular expression.
 
-If the statement contains either 'use' or 'require', the statment is
+If the statement contains either 'use' or 'require', the statement is
 handed over to the parser, who then tries to figure out, B<what> is
 used or required. The results will be saved in a data structure that
 you can examine afterwards.
