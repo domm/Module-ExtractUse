@@ -445,7 +445,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{version, or module});
+    my $expectation = new Parse::RecDescent::Expectation(q{base, or version, or module});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -456,12 +456,71 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: [version]},
+        Parse::RecDescent::_trace(q{Trying production: [base]},
                       Parse::RecDescent::_tracefirst($_[1]),
                       q{_alternation_1_of_production_1_of_rule_no_stuff},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[0];
+        $text = $_[1];
+        my $_savetext;
+        @item = (q{_alternation_1_of_production_1_of_rule_no_stuff});
+        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_no_stuff});
+        my $repcount = 0;
+
+
+        Parse::RecDescent::_trace(q{Trying subrule: [base]},
+                  Parse::RecDescent::_tracefirst($text),
+                  q{_alternation_1_of_production_1_of_rule_no_stuff},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+        if (1) { no strict qw{refs};
+        $expectation->is(q{})->at($text);
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::base($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        {
+            
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [base]>>},
+                          Parse::RecDescent::_tracefirst($text),
+                          q{_alternation_1_of_production_1_of_rule_no_stuff},
+                          $tracelevel)
+                            if defined $::RD_TRACE;
+            $expectation->failed();
+            last;
+        }
+        Parse::RecDescent::_trace(q{>>Matched subrule: [base]<< (return value: [}
+                    . $_tok . q{]},
+
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule_no_stuff},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $item{q{base}} = $_tok;
+        push @item, $_tok;
+        
+        }
+
+        Parse::RecDescent::_trace(q{>>Matched production: [base]<<},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule_no_stuff},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+
+
+
+        $_matched = 1;
+        last;
+    }
+
+
+    while (!$_matched && !$commit)
+    {
+        
+        Parse::RecDescent::_trace(q{Trying production: [version]},
+                      Parse::RecDescent::_tracefirst($_[1]),
+                      q{_alternation_1_of_production_1_of_rule_no_stuff},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        my $thisprod = $thisrule->{"prods"}[1];
         $text = $_[1];
         my $_savetext;
         @item = (q{_alternation_1_of_production_1_of_rule_no_stuff});
@@ -520,7 +579,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
                       q{_alternation_1_of_production_1_of_rule_no_stuff},
                       $tracelevel)
                         if defined $::RD_TRACE;
-        my $thisprod = $thisrule->{"prods"}[1];
+        my $thisprod = $thisrule->{"prods"}[2];
         $text = $_[1];
         my $_savetext;
         @item = (q{_alternation_1_of_production_1_of_rule_no_stuff});
@@ -4040,7 +4099,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::no_stuff
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{version, or module});
+    my $expectation = new Parse::RecDescent::Expectation(q{base, or version, or module});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -4051,7 +4110,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::no_stuff
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: [version, or module]},
+        Parse::RecDescent::_trace(q{Trying production: [base, or version, or module]},
                       Parse::RecDescent::_tracefirst($_[1]),
                       q{no_stuff},
                       $tracelevel)
@@ -4094,7 +4153,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::no_stuff
         
         }
 
-        Parse::RecDescent::_trace(q{>>Matched production: [version, or module]<<},
+        Parse::RecDescent::_trace(q{>>Matched production: [base, or version, or module]<<},
                       Parse::RecDescent::_tracefirst($text),
                       q{no_stuff},
                       $tracelevel)
@@ -4638,6 +4697,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                               '_alternation_1_of_production_1_of_rule_no_stuff' => bless( {
                                                                                             'impcount' => 0,
                                                                                             'calls' => [
+                                                                                                         'base',
                                                                                                          'version',
                                                                                                          'module'
                                                                                                        ],
@@ -4654,7 +4714,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                   'actcount' => 0,
                                                                                                                   'items' => [
                                                                                                                                bless( {
-                                                                                                                                        'subrule' => 'version',
+                                                                                                                                        'subrule' => 'base',
                                                                                                                                         'matchrule' => 0,
                                                                                                                                         'implicit' => undef,
                                                                                                                                         'argcode' => undef,
@@ -4666,6 +4726,26 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                 }, 'Parse::RecDescent::Production' ),
                                                                                                          bless( {
                                                                                                                   'number' => 1,
+                                                                                                                  'strcount' => 0,
+                                                                                                                  'dircount' => 0,
+                                                                                                                  'uncommit' => undef,
+                                                                                                                  'error' => undef,
+                                                                                                                  'patcount' => 0,
+                                                                                                                  'actcount' => 0,
+                                                                                                                  'items' => [
+                                                                                                                               bless( {
+                                                                                                                                        'subrule' => 'version',
+                                                                                                                                        'matchrule' => 0,
+                                                                                                                                        'implicit' => undef,
+                                                                                                                                        'argcode' => undef,
+                                                                                                                                        'lookahead' => 0,
+                                                                                                                                        'line' => 78
+                                                                                                                                      }, 'Parse::RecDescent::Subrule' )
+                                                                                                                             ],
+                                                                                                                  'line' => 78
+                                                                                                                }, 'Parse::RecDescent::Production' ),
+                                                                                                         bless( {
+                                                                                                                  'number' => 2,
                                                                                                                   'strcount' => 0,
                                                                                                                   'dircount' => 0,
                                                                                                                   'uncommit' => undef,
@@ -5628,7 +5708,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                         bless( {
                                                                                                  'subrule' => '_alternation_1_of_production_1_of_rule_no_stuff',
                                                                                                  'matchrule' => 0,
-                                                                                                 'implicit' => 'version, or module',
+                                                                                                 'implicit' => 'base, or version, or module',
                                                                                                  'argcode' => undef,
                                                                                                  'lookahead' => 0,
                                                                                                  'line' => 46

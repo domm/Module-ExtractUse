@@ -43,7 +43,7 @@ require_name:	<perl_quotelike>
 token_no:		/\bno\s/ no_stuff /[;}]/
 		{ $return=$item{no_stuff} }
 
-no_stuff:	(version | module)
+no_stuff:	(base | version | module)
 
 #-----------------------------------------------------------------
 # General Rules
