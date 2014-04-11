@@ -111,6 +111,18 @@ use strict;
 __END__
 use warnings;
 },undef,undef,undef],
+   ['noSome::Module1;',undef,undef,undef],
+   ['no Some::Module2;',[qw(Some::Module2)],undef,[qw(Some::Module2)]],
+   ["yadda yadda noless stuff;".'no Some::Module3 qw/$VERSION @EXPORT @EXPORT_OK/;',[qw(Some::Module3)],undef,[qw(Some::Module3)]],
+   ['no base qw(Class::DBI4 Foo::Bar5);',[qw(Class::DBI4 Foo::Bar5)],undef,[qw(Class::DBI4 Foo::Bar5)]],
+   ['if ($foo) { no Foo::Bar6; }',[qw(Foo::Bar6)],undef,[qw(Foo::Bar6)]],
+#6
+   ['no constant dl_ext => ".$Config{dlext}";',[qw(constant)],undef,[qw(constant)]],
+   ['no strict;',[qw(strict)],undef,[qw(strict)]],
+
+   ['no Foo8 qw/asdfsdf/;',[qw(Foo8)],undef,[qw(Foo8)]],
+   ['$no=stuff;',undef,undef,undef],
+   ['abno Stuff;',undef,undef,undef],
 );
 
 

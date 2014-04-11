@@ -193,6 +193,7 @@ sub extract_use {
         # now that we've got some code containing 'use' or 'require',
         # parse it! (using different entry point to save some more
         # time)
+        my $type;
         if ($statement=~/\buse/) {
             $statement=~s/^(.*?)use\b/use/;
             next if $1 && $1 =~ /->\s*$/;
@@ -200,6 +201,7 @@ sub extract_use {
                 my $parser=Module::ExtractUse::Grammar->new();
                 $result=$parser->token_use($statement.';');
             };
+            $type = 'use';
         }
         elsif ($statement=~/\brequire/) {
             $statement=~s/^(.*?)require\b/require/s;
@@ -208,12 +210,22 @@ sub extract_use {
                 my $parser=Module::ExtractUse::Grammar->new();
                 $result=$parser->token_require($statement.';');
             };
+            $type = 'require';
+        }
+        elsif ($statement=~/\bno/) {
+            $statement=~s/^(.*?)no\b/no/s;
+            next if $1 && $1 =~ /->\s*$/;
+            eval {
+                my $parser=Module::ExtractUse::Grammar->new();
+                $result=$parser->token_no($statement.';');
+            };
+            $type = 'no';
         }
 
         next unless $result;
 
         foreach (split(/\s+/,$result)) {
-            $self->_add($_, $eval) if($_);
+            $self->_add($_, $eval, $type) if($_);
         }
     }
 
@@ -280,6 +292,84 @@ sub used_out_of_eval {
     my $key=shift;
     return $self->{found_not_in_eval}{$key} if ($key);
     return $self->{found_not_in_eval};
+}
+
+=head3 required
+
+Same as C<used>, except for considering 'require'd modules only.
+
+=cut
+
+sub required {
+    my $self=shift;
+    my $key=shift;
+    return $self->{require}{$key} if ($key);
+    return $self->{require};
+}
+
+=head3 required_in_eval
+
+Same as C<required>, except for considering in-eval-context only.
+
+=cut
+
+sub required_in_eval {
+    my $self=shift;
+    my $key=shift;
+    return $self->{require_in_eval}{$key} if ($key);
+    return $self->{require_in_eval};
+}
+
+=head3 required_out_of_eval
+
+Same as C<required>, except for considering NOT-in-eval-context only.
+
+=cut
+
+sub required_out_of_eval {
+    my $self=shift;
+    my $key=shift;
+    return $self->{require_not_in_eval}{$key} if ($key);
+    return $self->{require_not_in_eval};
+}
+
+=head3 noed
+
+Same as C<used>, except for considering 'no'ed modules only.
+
+=cut
+
+sub noed {
+    my $self=shift;
+    my $key=shift;
+    return $self->{no}{$key} if ($key);
+    return $self->{no};
+}
+
+=head3 noed_in_eval
+
+Same as C<noed>, except for considering in-eval-context only.
+
+=cut
+
+sub noed_in_eval {
+    my $self=shift;
+    my $key=shift;
+    return $self->{no_in_eval}{$key} if ($key);
+    return $self->{no_in_eval};
+}
+
+=head3 noed_out_of_eval
+
+Same as C<noed>, except for considering NOT-in-eval-context only.
+
+=cut
+
+sub noed_out_of_eval {
+    my $self=shift;
+    my $key=shift;
+    return $self->{no_not_in_eval}{$key} if ($key);
+    return $self->{no_not_in_eval};
 }
 
 =head3 string
@@ -408,9 +498,16 @@ sub _add {
     my $self=shift;
     my $found=shift;
     my $eval=shift;
+    my $type=shift;
     $self->{found}{$found}++;
-    $self->{found_in_eval}{$found}++ if $eval;
-    $self->{found_not_in_eval}{$found}++ unless $eval;
+    $self->{$type}{$found}++;
+    if ($eval) {
+        $self->{found_in_eval}{$found}++;
+        $self->{"${type}_in_eval"}{$found}++;
+    } else {
+        $self->{found_not_in_eval}{$found}++;
+        $self->{"${type}_not_in_eval"}{$found}++;
+    }
 }
 
 sub _found {
