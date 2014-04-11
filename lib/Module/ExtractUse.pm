@@ -94,7 +94,7 @@ The code will be stripped from POD (using Pod::Strip) and split on ";"
 (semicolon). Each statement (i.e. the stuff between two semicolons) is
 checked by a simple regular expression.
 
-If the statement contains either 'use' or 'require', the statment is
+If the statement contains either 'use' or 'require', the statement is
 handed over to the parser, who then tries to figure out, B<what> is
 used or required. The results will be saved in a data structure that
 you can examine afterwards.
@@ -171,6 +171,9 @@ sub extract_use {
     # Strip obvious comments.
     $podless =~ s/(^|[\};])\s*#.*$/$1/mg;
 
+    # Strip __(DATA|END)__ sections.
+    $podless =~ s/\n__(?:DATA|END)__\b.*$//s;
+
     my @statements;
     while($podless =~ /$re/gc) {
     # to keep parsing time short, split code in statements
@@ -192,6 +195,7 @@ sub extract_use {
         # time)
         if ($statement=~/\buse/) {
             $statement=~s/^(.*?)use\b/use/;
+            next if $1 && $1 =~ /->\s*$/;
             eval {
                 my $parser=Module::ExtractUse::Grammar->new();
                 $result=$parser->token_use($statement.';');
@@ -199,6 +203,7 @@ sub extract_use {
         }
         elsif ($statement=~/\brequire/) {
             $statement=~s/^(.*?)require\b/require/s;
+            next if $1 && $1 =~ /->\s*$/;
             eval {
                 my $parser=Module::ExtractUse::Grammar->new();
                 $result=$parser->token_require($statement.';');
