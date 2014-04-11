@@ -2,6 +2,14 @@
 # Changes for Module::ExtractUse
 #-----------------------------------------------------------------
 
+0.33    2014-04-11T21:04:52+0200
+    - added base() handling to no (Thomas Klausner)
+    - support 'no MODULE' etc (for RT-94305) (Kenichi Ishigaki)
+    - typo fix (David Steinbrunner)
+    - ignore __DATA|END__ sections (see https://rt.cpan.org/Ticket/Display.html?id=88969 ) (Kenichi Ishigaki)
+    - ignore use/require method calls (Kenichi Ishigaki)
+
+
 0.32    2013-09-04T16:48:07+0200
     - not to include cached results (Kenichi Ishigaki)
     - Fix handling module beginning with v and pragma with version.
