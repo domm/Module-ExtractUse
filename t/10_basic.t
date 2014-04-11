@@ -140,11 +140,11 @@ foreach my $t (@tests) {
 
     for(my $i = 0; $i < @used; ++$i) {
         if (ref($expected[$i]) eq 'ARRAY') {
-            cmp_bag($used[$i]||[],$expected[$i]);
+            cmp_bag($used[$i]||[],$expected[$i],$i.": ".$code);
         } elsif (!defined $expected[$i]) {
-            is(undef,$used[$i],'');
+            is(undef,$used[$i],$i.": ".$code);
         } else {
-            is($used[$i],$expected[$i]);
+            is($used[$i],$expected[$i],$i.": ".$code);
         }
     }
 }
