@@ -51,7 +51,7 @@ use version; our $VERSION=version->new('0.33');
 
 =head1 DESCRIPTION
 
-Module::ExtractUse is basically a Parse::RecDescent grammar to parse
+Module::ExtractUse is basically a L<Parse::RecDescent> grammar to parse
 Perl code. It tries very hard to find all modules (whether pragmas,
 Core, or from CPAN) used by the parsed code.
 
@@ -90,7 +90,7 @@ $code_to_parse. Or a reference to a SCALAR, in which case
 Module::ExtractUse assumes the referenced scalar contains the source
 code.
 
-The code will be stripped from POD (using Pod::Strip) and split on ";"
+The code will be stripped from POD (using L<Pod::Strip>) and split on ";"
 (semicolon). Each statement (i.e. the stuff between two semicolons) is
 checked by a simple regular expression.
 
@@ -537,7 +537,7 @@ Nothing.
 
 =head1 SEE ALSO
 
-Parse::RecDescent, Module::ScanDeps, Module::Info, Module::CPANTS::Analyse
+L<Parse::RecDescent>, L<Module::Extract::Use>, L<Module::ScanDeps>, L<Module::Info>, L<Module::CPANTS::Analyse>
 
 =cut
 
