@@ -22,6 +22,9 @@ my @tests=
     ['$foo->use_module("Some::Module");', undef, undef, undef ],
     ['$foo->use_package_optimistically("Some::Module");', undef, undef, undef ],
     ['Other::Namespace::require_module("Some::Module");', undef, undef, undef ],
+    ['use_module("Some::Module", "NotAVersion");', undef, undef, undef ],
+    ['use_module("Some::Module", v1.23, "OtherArg");', undef, undef, undef ],
+    ['use_module($Some::Variable);', undef, undef, undef ],
 );
 
 

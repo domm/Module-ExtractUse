@@ -52,13 +52,14 @@ no_stuff:	(base | version | module)
 module_runtime_require_module:  ( 'Module::Runtime::require_module(' | /\brequire_module\(/ ) <perl_quotelike> ')'
                                 { $return = $item[2][2] }
 
-module_runtime_use_module:      ( 'Module::Runtime::use_module(' | /\buse_module\(/ ) <perl_quotelike> (',' | ')' )
+module_runtime_use_fcn:         ( 'use_module' | 'use_package_optimistically' )
+
+module_runtime_version:         ',' /\s*/ version
+
+module_runtime_use:             ( ( 'Module::Runtime::' module_runtime_use_fcn '(' ) | ( m/\b/ module_runtime_use_fcn '(' ) ) <perl_quotelike> module_runtime_version(?) ')'
                                 { $return = $item[2][2] }
 
-module_runtime_use_package_optimistically:  ( 'Module::Runtime::use_package_optimistically(' | /\buse_package_optimistically\(/ ) <perl_quotelike> (',' | ')' )
-                                            { return $item[2][2] }
-
-token_module_runtime:   module_runtime_require_module | module_runtime_use_module | module_runtime_use_package_optimistically
+token_module_runtime:           module_runtime_require_module | module_runtime_use
 
 #-----------------------------------------------------------------
 # General Rules

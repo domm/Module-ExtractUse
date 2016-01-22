@@ -30,6 +30,201 @@ local $SIG{__WARN__} = sub {0};
 
 push @Parse::RecDescent::Module::ExtractUse::Grammar::ISA, 'Parse::RecDescent';
 # ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
+sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use
+{
+	my $thisparser = $_[0];
+	use vars q{$tracelevel};
+	local $tracelevel = ($tracelevel||0)+1;
+	$ERRORS = 0;
+    my $thisrule = $thisparser->{"rules"}{"_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use"};
+
+    Parse::RecDescent::_trace(q{Trying rule: [_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use]},
+                  Parse::RecDescent::_tracefirst($_[1]),
+                  q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+
+    
+    my $err_at = @{$thisparser->{errors}};
+
+    my $score;
+    my $score_return;
+    my $_tok;
+    my $return = undef;
+    my $_matched=0;
+    my $commit=0;
+    my @item = ();
+    my %item = ();
+    my $repeating =  $_[2];
+    my $_noactions = $_[3];
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
+    my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
+    my $text;
+    my $lastsep;
+    my $current_match;
+    my $expectation = new Parse::RecDescent::Expectation(q{'Module::Runtime::'});
+    $expectation->at($_[1]);
+    
+    my $thisline;
+    tie $thisline, q{Parse::RecDescent::LineCounter}, \$text, $thisparser;
+
+    
+
+    while (!$_matched && !$commit)
+    {
+        
+        Parse::RecDescent::_trace(q{Trying production: ['Module::Runtime::' module_runtime_use_fcn '(']},
+                      Parse::RecDescent::_tracefirst($_[1]),
+                      q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        my $thisprod = $thisrule->{"prods"}[0];
+        $text = $_[1];
+        my $_savetext;
+        @item = (q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use});
+        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use});
+        my $repcount = 0;
+
+
+        Parse::RecDescent::_trace(q{Trying terminal: ['Module::Runtime::']},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        undef $lastsep;
+        $expectation->is(q{})->at($text);
+        
+
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\AModule\:\:Runtime\:\:/)
+        {
+            $text = $lastsep . $text if defined $lastsep;
+            
+            $expectation->failed();
+            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+            last;
+        }
+        $current_match = substr($text, $-[0], $+[0] - $-[0]);
+        substr($text,0,length($current_match),q{});
+        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
+                        . $current_match . q{])},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+        push @item, $item{__STRING1__}=$current_match;
+        
+
+        Parse::RecDescent::_trace(q{Trying subrule: [module_runtime_use_fcn]},
+                  Parse::RecDescent::_tracefirst($text),
+                  q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+        if (1) { no strict qw{refs};
+        $expectation->is(q{module_runtime_use_fcn})->at($text);
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_fcn($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        {
+            
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [module_runtime_use_fcn]>>},
+                          Parse::RecDescent::_tracefirst($text),
+                          q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                          $tracelevel)
+                            if defined $::RD_TRACE;
+            $expectation->failed();
+            last;
+        }
+        Parse::RecDescent::_trace(q{>>Matched subrule: [module_runtime_use_fcn]<< (return value: [}
+                    . $_tok . q{]},
+
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $item{q{module_runtime_use_fcn}} = $_tok;
+        push @item, $_tok;
+        
+        }
+
+        Parse::RecDescent::_trace(q{Trying terminal: ['(']},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        undef $lastsep;
+        $expectation->is(q{'('})->at($text);
+        
+
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A\(/)
+        {
+            $text = $lastsep . $text if defined $lastsep;
+            
+            $expectation->failed();
+            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+            last;
+        }
+        $current_match = substr($text, $-[0], $+[0] - $-[0]);
+        substr($text,0,length($current_match),q{});
+        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
+                        . $current_match . q{])},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+        push @item, $item{__STRING2__}=$current_match;
+        
+
+        Parse::RecDescent::_trace(q{>>Matched production: ['Module::Runtime::' module_runtime_use_fcn '(']<<},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+
+
+
+        $_matched = 1;
+        last;
+    }
+
+
+    unless ( $_matched || defined($score) )
+    {
+        
+
+        $_[1] = $text;  # NOT SURE THIS IS NEEDED
+        Parse::RecDescent::_trace(q{<<Didn't match rule>>},
+                     Parse::RecDescent::_tracefirst($_[1]),
+                     q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                     $tracelevel)
+                    if defined $::RD_TRACE;
+        return undef;
+    }
+    if (!defined($return) && defined($score))
+    {
+        Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
+                      q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $return = $score_return;
+    }
+    splice @{$thisparser->{errors}}, $err_at;
+    $return = $item[$#item] unless defined $return;
+    if (defined $::RD_TRACE)
+    {
+        Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
+                      $return . q{])}, "",
+                      q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel);
+        Parse::RecDescent::_trace(q{(consumed: [} .
+                      Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
+                      Parse::RecDescent::_tracefirst($text),
+                      , q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+    }
+    $_[1] = $text;
+    return $return;
+}
+
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
 sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_comma
 {
 	my $thisparser = $_[0];
@@ -417,17 +612,17 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
 }
 
 # ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
-sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_module_runtime_use_module
+sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_module_runtime_use
 {
 	my $thisparser = $_[0];
 	use vars q{$tracelevel};
 	local $tracelevel = ($tracelevel||0)+1;
 	$ERRORS = 0;
-    my $thisrule = $thisparser->{"rules"}{"_alternation_1_of_production_1_of_rule_module_runtime_use_module"};
+    my $thisrule = $thisparser->{"rules"}{"_alternation_1_of_production_1_of_rule_module_runtime_use"};
 
-    Parse::RecDescent::_trace(q{Trying rule: [_alternation_1_of_production_1_of_rule_module_runtime_use_module]},
+    Parse::RecDescent::_trace(q{Trying rule: [_alternation_1_of_production_1_of_rule_module_runtime_use]},
                   Parse::RecDescent::_tracefirst($_[1]),
-                  q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                  q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                   $tracelevel)
                     if defined $::RD_TRACE;
 
@@ -450,7 +645,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{'Module::Runtime::use_module(', or /\\buse_module\\(/});
+    my $expectation = new Parse::RecDescent::Expectation(q{'Module::Runtime::', or /\\b/});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -461,50 +656,52 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: ['Module::Runtime::use_module(']},
+        Parse::RecDescent::_trace(q{Trying production: ['Module::Runtime::']},
                       Parse::RecDescent::_tracefirst($_[1]),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[0];
         $text = $_[1];
         my $_savetext;
-        @item = (q{_alternation_1_of_production_1_of_rule_module_runtime_use_module});
-        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_module_runtime_use_module});
+        @item = (q{_alternation_1_of_production_1_of_rule_module_runtime_use});
+        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_module_runtime_use});
         my $repcount = 0;
 
 
-        Parse::RecDescent::_trace(q{Trying terminal: ['Module::Runtime::use_module(']},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        undef $lastsep;
+        Parse::RecDescent::_trace(q{Trying subrule: [_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use]},
+                  Parse::RecDescent::_tracefirst($text),
+                  q{_alternation_1_of_production_1_of_rule_module_runtime_use},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+        if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        
-
-        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\AModule\:\:Runtime\:\:use_module\(/)
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
-            $text = $lastsep . $text if defined $lastsep;
             
-            $expectation->failed();
-            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
-                          Parse::RecDescent::_tracefirst($text))
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use]>>},
+                          Parse::RecDescent::_tracefirst($text),
+                          q{_alternation_1_of_production_1_of_rule_module_runtime_use},
+                          $tracelevel)
                             if defined $::RD_TRACE;
+            $expectation->failed();
             last;
         }
-        $current_match = substr($text, $-[0], $+[0] - $-[0]);
-        substr($text,0,length($current_match),q{});
-        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
-                        . $current_match . q{])},
-                          Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-        push @item, $item{__STRING1__}=$current_match;
-        
+        Parse::RecDescent::_trace(q{>>Matched subrule: [_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use]<< (return value: [}
+                    . $_tok . q{]},
 
-        Parse::RecDescent::_trace(q{>>Matched production: ['Module::Runtime::use_module(']<<},
                       Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $item{q{_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use}} = $_tok;
+        push @item, $_tok;
+        
+        }
+
+        Parse::RecDescent::_trace(q{>>Matched production: ['Module::Runtime::']<<},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
 
@@ -518,49 +715,52 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: [/\\buse_module\\(/]},
+        Parse::RecDescent::_trace(q{Trying production: [/\\b/]},
                       Parse::RecDescent::_tracefirst($_[1]),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[1];
         $text = $_[1];
         my $_savetext;
-        @item = (q{_alternation_1_of_production_1_of_rule_module_runtime_use_module});
-        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_module_runtime_use_module});
+        @item = (q{_alternation_1_of_production_1_of_rule_module_runtime_use});
+        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_module_runtime_use});
         my $repcount = 0;
 
 
-        Parse::RecDescent::_trace(q{Trying terminal: [/\\buse_module\\(/]}, Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        undef $lastsep;
-        $expectation->is(q{})->at($text);
-        
-
-        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A(?:\buse_module\()/)
-        {
-            $text = $lastsep . $text if defined $lastsep;
-            $expectation->failed();
-            Parse::RecDescent::_trace(q{<<Didn't match terminal>>},
-                          Parse::RecDescent::_tracefirst($text))
+        Parse::RecDescent::_trace(q{Trying subrule: [_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use]},
+                  Parse::RecDescent::_tracefirst($text),
+                  q{_alternation_1_of_production_1_of_rule_module_runtime_use},
+                  $tracelevel)
                     if defined $::RD_TRACE;
-
+        if (1) { no strict qw{refs};
+        $expectation->is(q{})->at($text);
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        {
+            
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use]>>},
+                          Parse::RecDescent::_tracefirst($text),
+                          q{_alternation_1_of_production_1_of_rule_module_runtime_use},
+                          $tracelevel)
+                            if defined $::RD_TRACE;
+            $expectation->failed();
             last;
         }
-        $current_match = substr($text, $-[0], $+[0] - $-[0]);
-        substr($text,0,length($current_match),q{});
-        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
-                        . $current_match . q{])},
-                          Parse::RecDescent::_tracefirst($text))
-                    if defined $::RD_TRACE;
-        push @item, $item{__PATTERN1__}=$current_match;
-        
+        Parse::RecDescent::_trace(q{>>Matched subrule: [_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use]<< (return value: [}
+                    . $_tok . q{]},
 
-        Parse::RecDescent::_trace(q{>>Matched production: [/\\buse_module\\(/]<<},
                       Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $item{q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use}} = $_tok;
+        push @item, $_tok;
+        
+        }
+
+        Parse::RecDescent::_trace(q{>>Matched production: [/\\b/]<<},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
 
@@ -578,7 +778,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
         $_[1] = $text;  # NOT SURE THIS IS NEEDED
         Parse::RecDescent::_trace(q{<<Didn't match rule>>},
                      Parse::RecDescent::_tracefirst($_[1]),
-                     q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                     q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                      $tracelevel)
                     if defined $::RD_TRACE;
         return undef;
@@ -586,7 +786,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     if (!defined($return) && defined($score))
     {
         Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         $return = $score_return;
@@ -597,12 +797,12 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     {
         Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
                       $return . q{])}, "",
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel);
         Parse::RecDescent::_trace(q{(consumed: [} .
                       Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
                       Parse::RecDescent::_tracefirst($text),
-                      , q{_alternation_1_of_production_1_of_rule_module_runtime_use_module},
+                      , q{_alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
     }
     $_[1] = $text;
@@ -610,17 +810,17 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
 }
 
 # ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
-sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically
+sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_module_runtime_use_fcn
 {
 	my $thisparser = $_[0];
 	use vars q{$tracelevel};
 	local $tracelevel = ($tracelevel||0)+1;
 	$ERRORS = 0;
-    my $thisrule = $thisparser->{"rules"}{"_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically"};
+    my $thisrule = $thisparser->{"rules"}{"_alternation_1_of_production_1_of_rule_module_runtime_use_fcn"};
 
-    Parse::RecDescent::_trace(q{Trying rule: [_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically]},
+    Parse::RecDescent::_trace(q{Trying rule: [_alternation_1_of_production_1_of_rule_module_runtime_use_fcn]},
                   Parse::RecDescent::_tracefirst($_[1]),
-                  q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                  q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                   $tracelevel)
                     if defined $::RD_TRACE;
 
@@ -643,7 +843,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{'Module::Runtime::use_package_optimistically(', or /\\buse_package_optimistically\\(/});
+    my $expectation = new Parse::RecDescent::Expectation(q{'use_module', or 'use_package_optimistically'});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -654,29 +854,29 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: ['Module::Runtime::use_package_optimistically(']},
+        Parse::RecDescent::_trace(q{Trying production: ['use_module']},
                       Parse::RecDescent::_tracefirst($_[1]),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[0];
         $text = $_[1];
         my $_savetext;
-        @item = (q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically});
-        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically});
+        @item = (q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn});
+        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn});
         my $repcount = 0;
 
 
-        Parse::RecDescent::_trace(q{Trying terminal: ['Module::Runtime::use_package_optimistically(']},
+        Parse::RecDescent::_trace(q{Trying terminal: ['use_module']},
                       Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
         undef $lastsep;
         $expectation->is(q{})->at($text);
         
 
-        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\AModule\:\:Runtime\:\:use_package_optimistically\(/)
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\Ause_module/)
         {
             $text = $lastsep . $text if defined $lastsep;
             
@@ -695,9 +895,9 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
         push @item, $item{__STRING1__}=$current_match;
         
 
-        Parse::RecDescent::_trace(q{>>Matched production: ['Module::Runtime::use_package_optimistically(']<<},
+        Parse::RecDescent::_trace(q{>>Matched production: ['use_module']<<},
                       Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
 
@@ -711,35 +911,36 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: [/\\buse_package_optimistically\\(/]},
+        Parse::RecDescent::_trace(q{Trying production: ['use_package_optimistically']},
                       Parse::RecDescent::_tracefirst($_[1]),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[1];
         $text = $_[1];
         my $_savetext;
-        @item = (q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically});
-        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically});
+        @item = (q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn});
+        %item = (__RULE__ => q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn});
         my $repcount = 0;
 
 
-        Parse::RecDescent::_trace(q{Trying terminal: [/\\buse_package_optimistically\\(/]}, Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+        Parse::RecDescent::_trace(q{Trying terminal: ['use_package_optimistically']},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
         undef $lastsep;
         $expectation->is(q{})->at($text);
         
 
-        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A(?:\buse_package_optimistically\()/)
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\Ause_package_optimistically/)
         {
             $text = $lastsep . $text if defined $lastsep;
+            
             $expectation->failed();
-            Parse::RecDescent::_trace(q{<<Didn't match terminal>>},
+            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
                           Parse::RecDescent::_tracefirst($text))
-                    if defined $::RD_TRACE;
-
+                            if defined $::RD_TRACE;
             last;
         }
         $current_match = substr($text, $-[0], $+[0] - $-[0]);
@@ -747,13 +948,13 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
         Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
                         . $current_match . q{])},
                           Parse::RecDescent::_tracefirst($text))
-                    if defined $::RD_TRACE;
-        push @item, $item{__PATTERN1__}=$current_match;
+                            if defined $::RD_TRACE;
+        push @item, $item{__STRING1__}=$current_match;
         
 
-        Parse::RecDescent::_trace(q{>>Matched production: [/\\buse_package_optimistically\\(/]<<},
+        Parse::RecDescent::_trace(q{>>Matched production: ['use_package_optimistically']<<},
                       Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
 
@@ -771,7 +972,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
         $_[1] = $text;  # NOT SURE THIS IS NEEDED
         Parse::RecDescent::_trace(q{<<Didn't match rule>>},
                      Parse::RecDescent::_tracefirst($_[1]),
-                     q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                     q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                      $tracelevel)
                     if defined $::RD_TRACE;
         return undef;
@@ -779,7 +980,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     if (!defined($return) && defined($score))
     {
         Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
         $return = $score_return;
@@ -790,12 +991,12 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
     {
         Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
                       $return . q{])}, "",
-                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel);
         Parse::RecDescent::_trace(q{(consumed: [} .
                       Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
                       Parse::RecDescent::_tracefirst($text),
-                      , q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      , q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn},
                       $tracelevel)
     }
     $_[1] = $text;
@@ -1633,17 +1834,17 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production
 }
 
 # ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
-sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production_1_of_rule_module_runtime_use_module
+sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use
 {
 	my $thisparser = $_[0];
 	use vars q{$tracelevel};
 	local $tracelevel = ($tracelevel||0)+1;
 	$ERRORS = 0;
-    my $thisrule = $thisparser->{"rules"}{"_alternation_2_of_production_1_of_rule_module_runtime_use_module"};
+    my $thisrule = $thisparser->{"rules"}{"_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use"};
 
-    Parse::RecDescent::_trace(q{Trying rule: [_alternation_2_of_production_1_of_rule_module_runtime_use_module]},
+    Parse::RecDescent::_trace(q{Trying rule: [_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use]},
                   Parse::RecDescent::_tracefirst($_[1]),
-                  q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
+                  q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                   $tracelevel)
                     if defined $::RD_TRACE;
 
@@ -1666,7 +1867,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{',', or ')'});
+    my $expectation = new Parse::RecDescent::Expectation(q{/\\b/});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -1677,223 +1878,86 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: [',']},
+        Parse::RecDescent::_trace(q{Trying production: [/\\b/ module_runtime_use_fcn '(']},
                       Parse::RecDescent::_tracefirst($_[1]),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
+                      q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[0];
         $text = $_[1];
         my $_savetext;
-        @item = (q{_alternation_2_of_production_1_of_rule_module_runtime_use_module});
-        %item = (__RULE__ => q{_alternation_2_of_production_1_of_rule_module_runtime_use_module});
+        @item = (q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use});
+        %item = (__RULE__ => q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use});
         my $repcount = 0;
 
 
-        Parse::RecDescent::_trace(q{Trying terminal: [',']},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
+        Parse::RecDescent::_trace(q{Trying terminal: [/\\b/]}, Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         undef $lastsep;
         $expectation->is(q{})->at($text);
         
 
-        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A\,/)
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A(?:\b)/)
         {
             $text = $lastsep . $text if defined $lastsep;
-            
             $expectation->failed();
-            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
+            Parse::RecDescent::_trace(q{<<Didn't match terminal>>},
                           Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-            last;
-        }
-        $current_match = substr($text, $-[0], $+[0] - $-[0]);
-        substr($text,0,length($current_match),q{});
-        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
-                        . $current_match . q{])},
-                          Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-        push @item, $item{__STRING1__}=$current_match;
-        
-
-        Parse::RecDescent::_trace(q{>>Matched production: [',']<<},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-
-
-
-        $_matched = 1;
-        last;
-    }
-
-
-    while (!$_matched && !$commit)
-    {
-        
-        Parse::RecDescent::_trace(q{Trying production: [')']},
-                      Parse::RecDescent::_tracefirst($_[1]),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        my $thisprod = $thisrule->{"prods"}[1];
-        $text = $_[1];
-        my $_savetext;
-        @item = (q{_alternation_2_of_production_1_of_rule_module_runtime_use_module});
-        %item = (__RULE__ => q{_alternation_2_of_production_1_of_rule_module_runtime_use_module});
-        my $repcount = 0;
-
-
-        Parse::RecDescent::_trace(q{Trying terminal: [')']},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        undef $lastsep;
-        $expectation->is(q{})->at($text);
-        
-
-        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A\)/)
-        {
-            $text = $lastsep . $text if defined $lastsep;
-            
-            $expectation->failed();
-            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
-                          Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-            last;
-        }
-        $current_match = substr($text, $-[0], $+[0] - $-[0]);
-        substr($text,0,length($current_match),q{});
-        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
-                        . $current_match . q{])},
-                          Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-        push @item, $item{__STRING1__}=$current_match;
-        
-
-        Parse::RecDescent::_trace(q{>>Matched production: [')']<<},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-
-
-
-        $_matched = 1;
-        last;
-    }
-
-
-    unless ( $_matched || defined($score) )
-    {
-        
-
-        $_[1] = $text;  # NOT SURE THIS IS NEEDED
-        Parse::RecDescent::_trace(q{<<Didn't match rule>>},
-                     Parse::RecDescent::_tracefirst($_[1]),
-                     q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
-                     $tracelevel)
                     if defined $::RD_TRACE;
-        return undef;
-    }
-    if (!defined($return) && defined($score))
-    {
-        Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        $return = $score_return;
-    }
-    splice @{$thisparser->{errors}}, $err_at;
-    $return = $item[$#item] unless defined $return;
-    if (defined $::RD_TRACE)
-    {
-        Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
-                      $return . q{])}, "",
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel);
-        Parse::RecDescent::_trace(q{(consumed: [} .
-                      Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
-                      Parse::RecDescent::_tracefirst($text),
-                      , q{_alternation_2_of_production_1_of_rule_module_runtime_use_module},
-                      $tracelevel)
-    }
-    $_[1] = $text;
-    return $return;
-}
 
-# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
-sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically
-{
-	my $thisparser = $_[0];
-	use vars q{$tracelevel};
-	local $tracelevel = ($tracelevel||0)+1;
-	$ERRORS = 0;
-    my $thisrule = $thisparser->{"rules"}{"_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically"};
+            last;
+        }
+        $current_match = substr($text, $-[0], $+[0] - $-[0]);
+        substr($text,0,length($current_match),q{});
+        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
+                        . $current_match . q{])},
+                          Parse::RecDescent::_tracefirst($text))
+                    if defined $::RD_TRACE;
+        push @item, $item{__PATTERN1__}=$current_match;
+        
 
-    Parse::RecDescent::_trace(q{Trying rule: [_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically]},
-                  Parse::RecDescent::_tracefirst($_[1]),
-                  q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
+        Parse::RecDescent::_trace(q{Trying subrule: [module_runtime_use_fcn]},
+                  Parse::RecDescent::_tracefirst($text),
+                  q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                   $tracelevel)
                     if defined $::RD_TRACE;
+        if (1) { no strict qw{refs};
+        $expectation->is(q{module_runtime_use_fcn})->at($text);
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_fcn($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        {
+            
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [module_runtime_use_fcn]>>},
+                          Parse::RecDescent::_tracefirst($text),
+                          q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
+                          $tracelevel)
+                            if defined $::RD_TRACE;
+            $expectation->failed();
+            last;
+        }
+        Parse::RecDescent::_trace(q{>>Matched subrule: [module_runtime_use_fcn]<< (return value: [}
+                    . $_tok . q{]},
 
-    
-    my $err_at = @{$thisparser->{errors}};
-
-    my $score;
-    my $score_return;
-    my $_tok;
-    my $return = undef;
-    my $_matched=0;
-    my $commit=0;
-    my @item = ();
-    my %item = ();
-    my $repeating =  $_[2];
-    my $_noactions = $_[3];
-    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
-    my $_itempos = $_[5];
-    my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
-    my $text;
-    my $lastsep;
-    my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{',', or ')'});
-    $expectation->at($_[1]);
-    
-    my $thisline;
-    tie $thisline, q{Parse::RecDescent::LineCounter}, \$text, $thisparser;
-
-    
-
-    while (!$_matched && !$commit)
-    {
-        
-        Parse::RecDescent::_trace(q{Trying production: [',']},
-                      Parse::RecDescent::_tracefirst($_[1]),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
-        my $thisprod = $thisrule->{"prods"}[0];
-        $text = $_[1];
-        my $_savetext;
-        @item = (q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically});
-        %item = (__RULE__ => q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically});
-        my $repcount = 0;
+        $item{q{module_runtime_use_fcn}} = $_tok;
+        push @item, $_tok;
+        
+        }
 
-
-        Parse::RecDescent::_trace(q{Trying terminal: [',']},
+        Parse::RecDescent::_trace(q{Trying terminal: ['(']},
                       Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         undef $lastsep;
-        $expectation->is(q{})->at($text);
+        $expectation->is(q{'('})->at($text);
         
 
-        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A\,/)
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A\(/)
         {
             $text = $lastsep . $text if defined $lastsep;
             
@@ -1912,66 +1976,9 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production
         push @item, $item{__STRING1__}=$current_match;
         
 
-        Parse::RecDescent::_trace(q{>>Matched production: [',']<<},
+        Parse::RecDescent::_trace(q{>>Matched production: [/\\b/ module_runtime_use_fcn '(']<<},
                       Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-
-
-
-        $_matched = 1;
-        last;
-    }
-
-
-    while (!$_matched && !$commit)
-    {
-        
-        Parse::RecDescent::_trace(q{Trying production: [')']},
-                      Parse::RecDescent::_tracefirst($_[1]),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        my $thisprod = $thisrule->{"prods"}[1];
-        $text = $_[1];
-        my $_savetext;
-        @item = (q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically});
-        %item = (__RULE__ => q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically});
-        my $repcount = 0;
-
-
-        Parse::RecDescent::_trace(q{Trying terminal: [')']},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        undef $lastsep;
-        $expectation->is(q{})->at($text);
-        
-
-        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A\)/)
-        {
-            $text = $lastsep . $text if defined $lastsep;
-            
-            $expectation->failed();
-            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
-                          Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-            last;
-        }
-        $current_match = substr($text, $-[0], $+[0] - $-[0]);
-        substr($text,0,length($current_match),q{});
-        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
-                        . $current_match . q{])},
-                          Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-        push @item, $item{__STRING1__}=$current_match;
-        
-
-        Parse::RecDescent::_trace(q{>>Matched production: [')']<<},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
 
@@ -1989,7 +1996,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production
         $_[1] = $text;  # NOT SURE THIS IS NEEDED
         Parse::RecDescent::_trace(q{<<Didn't match rule>>},
                      Parse::RecDescent::_tracefirst($_[1]),
-                     q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                     q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                      $tracelevel)
                     if defined $::RD_TRACE;
         return undef;
@@ -1997,7 +2004,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production
     if (!defined($return) && defined($score))
     {
         Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         $return = $score_return;
@@ -2008,12 +2015,12 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production
     {
         Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
                       $return . q{])}, "",
-                      q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel);
         Parse::RecDescent::_trace(q{(consumed: [} .
                       Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
                       Parse::RecDescent::_tracefirst($text),
-                      , q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically},
+                      , q{_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use},
                       $tracelevel)
     }
     $_[1] = $text;
@@ -4088,17 +4095,17 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_require_modul
 }
 
 # ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
-sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
+sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use
 {
 	my $thisparser = $_[0];
 	use vars q{$tracelevel};
 	local $tracelevel = ($tracelevel||0)+1;
 	$ERRORS = 0;
-    my $thisrule = $thisparser->{"rules"}{"module_runtime_use_module"};
+    my $thisrule = $thisparser->{"rules"}{"module_runtime_use"};
 
-    Parse::RecDescent::_trace(q{Trying rule: [module_runtime_use_module]},
+    Parse::RecDescent::_trace(q{Trying rule: [module_runtime_use]},
                   Parse::RecDescent::_tracefirst($_[1]),
-                  q{module_runtime_use_module},
+                  q{module_runtime_use},
                   $tracelevel)
                     if defined $::RD_TRACE;
 
@@ -4121,7 +4128,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{'Module::Runtime::use_module(', or /\\buse_module\\(/});
+    my $expectation = new Parse::RecDescent::Expectation(q{'Module::Runtime::', or /\\b/});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -4132,45 +4139,45 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: ['Module::Runtime::use_module(', or /\\buse_module\\(/ <perl_quotelike> ',', or ')']},
+        Parse::RecDescent::_trace(q{Trying production: ['Module::Runtime::', or /\\b/ <perl_quotelike> module_runtime_version ')']},
                       Parse::RecDescent::_tracefirst($_[1]),
-                      q{module_runtime_use_module},
+                      q{module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[0];
         $text = $_[1];
         my $_savetext;
-        @item = (q{module_runtime_use_module});
-        %item = (__RULE__ => q{module_runtime_use_module});
+        @item = (q{module_runtime_use});
+        %item = (__RULE__ => q{module_runtime_use});
         my $repcount = 0;
 
 
-        Parse::RecDescent::_trace(q{Trying subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_module]},
+        Parse::RecDescent::_trace(q{Trying subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use]},
                   Parse::RecDescent::_tracefirst($text),
-                  q{module_runtime_use_module},
+                  q{module_runtime_use},
                   $tracelevel)
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_module_runtime_use_module($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_module_runtime_use($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
-            Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_module]>>},
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use]>>},
                           Parse::RecDescent::_tracefirst($text),
-                          q{module_runtime_use_module},
+                          q{module_runtime_use},
                           $tracelevel)
                             if defined $::RD_TRACE;
             $expectation->failed();
             last;
         }
-        Parse::RecDescent::_trace(q{>>Matched subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_module]<< (return value: [}
+        Parse::RecDescent::_trace(q{>>Matched subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use]<< (return value: [}
                     . $_tok . q{]},
 
                       Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_module},
+                      q{module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
-        $item{q{_alternation_1_of_production_1_of_rule_module_runtime_use_module}} = $_tok;
+        $item{q{_alternation_1_of_production_1_of_rule_module_runtime_use}} = $_tok;
         push @item, $_tok;
         
         }
@@ -4179,7 +4186,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
 
         Parse::RecDescent::_trace(q{Trying directive: [<perl_quotelike>]},
                     Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_module},
+                      q{module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE; 
         $_tok = do { my ($match,@res);
@@ -4205,39 +4212,65 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
         push @item, $item{__DIRECTIVE1__}=$_tok;
         
 
-        Parse::RecDescent::_trace(q{Trying subrule: [_alternation_2_of_production_1_of_rule_module_runtime_use_module]},
+        Parse::RecDescent::_trace(q{Trying repeated subrule: [module_runtime_version]},
                   Parse::RecDescent::_tracefirst($text),
-                  q{module_runtime_use_module},
+                  q{module_runtime_use},
                   $tracelevel)
                     if defined $::RD_TRACE;
-        if (1) { no strict qw{refs};
-        $expectation->is(q{',', or ')'})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production_1_of_rule_module_runtime_use_module($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        $expectation->is(q{module_runtime_version})->at($text);
+        
+        unless (defined ($_tok = $thisparser->_parserepeat($text, \&Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_version, 0, 1, $_noactions,$expectation,sub { \@arg },undef)))
         {
-            
-            Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_2_of_production_1_of_rule_module_runtime_use_module]>>},
+            Parse::RecDescent::_trace(q{<<Didn't match repeated subrule: [module_runtime_version]>>},
                           Parse::RecDescent::_tracefirst($text),
-                          q{module_runtime_use_module},
+                          q{module_runtime_use},
                           $tracelevel)
                             if defined $::RD_TRACE;
-            $expectation->failed();
             last;
         }
-        Parse::RecDescent::_trace(q{>>Matched subrule: [_alternation_2_of_production_1_of_rule_module_runtime_use_module]<< (return value: [}
-                    . $_tok . q{]},
+        Parse::RecDescent::_trace(q{>>Matched repeated subrule: [module_runtime_version]<< (}
+                    . @$_tok . q{ times)},
 
                       Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_module},
+                      q{module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
-        $item{q{_alternation_2_of_production_1_of_rule_module_runtime_use_module}} = $_tok;
+        $item{q{module_runtime_version(?)}} = $_tok;
         push @item, $_tok;
         
+
+
+        Parse::RecDescent::_trace(q{Trying terminal: [')']},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{module_runtime_use},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        undef $lastsep;
+        $expectation->is(q{')'})->at($text);
+        
+
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A\)/)
+        {
+            $text = $lastsep . $text if defined $lastsep;
+            
+            $expectation->failed();
+            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+            last;
         }
+        $current_match = substr($text, $-[0], $+[0] - $-[0]);
+        substr($text,0,length($current_match),q{});
+        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
+                        . $current_match . q{])},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+        push @item, $item{__STRING1__}=$current_match;
+        
 
         Parse::RecDescent::_trace(q{Trying action},
                       Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_module},
+                      q{module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         
@@ -4257,9 +4290,9 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
         $item{__ACTION1__}=$_tok;
         
 
-        Parse::RecDescent::_trace(q{>>Matched production: ['Module::Runtime::use_module(', or /\\buse_module\\(/ <perl_quotelike> ',', or ')']<<},
+        Parse::RecDescent::_trace(q{>>Matched production: ['Module::Runtime::', or /\\b/ <perl_quotelike> module_runtime_version ')']<<},
                       Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_module},
+                      q{module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
 
@@ -4277,7 +4310,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
         $_[1] = $text;  # NOT SURE THIS IS NEEDED
         Parse::RecDescent::_trace(q{<<Didn't match rule>>},
                      Parse::RecDescent::_tracefirst($_[1]),
-                     q{module_runtime_use_module},
+                     q{module_runtime_use},
                      $tracelevel)
                     if defined $::RD_TRACE;
         return undef;
@@ -4285,7 +4318,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
     if (!defined($return) && defined($score))
     {
         Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
-                      q{module_runtime_use_module},
+                      q{module_runtime_use},
                       $tracelevel)
                         if defined $::RD_TRACE;
         $return = $score_return;
@@ -4296,12 +4329,12 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
     {
         Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
                       $return . q{])}, "",
-                      q{module_runtime_use_module},
+                      q{module_runtime_use},
                       $tracelevel);
         Parse::RecDescent::_trace(q{(consumed: [} .
                       Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
                       Parse::RecDescent::_tracefirst($text),
-                      , q{module_runtime_use_module},
+                      , q{module_runtime_use},
                       $tracelevel)
     }
     $_[1] = $text;
@@ -4309,17 +4342,17 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module
 }
 
 # ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
-sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_package_optimistically
+sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_fcn
 {
 	my $thisparser = $_[0];
 	use vars q{$tracelevel};
 	local $tracelevel = ($tracelevel||0)+1;
 	$ERRORS = 0;
-    my $thisrule = $thisparser->{"rules"}{"module_runtime_use_package_optimistically"};
+    my $thisrule = $thisparser->{"rules"}{"module_runtime_use_fcn"};
 
-    Parse::RecDescent::_trace(q{Trying rule: [module_runtime_use_package_optimistically]},
+    Parse::RecDescent::_trace(q{Trying rule: [module_runtime_use_fcn]},
                   Parse::RecDescent::_tracefirst($_[1]),
-                  q{module_runtime_use_package_optimistically},
+                  q{module_runtime_use_fcn},
                   $tracelevel)
                     if defined $::RD_TRACE;
 
@@ -4342,7 +4375,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_package_o
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{'Module::Runtime::use_package_optimistically(', or /\\buse_package_optimistically\\(/});
+    my $expectation = new Parse::RecDescent::Expectation(q{'use_module', or 'use_package_optimistically'});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -4353,134 +4386,52 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_package_o
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: ['Module::Runtime::use_package_optimistically(', or /\\buse_package_optimistically\\(/ <perl_quotelike> ',', or ')']},
+        Parse::RecDescent::_trace(q{Trying production: ['use_module', or 'use_package_optimistically']},
                       Parse::RecDescent::_tracefirst($_[1]),
-                      q{module_runtime_use_package_optimistically},
+                      q{module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
         my $thisprod = $thisrule->{"prods"}[0];
         $text = $_[1];
         my $_savetext;
-        @item = (q{module_runtime_use_package_optimistically});
-        %item = (__RULE__ => q{module_runtime_use_package_optimistically});
+        @item = (q{module_runtime_use_fcn});
+        %item = (__RULE__ => q{module_runtime_use_fcn});
         my $repcount = 0;
 
 
-        Parse::RecDescent::_trace(q{Trying subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically]},
+        Parse::RecDescent::_trace(q{Trying subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_fcn]},
                   Parse::RecDescent::_tracefirst($text),
-                  q{module_runtime_use_package_optimistically},
+                  q{module_runtime_use_fcn},
                   $tracelevel)
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_1_of_production_1_of_rule_module_runtime_use_fcn($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
-            Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically]>>},
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_fcn]>>},
                           Parse::RecDescent::_tracefirst($text),
-                          q{module_runtime_use_package_optimistically},
+                          q{module_runtime_use_fcn},
                           $tracelevel)
                             if defined $::RD_TRACE;
             $expectation->failed();
             last;
         }
-        Parse::RecDescent::_trace(q{>>Matched subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically]<< (return value: [}
+        Parse::RecDescent::_trace(q{>>Matched subrule: [_alternation_1_of_production_1_of_rule_module_runtime_use_fcn]<< (return value: [}
                     . $_tok . q{]},
 
                       Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_package_optimistically},
+                      q{module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
-        $item{q{_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically}} = $_tok;
+        $item{q{_alternation_1_of_production_1_of_rule_module_runtime_use_fcn}} = $_tok;
         push @item, $_tok;
         
         }
 
-        
-
-        Parse::RecDescent::_trace(q{Trying directive: [<perl_quotelike>]},
-                    Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_package_optimistically},
-                      $tracelevel)
-                        if defined $::RD_TRACE; 
-        $_tok = do { my ($match,@res);
-                     ($match,$text,undef,@res) =
-                          Text::Balanced::extract_quotelike($text,$skip);
-                      $match ? \@res : undef;
-                     };
-        if (defined($_tok))
-        {
-            Parse::RecDescent::_trace(q{>>Matched directive<< (return value: [}
-                        . $_tok . q{])},
-                        Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-        }
-        else
-        {
-            Parse::RecDescent::_trace(q{<<Didn't match directive>>},
-                        Parse::RecDescent::_tracefirst($text))
-                            if defined $::RD_TRACE;
-        }
-        
-        last unless defined $_tok;
-        push @item, $item{__DIRECTIVE1__}=$_tok;
-        
-
-        Parse::RecDescent::_trace(q{Trying subrule: [_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically]},
-                  Parse::RecDescent::_tracefirst($text),
-                  q{module_runtime_use_package_optimistically},
-                  $tracelevel)
-                    if defined $::RD_TRACE;
-        if (1) { no strict qw{refs};
-        $expectation->is(q{',', or ')'})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
-        {
-            
-            Parse::RecDescent::_trace(q{<<Didn't match subrule: [_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically]>>},
-                          Parse::RecDescent::_tracefirst($text),
-                          q{module_runtime_use_package_optimistically},
-                          $tracelevel)
-                            if defined $::RD_TRACE;
-            $expectation->failed();
-            last;
-        }
-        Parse::RecDescent::_trace(q{>>Matched subrule: [_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically]<< (return value: [}
-                    . $_tok . q{]},
-
+        Parse::RecDescent::_trace(q{>>Matched production: ['use_module', or 'use_package_optimistically']<<},
                       Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_package_optimistically},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        $item{q{_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically}} = $_tok;
-        push @item, $_tok;
-        
-        }
-
-        Parse::RecDescent::_trace(q{Trying action},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_package_optimistically},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        
-
-        $_tok = ($_noactions) ? 0 : do { return $item[2][2] };
-        unless (defined $_tok)
-        {
-            Parse::RecDescent::_trace(q{<<Didn't match action>> (return value: [undef])})
-                    if defined $::RD_TRACE;
-            last;
-        }
-        Parse::RecDescent::_trace(q{>>Matched action<< (return value: [}
-                      . $_tok . q{])},
-                      Parse::RecDescent::_tracefirst($text))
-                        if defined $::RD_TRACE;
-        push @item, $_tok;
-        $item{__ACTION1__}=$_tok;
-        
-
-        Parse::RecDescent::_trace(q{>>Matched production: ['Module::Runtime::use_package_optimistically(', or /\\buse_package_optimistically\\(/ <perl_quotelike> ',', or ')']<<},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{module_runtime_use_package_optimistically},
+                      q{module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
 
@@ -4498,7 +4449,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_package_o
         $_[1] = $text;  # NOT SURE THIS IS NEEDED
         Parse::RecDescent::_trace(q{<<Didn't match rule>>},
                      Parse::RecDescent::_tracefirst($_[1]),
-                     q{module_runtime_use_package_optimistically},
+                     q{module_runtime_use_fcn},
                      $tracelevel)
                     if defined $::RD_TRACE;
         return undef;
@@ -4506,7 +4457,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_package_o
     if (!defined($return) && defined($score))
     {
         Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
-                      q{module_runtime_use_package_optimistically},
+                      q{module_runtime_use_fcn},
                       $tracelevel)
                         if defined $::RD_TRACE;
         $return = $score_return;
@@ -4517,12 +4468,206 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_package_o
     {
         Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
                       $return . q{])}, "",
-                      q{module_runtime_use_package_optimistically},
+                      q{module_runtime_use_fcn},
                       $tracelevel);
         Parse::RecDescent::_trace(q{(consumed: [} .
                       Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
                       Parse::RecDescent::_tracefirst($text),
-                      , q{module_runtime_use_package_optimistically},
+                      , q{module_runtime_use_fcn},
+                      $tracelevel)
+    }
+    $_[1] = $text;
+    return $return;
+}
+
+# ARGS ARE: ($parser, $text; $repeating, $_noactions, \@args, $_itempos)
+sub Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_version
+{
+	my $thisparser = $_[0];
+	use vars q{$tracelevel};
+	local $tracelevel = ($tracelevel||0)+1;
+	$ERRORS = 0;
+    my $thisrule = $thisparser->{"rules"}{"module_runtime_version"};
+
+    Parse::RecDescent::_trace(q{Trying rule: [module_runtime_version]},
+                  Parse::RecDescent::_tracefirst($_[1]),
+                  q{module_runtime_version},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+
+    
+    my $err_at = @{$thisparser->{errors}};
+
+    my $score;
+    my $score_return;
+    my $_tok;
+    my $return = undef;
+    my $_matched=0;
+    my $commit=0;
+    my @item = ();
+    my %item = ();
+    my $repeating =  $_[2];
+    my $_noactions = $_[3];
+    my @arg =    defined $_[4] ? @{ &{$_[4]} } : ();
+    my $_itempos = $_[5];
+    my %arg =    ($#arg & 01) ? @arg : (@arg, undef);
+    my $text;
+    my $lastsep;
+    my $current_match;
+    my $expectation = new Parse::RecDescent::Expectation(q{','});
+    $expectation->at($_[1]);
+    
+    my $thisline;
+    tie $thisline, q{Parse::RecDescent::LineCounter}, \$text, $thisparser;
+
+    
+
+    while (!$_matched && !$commit)
+    {
+        
+        Parse::RecDescent::_trace(q{Trying production: [',' /\\s*/ version]},
+                      Parse::RecDescent::_tracefirst($_[1]),
+                      q{module_runtime_version},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        my $thisprod = $thisrule->{"prods"}[0];
+        $text = $_[1];
+        my $_savetext;
+        @item = (q{module_runtime_version});
+        %item = (__RULE__ => q{module_runtime_version});
+        my $repcount = 0;
+
+
+        Parse::RecDescent::_trace(q{Trying terminal: [',']},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{module_runtime_version},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        undef $lastsep;
+        $expectation->is(q{})->at($text);
+        
+
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A\,/)
+        {
+            $text = $lastsep . $text if defined $lastsep;
+            
+            $expectation->failed();
+            Parse::RecDescent::_trace(qq{<<Didn't match terminal>>},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+            last;
+        }
+        $current_match = substr($text, $-[0], $+[0] - $-[0]);
+        substr($text,0,length($current_match),q{});
+        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
+                        . $current_match . q{])},
+                          Parse::RecDescent::_tracefirst($text))
+                            if defined $::RD_TRACE;
+        push @item, $item{__STRING1__}=$current_match;
+        
+
+        Parse::RecDescent::_trace(q{Trying terminal: [/\\s*/]}, Parse::RecDescent::_tracefirst($text),
+                      q{module_runtime_version},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        undef $lastsep;
+        $expectation->is(q{/\\s*/})->at($text);
+        
+
+        unless ($text =~ s/\A($skip)/$lastsep=$1 and ""/e and   $text =~ m/\A(?:\s*)/)
+        {
+            $text = $lastsep . $text if defined $lastsep;
+            $expectation->failed();
+            Parse::RecDescent::_trace(q{<<Didn't match terminal>>},
+                          Parse::RecDescent::_tracefirst($text))
+                    if defined $::RD_TRACE;
+
+            last;
+        }
+        $current_match = substr($text, $-[0], $+[0] - $-[0]);
+        substr($text,0,length($current_match),q{});
+        Parse::RecDescent::_trace(q{>>Matched terminal<< (return value: [}
+                        . $current_match . q{])},
+                          Parse::RecDescent::_tracefirst($text))
+                    if defined $::RD_TRACE;
+        push @item, $item{__PATTERN1__}=$current_match;
+        
+
+        Parse::RecDescent::_trace(q{Trying subrule: [version]},
+                  Parse::RecDescent::_tracefirst($text),
+                  q{module_runtime_version},
+                  $tracelevel)
+                    if defined $::RD_TRACE;
+        if (1) { no strict qw{refs};
+        $expectation->is(q{version})->at($text);
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::version($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        {
+            
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [version]>>},
+                          Parse::RecDescent::_tracefirst($text),
+                          q{module_runtime_version},
+                          $tracelevel)
+                            if defined $::RD_TRACE;
+            $expectation->failed();
+            last;
+        }
+        Parse::RecDescent::_trace(q{>>Matched subrule: [version]<< (return value: [}
+                    . $_tok . q{]},
+
+                      Parse::RecDescent::_tracefirst($text),
+                      q{module_runtime_version},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $item{q{version}} = $_tok;
+        push @item, $_tok;
+        
+        }
+
+        Parse::RecDescent::_trace(q{>>Matched production: [',' /\\s*/ version]<<},
+                      Parse::RecDescent::_tracefirst($text),
+                      q{module_runtime_version},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+
+
+
+        $_matched = 1;
+        last;
+    }
+
+
+    unless ( $_matched || defined($score) )
+    {
+        
+
+        $_[1] = $text;  # NOT SURE THIS IS NEEDED
+        Parse::RecDescent::_trace(q{<<Didn't match rule>>},
+                     Parse::RecDescent::_tracefirst($_[1]),
+                     q{module_runtime_version},
+                     $tracelevel)
+                    if defined $::RD_TRACE;
+        return undef;
+    }
+    if (!defined($return) && defined($score))
+    {
+        Parse::RecDescent::_trace(q{>>Accepted scored production<<}, "",
+                      q{module_runtime_version},
+                      $tracelevel)
+                        if defined $::RD_TRACE;
+        $return = $score_return;
+    }
+    splice @{$thisparser->{errors}}, $err_at;
+    $return = $item[$#item] unless defined $return;
+    if (defined $::RD_TRACE)
+    {
+        Parse::RecDescent::_trace(q{>>Matched rule<< (return value: [} .
+                      $return . q{])}, "",
+                      q{module_runtime_version},
+                      $tracelevel);
+        Parse::RecDescent::_trace(q{(consumed: [} .
+                      Parse::RecDescent::_tracemax(substr($_[1],0,-length($text))) . q{])},
+                      Parse::RecDescent::_tracefirst($text),
+                      , q{module_runtime_version},
                       $tracelevel)
     }
     $_[1] = $text;
@@ -5197,7 +5342,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_module_runtime
     my $text;
     my $lastsep;
     my $current_match;
-    my $expectation = new Parse::RecDescent::Expectation(q{module_runtime_require_module, or module_runtime_use_module, or module_runtime_use_package_optimistically});
+    my $expectation = new Parse::RecDescent::Expectation(q{module_runtime_require_module, or module_runtime_use});
     $expectation->at($_[1]);
     
     my $thisline;
@@ -5267,7 +5412,7 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_module_runtime
     while (!$_matched && !$commit)
     {
         
-        Parse::RecDescent::_trace(q{Trying production: [module_runtime_use_module]},
+        Parse::RecDescent::_trace(q{Trying production: [module_runtime_use]},
                       Parse::RecDescent::_tracefirst($_[1]),
                       q{token_module_runtime},
                       $tracelevel)
@@ -5280,17 +5425,17 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_module_runtime
         my $repcount = 0;
 
 
-        Parse::RecDescent::_trace(q{Trying subrule: [module_runtime_use_module]},
+        Parse::RecDescent::_trace(q{Trying subrule: [module_runtime_use]},
                   Parse::RecDescent::_tracefirst($text),
                   q{token_module_runtime},
                   $tracelevel)
                     if defined $::RD_TRACE;
         if (1) { no strict qw{refs};
         $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_module($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
+        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
         {
             
-            Parse::RecDescent::_trace(q{<<Didn't match subrule: [module_runtime_use_module]>>},
+            Parse::RecDescent::_trace(q{<<Didn't match subrule: [module_runtime_use]>>},
                           Parse::RecDescent::_tracefirst($text),
                           q{token_module_runtime},
                           $tracelevel)
@@ -5298,78 +5443,19 @@ sub Parse::RecDescent::Module::ExtractUse::Grammar::token_module_runtime
             $expectation->failed();
             last;
         }
-        Parse::RecDescent::_trace(q{>>Matched subrule: [module_runtime_use_module]<< (return value: [}
+        Parse::RecDescent::_trace(q{>>Matched subrule: [module_runtime_use]<< (return value: [}
                     . $_tok . q{]},
 
                       Parse::RecDescent::_tracefirst($text),
                       q{token_module_runtime},
                       $tracelevel)
                         if defined $::RD_TRACE;
-        $item{q{module_runtime_use_module}} = $_tok;
+        $item{q{module_runtime_use}} = $_tok;
         push @item, $_tok;
         
         }
 
-        Parse::RecDescent::_trace(q{>>Matched production: [module_runtime_use_module]<<},
-                      Parse::RecDescent::_tracefirst($text),
-                      q{token_module_runtime},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-
-
-
-        $_matched = 1;
-        last;
-    }
-
-
-    while (!$_matched && !$commit)
-    {
-        
-        Parse::RecDescent::_trace(q{Trying production: [module_runtime_use_package_optimistically]},
-                      Parse::RecDescent::_tracefirst($_[1]),
-                      q{token_module_runtime},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        my $thisprod = $thisrule->{"prods"}[2];
-        $text = $_[1];
-        my $_savetext;
-        @item = (q{token_module_runtime});
-        %item = (__RULE__ => q{token_module_runtime});
-        my $repcount = 0;
-
-
-        Parse::RecDescent::_trace(q{Trying subrule: [module_runtime_use_package_optimistically]},
-                  Parse::RecDescent::_tracefirst($text),
-                  q{token_module_runtime},
-                  $tracelevel)
-                    if defined $::RD_TRACE;
-        if (1) { no strict qw{refs};
-        $expectation->is(q{})->at($text);
-        unless (defined ($_tok = Parse::RecDescent::Module::ExtractUse::Grammar::module_runtime_use_package_optimistically($thisparser,$text,$repeating,$_noactions,sub { \@arg },undef)))
-        {
-            
-            Parse::RecDescent::_trace(q{<<Didn't match subrule: [module_runtime_use_package_optimistically]>>},
-                          Parse::RecDescent::_tracefirst($text),
-                          q{token_module_runtime},
-                          $tracelevel)
-                            if defined $::RD_TRACE;
-            $expectation->failed();
-            last;
-        }
-        Parse::RecDescent::_trace(q{>>Matched subrule: [module_runtime_use_package_optimistically]<< (return value: [}
-                    . $_tok . q{]},
-
-                      Parse::RecDescent::_tracefirst($text),
-                      q{token_module_runtime},
-                      $tracelevel)
-                        if defined $::RD_TRACE;
-        $item{q{module_runtime_use_package_optimistically}} = $_tok;
-        push @item, $_tok;
-        
-        }
-
-        Parse::RecDescent::_trace(q{>>Matched production: [module_runtime_use_package_optimistically]<<},
+        Parse::RecDescent::_trace(q{>>Matched production: [module_runtime_use]<<},
                       Parse::RecDescent::_tracefirst($text),
                       q{token_module_runtime},
                       $tracelevel)
@@ -6490,11 +6576,58 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                  'localvars' => '',
                  'namespace' => 'Parse::RecDescent::Module::ExtractUse::Grammar',
                  'rules' => {
+                              '_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use' => bless( {
+                                                                                                                                             'calls' => [
+                                                                                                                                                          'module_runtime_use_fcn'
+                                                                                                                                                        ],
+                                                                                                                                             'changed' => 0,
+                                                                                                                                             'impcount' => 0,
+                                                                                                                                             'line' => 94,
+                                                                                                                                             'name' => '_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use',
+                                                                                                                                             'opcount' => 0,
+                                                                                                                                             'prods' => [
+                                                                                                                                                          bless( {
+                                                                                                                                                                   'actcount' => 0,
+                                                                                                                                                                   'dircount' => 0,
+                                                                                                                                                                   'error' => undef,
+                                                                                                                                                                   'items' => [
+                                                                                                                                                                                bless( {
+                                                                                                                                                                                         'description' => '\'Module::Runtime::\'',
+                                                                                                                                                                                         'hashname' => '__STRING1__',
+                                                                                                                                                                                         'line' => 94,
+                                                                                                                                                                                         'lookahead' => 0,
+                                                                                                                                                                                         'pattern' => 'Module::Runtime::'
+                                                                                                                                                                                       }, 'Parse::RecDescent::Literal' ),
+                                                                                                                                                                                bless( {
+                                                                                                                                                                                         'argcode' => undef,
+                                                                                                                                                                                         'implicit' => undef,
+                                                                                                                                                                                         'line' => 94,
+                                                                                                                                                                                         'lookahead' => 0,
+                                                                                                                                                                                         'matchrule' => 0,
+                                                                                                                                                                                         'subrule' => 'module_runtime_use_fcn'
+                                                                                                                                                                                       }, 'Parse::RecDescent::Subrule' ),
+                                                                                                                                                                                bless( {
+                                                                                                                                                                                         'description' => '\'(\'',
+                                                                                                                                                                                         'hashname' => '__STRING2__',
+                                                                                                                                                                                         'line' => 94,
+                                                                                                                                                                                         'lookahead' => 0,
+                                                                                                                                                                                         'pattern' => '('
+                                                                                                                                                                                       }, 'Parse::RecDescent::Literal' )
+                                                                                                                                                                              ],
+                                                                                                                                                                   'line' => undef,
+                                                                                                                                                                   'number' => '0',
+                                                                                                                                                                   'patcount' => 0,
+                                                                                                                                                                   'strcount' => 2,
+                                                                                                                                                                   'uncommit' => undef
+                                                                                                                                                                 }, 'Parse::RecDescent::Production' )
+                                                                                                                                                        ],
+                                                                                                                                             'vars' => ''
+                                                                                                                                           }, 'Parse::RecDescent::Rule' ),
                               '_alternation_1_of_production_1_of_rule_comma' => bless( {
                                                                                          'calls' => [],
                                                                                          'changed' => 0,
                                                                                          'impcount' => 0,
-                                                                                         'line' => 93,
+                                                                                         'line' => 94,
                                                                                          'name' => '_alternation_1_of_production_1_of_rule_comma',
                                                                                          'opcount' => 0,
                                                                                          'prods' => [
@@ -6506,7 +6639,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                             bless( {
                                                                                                                                      'description' => '\',\'',
                                                                                                                                      'hashname' => '__STRING1__',
-                                                                                                                                     'line' => 93,
+                                                                                                                                     'line' => 94,
                                                                                                                                      'lookahead' => 0,
                                                                                                                                      'pattern' => ','
                                                                                                                                    }, 'Parse::RecDescent::Literal' )
@@ -6525,12 +6658,12 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                             bless( {
                                                                                                                                      'description' => '\'=>\'',
                                                                                                                                      'hashname' => '__STRING1__',
-                                                                                                                                     'line' => 93,
+                                                                                                                                     'line' => 94,
                                                                                                                                      'lookahead' => 0,
                                                                                                                                      'pattern' => '=>'
                                                                                                                                    }, 'Parse::RecDescent::Literal' )
                                                                                                                           ],
-                                                                                                               'line' => 93,
+                                                                                                               'line' => 94,
                                                                                                                'number' => '1',
                                                                                                                'patcount' => 0,
                                                                                                                'strcount' => 1,
@@ -6543,7 +6676,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                  'calls' => [],
                                                                                                                  'changed' => 0,
                                                                                                                  'impcount' => 0,
-                                                                                                                 'line' => 93,
+                                                                                                                 'line' => 94,
                                                                                                                  'name' => '_alternation_1_of_production_1_of_rule_module_runtime_require_module',
                                                                                                                  'opcount' => 0,
                                                                                                                  'prods' => [
@@ -6555,7 +6688,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                                     bless( {
                                                                                                                                                              'description' => '\'Module::Runtime::require_module(\'',
                                                                                                                                                              'hashname' => '__STRING1__',
-                                                                                                                                                             'line' => 93,
+                                                                                                                                                             'line' => 94,
                                                                                                                                                              'lookahead' => 0,
                                                                                                                                                              'pattern' => 'Module::Runtime::require_module('
                                                                                                                                                            }, 'Parse::RecDescent::Literal' )
@@ -6575,14 +6708,14 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                                              'description' => '/\\\\brequire_module\\\\(/',
                                                                                                                                                              'hashname' => '__PATTERN1__',
                                                                                                                                                              'ldelim' => '/',
-                                                                                                                                                             'line' => 93,
+                                                                                                                                                             'line' => 94,
                                                                                                                                                              'lookahead' => 0,
                                                                                                                                                              'mod' => '',
                                                                                                                                                              'pattern' => '\\brequire_module\\(',
                                                                                                                                                              'rdelim' => '/'
                                                                                                                                                            }, 'Parse::RecDescent::Token' )
                                                                                                                                                   ],
-                                                                                                                                       'line' => 93,
+                                                                                                                                       'line' => 94,
                                                                                                                                        'number' => '1',
                                                                                                                                        'patcount' => 1,
                                                                                                                                        'strcount' => 0,
@@ -6591,110 +6724,109 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                             ],
                                                                                                                  'vars' => ''
                                                                                                                }, 'Parse::RecDescent::Rule' ),
-                              '_alternation_1_of_production_1_of_rule_module_runtime_use_module' => bless( {
-                                                                                                             'calls' => [],
-                                                                                                             'changed' => 0,
-                                                                                                             'impcount' => 0,
-                                                                                                             'line' => 93,
-                                                                                                             'name' => '_alternation_1_of_production_1_of_rule_module_runtime_use_module',
-                                                                                                             'opcount' => 0,
-                                                                                                             'prods' => [
-                                                                                                                          bless( {
-                                                                                                                                   'actcount' => 0,
-                                                                                                                                   'dircount' => 0,
-                                                                                                                                   'error' => undef,
-                                                                                                                                   'items' => [
-                                                                                                                                                bless( {
-                                                                                                                                                         'description' => '\'Module::Runtime::use_module(\'',
-                                                                                                                                                         'hashname' => '__STRING1__',
-                                                                                                                                                         'line' => 93,
-                                                                                                                                                         'lookahead' => 0,
-                                                                                                                                                         'pattern' => 'Module::Runtime::use_module('
-                                                                                                                                                       }, 'Parse::RecDescent::Literal' )
-                                                                                                                                              ],
-                                                                                                                                   'line' => undef,
-                                                                                                                                   'number' => '0',
-                                                                                                                                   'patcount' => 0,
-                                                                                                                                   'strcount' => 1,
-                                                                                                                                   'uncommit' => undef
-                                                                                                                                 }, 'Parse::RecDescent::Production' ),
-                                                                                                                          bless( {
-                                                                                                                                   'actcount' => 0,
-                                                                                                                                   'dircount' => 0,
-                                                                                                                                   'error' => undef,
-                                                                                                                                   'items' => [
-                                                                                                                                                bless( {
-                                                                                                                                                         'description' => '/\\\\buse_module\\\\(/',
-                                                                                                                                                         'hashname' => '__PATTERN1__',
-                                                                                                                                                         'ldelim' => '/',
-                                                                                                                                                         'line' => 93,
-                                                                                                                                                         'lookahead' => 0,
-                                                                                                                                                         'mod' => '',
-                                                                                                                                                         'pattern' => '\\buse_module\\(',
-                                                                                                                                                         'rdelim' => '/'
-                                                                                                                                                       }, 'Parse::RecDescent::Token' )
-                                                                                                                                              ],
-                                                                                                                                   'line' => 93,
-                                                                                                                                   'number' => '1',
-                                                                                                                                   'patcount' => 1,
-                                                                                                                                   'strcount' => 0,
-                                                                                                                                   'uncommit' => undef
-                                                                                                                                 }, 'Parse::RecDescent::Production' )
-                                                                                                                        ],
-                                                                                                             'vars' => ''
-                                                                                                           }, 'Parse::RecDescent::Rule' ),
-                              '_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically' => bless( {
-                                                                                                                             'calls' => [],
-                                                                                                                             'changed' => 0,
-                                                                                                                             'impcount' => 0,
-                                                                                                                             'line' => 93,
-                                                                                                                             'name' => '_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically',
-                                                                                                                             'opcount' => 0,
-                                                                                                                             'prods' => [
-                                                                                                                                          bless( {
-                                                                                                                                                   'actcount' => 0,
-                                                                                                                                                   'dircount' => 0,
-                                                                                                                                                   'error' => undef,
-                                                                                                                                                   'items' => [
-                                                                                                                                                                bless( {
-                                                                                                                                                                         'description' => '\'Module::Runtime::use_package_optimistically(\'',
-                                                                                                                                                                         'hashname' => '__STRING1__',
-                                                                                                                                                                         'line' => 93,
-                                                                                                                                                                         'lookahead' => 0,
-                                                                                                                                                                         'pattern' => 'Module::Runtime::use_package_optimistically('
-                                                                                                                                                                       }, 'Parse::RecDescent::Literal' )
-                                                                                                                                                              ],
-                                                                                                                                                   'line' => undef,
-                                                                                                                                                   'number' => '0',
-                                                                                                                                                   'patcount' => 0,
-                                                                                                                                                   'strcount' => 1,
-                                                                                                                                                   'uncommit' => undef
-                                                                                                                                                 }, 'Parse::RecDescent::Production' ),
-                                                                                                                                          bless( {
-                                                                                                                                                   'actcount' => 0,
-                                                                                                                                                   'dircount' => 0,
-                                                                                                                                                   'error' => undef,
-                                                                                                                                                   'items' => [
-                                                                                                                                                                bless( {
-                                                                                                                                                                         'description' => '/\\\\buse_package_optimistically\\\\(/',
-                                                                                                                                                                         'hashname' => '__PATTERN1__',
-                                                                                                                                                                         'ldelim' => '/',
-                                                                                                                                                                         'line' => 93,
-                                                                                                                                                                         'lookahead' => 0,
-                                                                                                                                                                         'mod' => '',
-                                                                                                                                                                         'pattern' => '\\buse_package_optimistically\\(',
-                                                                                                                                                                         'rdelim' => '/'
-                                                                                                                                                                       }, 'Parse::RecDescent::Token' )
-                                                                                                                                                              ],
-                                                                                                                                                   'line' => 93,
-                                                                                                                                                   'number' => '1',
-                                                                                                                                                   'patcount' => 1,
-                                                                                                                                                   'strcount' => 0,
-                                                                                                                                                   'uncommit' => undef
-                                                                                                                                                 }, 'Parse::RecDescent::Production' )
-                                                                                                                                        ],
-                                                                                                                             'vars' => ''
-                                                                                                                           }, 'Parse::RecDescent::Rule' ),
+                              '_alternation_1_of_production_1_of_rule_module_runtime_use' => bless( {
+                                                                                                      'calls' => [
+                                                                                                                   '_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use',
+                                                                                                                   '_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use'
+                                                                                                                 ],
+                                                                                                      'changed' => 0,
+                                                                                                      'impcount' => 1,
+                                                                                                      'line' => 94,
+                                                                                                      'name' => '_alternation_1_of_production_1_of_rule_module_runtime_use',
+                                                                                                      'opcount' => 0,
+                                                                                                      'prods' => [
+                                                                                                                   bless( {
+                                                                                                                            'actcount' => 0,
+                                                                                                                            'dircount' => 0,
+                                                                                                                            'error' => undef,
+                                                                                                                            'items' => [
+                                                                                                                                         bless( {
+                                                                                                                                                  'argcode' => undef,
+                                                                                                                                                  'implicit' => '\'Module::Runtime::\'',
+                                                                                                                                                  'line' => 94,
+                                                                                                                                                  'lookahead' => 0,
+                                                                                                                                                  'matchrule' => 0,
+                                                                                                                                                  'subrule' => '_alternation_1_of_production_1_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use'
+                                                                                                                                                }, 'Parse::RecDescent::Subrule' )
+                                                                                                                                       ],
+                                                                                                                            'line' => undef,
+                                                                                                                            'number' => '0',
+                                                                                                                            'patcount' => 0,
+                                                                                                                            'strcount' => 0,
+                                                                                                                            'uncommit' => undef
+                                                                                                                          }, 'Parse::RecDescent::Production' ),
+                                                                                                                   bless( {
+                                                                                                                            'actcount' => 0,
+                                                                                                                            'dircount' => 0,
+                                                                                                                            'error' => undef,
+                                                                                                                            'items' => [
+                                                                                                                                         bless( {
+                                                                                                                                                  'argcode' => undef,
+                                                                                                                                                  'implicit' => '/\\\\b/',
+                                                                                                                                                  'line' => 94,
+                                                                                                                                                  'lookahead' => 0,
+                                                                                                                                                  'matchrule' => 0,
+                                                                                                                                                  'subrule' => '_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use'
+                                                                                                                                                }, 'Parse::RecDescent::Subrule' )
+                                                                                                                                       ],
+                                                                                                                            'line' => 94,
+                                                                                                                            'number' => '1',
+                                                                                                                            'patcount' => 0,
+                                                                                                                            'strcount' => 0,
+                                                                                                                            'uncommit' => undef
+                                                                                                                          }, 'Parse::RecDescent::Production' )
+                                                                                                                 ],
+                                                                                                      'vars' => ''
+                                                                                                    }, 'Parse::RecDescent::Rule' ),
+                              '_alternation_1_of_production_1_of_rule_module_runtime_use_fcn' => bless( {
+                                                                                                          'calls' => [],
+                                                                                                          'changed' => 0,
+                                                                                                          'impcount' => 0,
+                                                                                                          'line' => 94,
+                                                                                                          'name' => '_alternation_1_of_production_1_of_rule_module_runtime_use_fcn',
+                                                                                                          'opcount' => 0,
+                                                                                                          'prods' => [
+                                                                                                                       bless( {
+                                                                                                                                'actcount' => 0,
+                                                                                                                                'dircount' => 0,
+                                                                                                                                'error' => undef,
+                                                                                                                                'items' => [
+                                                                                                                                             bless( {
+                                                                                                                                                      'description' => '\'use_module\'',
+                                                                                                                                                      'hashname' => '__STRING1__',
+                                                                                                                                                      'line' => 94,
+                                                                                                                                                      'lookahead' => 0,
+                                                                                                                                                      'pattern' => 'use_module'
+                                                                                                                                                    }, 'Parse::RecDescent::Literal' )
+                                                                                                                                           ],
+                                                                                                                                'line' => undef,
+                                                                                                                                'number' => '0',
+                                                                                                                                'patcount' => 0,
+                                                                                                                                'strcount' => 1,
+                                                                                                                                'uncommit' => undef
+                                                                                                                              }, 'Parse::RecDescent::Production' ),
+                                                                                                                       bless( {
+                                                                                                                                'actcount' => 0,
+                                                                                                                                'dircount' => 0,
+                                                                                                                                'error' => undef,
+                                                                                                                                'items' => [
+                                                                                                                                             bless( {
+                                                                                                                                                      'description' => '\'use_package_optimistically\'',
+                                                                                                                                                      'hashname' => '__STRING1__',
+                                                                                                                                                      'line' => 94,
+                                                                                                                                                      'lookahead' => 0,
+                                                                                                                                                      'pattern' => 'use_package_optimistically'
+                                                                                                                                                    }, 'Parse::RecDescent::Literal' )
+                                                                                                                                           ],
+                                                                                                                                'line' => 94,
+                                                                                                                                'number' => '1',
+                                                                                                                                'patcount' => 0,
+                                                                                                                                'strcount' => 1,
+                                                                                                                                'uncommit' => undef
+                                                                                                                              }, 'Parse::RecDescent::Production' )
+                                                                                                                     ],
+                                                                                                          'vars' => ''
+                                                                                                        }, 'Parse::RecDescent::Rule' ),
                               '_alternation_1_of_production_1_of_rule_no_stuff' => bless( {
                                                                                             'calls' => [
                                                                                                          'base',
@@ -6703,7 +6835,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                        ],
                                                                                             'changed' => 0,
                                                                                             'impcount' => 0,
-                                                                                            'line' => 93,
+                                                                                            'line' => 94,
                                                                                             'name' => '_alternation_1_of_production_1_of_rule_no_stuff',
                                                                                             'opcount' => 0,
                                                                                             'prods' => [
@@ -6715,7 +6847,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                bless( {
                                                                                                                                         'argcode' => undef,
                                                                                                                                         'implicit' => undef,
-                                                                                                                                        'line' => 93,
+                                                                                                                                        'line' => 94,
                                                                                                                                         'lookahead' => 0,
                                                                                                                                         'matchrule' => 0,
                                                                                                                                         'subrule' => 'base'
@@ -6735,13 +6867,13 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                bless( {
                                                                                                                                         'argcode' => undef,
                                                                                                                                         'implicit' => undef,
-                                                                                                                                        'line' => 93,
+                                                                                                                                        'line' => 94,
                                                                                                                                         'lookahead' => 0,
                                                                                                                                         'matchrule' => 0,
                                                                                                                                         'subrule' => 'version'
                                                                                                                                       }, 'Parse::RecDescent::Subrule' )
                                                                                                                              ],
-                                                                                                                  'line' => 93,
+                                                                                                                  'line' => 94,
                                                                                                                   'number' => '1',
                                                                                                                   'patcount' => 0,
                                                                                                                   'strcount' => 0,
@@ -6755,13 +6887,13 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                bless( {
                                                                                                                                         'argcode' => undef,
                                                                                                                                         'implicit' => undef,
-                                                                                                                                        'line' => 93,
+                                                                                                                                        'line' => 94,
                                                                                                                                         'lookahead' => 0,
                                                                                                                                         'matchrule' => 0,
                                                                                                                                         'subrule' => 'module'
                                                                                                                                       }, 'Parse::RecDescent::Subrule' )
                                                                                                                              ],
-                                                                                                                  'line' => 93,
+                                                                                                                  'line' => 94,
                                                                                                                   'number' => '2',
                                                                                                                   'patcount' => 0,
                                                                                                                   'strcount' => 0,
@@ -6778,7 +6910,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                             ],
                                                                                                  'changed' => 0,
                                                                                                  'impcount' => 0,
-                                                                                                 'line' => 93,
+                                                                                                 'line' => 94,
                                                                                                  'name' => '_alternation_1_of_production_1_of_rule_require_stuff',
                                                                                                  'opcount' => 0,
                                                                                                  'prods' => [
@@ -6790,7 +6922,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                     bless( {
                                                                                                                                              'argcode' => undef,
                                                                                                                                              'implicit' => undef,
-                                                                                                                                             'line' => 93,
+                                                                                                                                             'line' => 94,
                                                                                                                                              'lookahead' => 0,
                                                                                                                                              'matchrule' => 0,
                                                                                                                                              'subrule' => 'version'
@@ -6810,13 +6942,13 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                     bless( {
                                                                                                                                              'argcode' => undef,
                                                                                                                                              'implicit' => undef,
-                                                                                                                                             'line' => 93,
+                                                                                                                                             'line' => 94,
                                                                                                                                              'lookahead' => 0,
                                                                                                                                              'matchrule' => 0,
                                                                                                                                              'subrule' => 'require_name'
                                                                                                                                            }, 'Parse::RecDescent::Subrule' )
                                                                                                                                   ],
-                                                                                                                       'line' => 93,
+                                                                                                                       'line' => 94,
                                                                                                                        'number' => '1',
                                                                                                                        'patcount' => 0,
                                                                                                                        'strcount' => 0,
@@ -6830,13 +6962,13 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                     bless( {
                                                                                                                                              'argcode' => undef,
                                                                                                                                              'implicit' => undef,
-                                                                                                                                             'line' => 93,
+                                                                                                                                             'line' => 94,
                                                                                                                                              'lookahead' => 0,
                                                                                                                                              'matchrule' => 0,
                                                                                                                                              'subrule' => 'module'
                                                                                                                                            }, 'Parse::RecDescent::Subrule' )
                                                                                                                                   ],
-                                                                                                                       'line' => 93,
+                                                                                                                       'line' => 94,
                                                                                                                        'number' => '2',
                                                                                                                        'patcount' => 0,
                                                                                                                        'strcount' => 0,
@@ -6854,7 +6986,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                         ],
                                                                                              'changed' => 0,
                                                                                              'impcount' => 0,
-                                                                                             'line' => 93,
+                                                                                             'line' => 94,
                                                                                              'name' => '_alternation_1_of_production_1_of_rule_use_stuff',
                                                                                              'opcount' => 0,
                                                                                              'prods' => [
@@ -6866,7 +6998,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                 bless( {
                                                                                                                                          'argcode' => undef,
                                                                                                                                          'implicit' => undef,
-                                                                                                                                         'line' => 93,
+                                                                                                                                         'line' => 94,
                                                                                                                                          'lookahead' => 0,
                                                                                                                                          'matchrule' => 0,
                                                                                                                                          'subrule' => 'base'
@@ -6886,13 +7018,13 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                 bless( {
                                                                                                                                          'argcode' => undef,
                                                                                                                                          'implicit' => undef,
-                                                                                                                                         'line' => 93,
+                                                                                                                                         'line' => 94,
                                                                                                                                          'lookahead' => 0,
                                                                                                                                          'matchrule' => 0,
                                                                                                                                          'subrule' => 'parent'
                                                                                                                                        }, 'Parse::RecDescent::Subrule' )
                                                                                                                               ],
-                                                                                                                   'line' => 93,
+                                                                                                                   'line' => 94,
                                                                                                                    'number' => '1',
                                                                                                                    'patcount' => 0,
                                                                                                                    'strcount' => 0,
@@ -6906,13 +7038,13 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                 bless( {
                                                                                                                                          'argcode' => undef,
                                                                                                                                          'implicit' => undef,
-                                                                                                                                         'line' => 93,
+                                                                                                                                         'line' => 94,
                                                                                                                                          'lookahead' => 0,
                                                                                                                                          'matchrule' => 0,
                                                                                                                                          'subrule' => 'version'
                                                                                                                                        }, 'Parse::RecDescent::Subrule' )
                                                                                                                               ],
-                                                                                                                   'line' => 93,
+                                                                                                                   'line' => 94,
                                                                                                                    'number' => '2',
                                                                                                                    'patcount' => 0,
                                                                                                                    'strcount' => 0,
@@ -6926,13 +7058,13 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                                                 bless( {
                                                                                                                                          'argcode' => undef,
                                                                                                                                          'implicit' => undef,
-                                                                                                                                         'line' => 93,
+                                                                                                                                         'line' => 94,
                                                                                                                                          'lookahead' => 0,
                                                                                                                                          'matchrule' => 0,
                                                                                                                                          'subrule' => 'module'
                                                                                                                                        }, 'Parse::RecDescent::Subrule' )
                                                                                                                               ],
-                                                                                                                   'line' => 93,
+                                                                                                                   'line' => 94,
                                                                                                                    'number' => '3',
                                                                                                                    'patcount' => 0,
                                                                                                                    'strcount' => 0,
@@ -6941,104 +7073,56 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                         ],
                                                                                              'vars' => ''
                                                                                            }, 'Parse::RecDescent::Rule' ),
-                              '_alternation_2_of_production_1_of_rule_module_runtime_use_module' => bless( {
-                                                                                                             'calls' => [],
-                                                                                                             'changed' => 0,
-                                                                                                             'impcount' => 0,
-                                                                                                             'line' => 93,
-                                                                                                             'name' => '_alternation_2_of_production_1_of_rule_module_runtime_use_module',
-                                                                                                             'opcount' => 0,
-                                                                                                             'prods' => [
-                                                                                                                          bless( {
-                                                                                                                                   'actcount' => 0,
-                                                                                                                                   'dircount' => 0,
-                                                                                                                                   'error' => undef,
-                                                                                                                                   'items' => [
-                                                                                                                                                bless( {
-                                                                                                                                                         'description' => '\',\'',
-                                                                                                                                                         'hashname' => '__STRING1__',
-                                                                                                                                                         'line' => 93,
-                                                                                                                                                         'lookahead' => 0,
-                                                                                                                                                         'pattern' => ','
-                                                                                                                                                       }, 'Parse::RecDescent::Literal' )
-                                                                                                                                              ],
-                                                                                                                                   'line' => undef,
-                                                                                                                                   'number' => '0',
-                                                                                                                                   'patcount' => 0,
-                                                                                                                                   'strcount' => 1,
-                                                                                                                                   'uncommit' => undef
-                                                                                                                                 }, 'Parse::RecDescent::Production' ),
-                                                                                                                          bless( {
-                                                                                                                                   'actcount' => 0,
-                                                                                                                                   'dircount' => 0,
-                                                                                                                                   'error' => undef,
-                                                                                                                                   'items' => [
-                                                                                                                                                bless( {
-                                                                                                                                                         'description' => '\')\'',
-                                                                                                                                                         'hashname' => '__STRING1__',
-                                                                                                                                                         'line' => 93,
-                                                                                                                                                         'lookahead' => 0,
-                                                                                                                                                         'pattern' => ')'
-                                                                                                                                                       }, 'Parse::RecDescent::Literal' )
-                                                                                                                                              ],
-                                                                                                                                   'line' => 93,
-                                                                                                                                   'number' => '1',
-                                                                                                                                   'patcount' => 0,
-                                                                                                                                   'strcount' => 1,
-                                                                                                                                   'uncommit' => undef
-                                                                                                                                 }, 'Parse::RecDescent::Production' )
-                                                                                                                        ],
-                                                                                                             'vars' => ''
-                                                                                                           }, 'Parse::RecDescent::Rule' ),
-                              '_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically' => bless( {
-                                                                                                                             'calls' => [],
-                                                                                                                             'changed' => 0,
-                                                                                                                             'impcount' => 0,
-                                                                                                                             'line' => 93,
-                                                                                                                             'name' => '_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically',
-                                                                                                                             'opcount' => 0,
-                                                                                                                             'prods' => [
-                                                                                                                                          bless( {
-                                                                                                                                                   'actcount' => 0,
-                                                                                                                                                   'dircount' => 0,
-                                                                                                                                                   'error' => undef,
-                                                                                                                                                   'items' => [
-                                                                                                                                                                bless( {
-                                                                                                                                                                         'description' => '\',\'',
-                                                                                                                                                                         'hashname' => '__STRING1__',
-                                                                                                                                                                         'line' => 93,
-                                                                                                                                                                         'lookahead' => 0,
-                                                                                                                                                                         'pattern' => ','
-                                                                                                                                                                       }, 'Parse::RecDescent::Literal' )
-                                                                                                                                                              ],
-                                                                                                                                                   'line' => undef,
-                                                                                                                                                   'number' => '0',
-                                                                                                                                                   'patcount' => 0,
-                                                                                                                                                   'strcount' => 1,
-                                                                                                                                                   'uncommit' => undef
-                                                                                                                                                 }, 'Parse::RecDescent::Production' ),
-                                                                                                                                          bless( {
-                                                                                                                                                   'actcount' => 0,
-                                                                                                                                                   'dircount' => 0,
-                                                                                                                                                   'error' => undef,
-                                                                                                                                                   'items' => [
-                                                                                                                                                                bless( {
-                                                                                                                                                                         'description' => '\')\'',
-                                                                                                                                                                         'hashname' => '__STRING1__',
-                                                                                                                                                                         'line' => 93,
-                                                                                                                                                                         'lookahead' => 0,
-                                                                                                                                                                         'pattern' => ')'
-                                                                                                                                                                       }, 'Parse::RecDescent::Literal' )
-                                                                                                                                                              ],
-                                                                                                                                                   'line' => 93,
-                                                                                                                                                   'number' => '1',
-                                                                                                                                                   'patcount' => 0,
-                                                                                                                                                   'strcount' => 1,
-                                                                                                                                                   'uncommit' => undef
-                                                                                                                                                 }, 'Parse::RecDescent::Production' )
-                                                                                                                                        ],
-                                                                                                                             'vars' => ''
-                                                                                                                           }, 'Parse::RecDescent::Rule' ),
+                              '_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use' => bless( {
+                                                                                                                                             'calls' => [
+                                                                                                                                                          'module_runtime_use_fcn'
+                                                                                                                                                        ],
+                                                                                                                                             'changed' => 0,
+                                                                                                                                             'impcount' => 0,
+                                                                                                                                             'line' => 94,
+                                                                                                                                             'name' => '_alternation_1_of_production_2_of_rule__alternation_1_of_production_1_of_rule_module_runtime_use',
+                                                                                                                                             'opcount' => 0,
+                                                                                                                                             'prods' => [
+                                                                                                                                                          bless( {
+                                                                                                                                                                   'actcount' => 0,
+                                                                                                                                                                   'dircount' => 0,
+                                                                                                                                                                   'error' => undef,
+                                                                                                                                                                   'items' => [
+                                                                                                                                                                                bless( {
+                                                                                                                                                                                         'description' => '/\\\\b/',
+                                                                                                                                                                                         'hashname' => '__PATTERN1__',
+                                                                                                                                                                                         'ldelim' => '/',
+                                                                                                                                                                                         'line' => 94,
+                                                                                                                                                                                         'lookahead' => 0,
+                                                                                                                                                                                         'mod' => '',
+                                                                                                                                                                                         'pattern' => '\\b',
+                                                                                                                                                                                         'rdelim' => '/'
+                                                                                                                                                                                       }, 'Parse::RecDescent::Token' ),
+                                                                                                                                                                                bless( {
+                                                                                                                                                                                         'argcode' => undef,
+                                                                                                                                                                                         'implicit' => undef,
+                                                                                                                                                                                         'line' => 94,
+                                                                                                                                                                                         'lookahead' => 0,
+                                                                                                                                                                                         'matchrule' => 0,
+                                                                                                                                                                                         'subrule' => 'module_runtime_use_fcn'
+                                                                                                                                                                                       }, 'Parse::RecDescent::Subrule' ),
+                                                                                                                                                                                bless( {
+                                                                                                                                                                                         'description' => '\'(\'',
+                                                                                                                                                                                         'hashname' => '__STRING1__',
+                                                                                                                                                                                         'line' => 94,
+                                                                                                                                                                                         'lookahead' => 0,
+                                                                                                                                                                                         'pattern' => '('
+                                                                                                                                                                                       }, 'Parse::RecDescent::Literal' )
+                                                                                                                                                                              ],
+                                                                                                                                                                   'line' => undef,
+                                                                                                                                                                   'number' => '0',
+                                                                                                                                                                   'patcount' => 1,
+                                                                                                                                                                   'strcount' => 1,
+                                                                                                                                                                   'uncommit' => undef
+                                                                                                                                                                 }, 'Parse::RecDescent::Production' )
+                                                                                                                                                        ],
+                                                                                                                                             'vars' => ''
+                                                                                                                                           }, 'Parse::RecDescent::Rule' ),
                               'base' => bless( {
                                                  'calls' => [
                                                               'import_list'
@@ -7085,7 +7169,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                              ],
                                                   'changed' => 0,
                                                   'impcount' => 1,
-                                                  'line' => 92,
+                                                  'line' => 93,
                                                   'name' => 'comma',
                                                   'opcount' => 0,
                                                   'prods' => [
@@ -7097,7 +7181,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                      bless( {
                                                                                               'argcode' => undef,
                                                                                               'implicit' => '\',\', or \'=>\'',
-                                                                                              'line' => 92,
+                                                                                              'line' => 93,
                                                                                               'lookahead' => 0,
                                                                                               'matchrule' => 0,
                                                                                               'subrule' => '_alternation_1_of_production_1_of_rule_comma'
@@ -7119,7 +7203,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                        ],
                                                             'changed' => 0,
                                                             'impcount' => 0,
-                                                            'line' => 89,
+                                                            'line' => 90,
                                                             'name' => 'comma_list_item',
                                                             'opcount' => 0,
                                                             'prods' => [
@@ -7131,7 +7215,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                bless( {
                                                                                                         'argcode' => undef,
                                                                                                         'implicit' => undef,
-                                                                                                        'line' => 89,
+                                                                                                        'line' => 90,
                                                                                                         'lookahead' => 0,
                                                                                                         'matchrule' => 0,
                                                                                                         'subrule' => 'comma'
@@ -7139,7 +7223,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                bless( {
                                                                                                         'argcode' => undef,
                                                                                                         'implicit' => undef,
-                                                                                                        'line' => 89,
+                                                                                                        'line' => 90,
                                                                                                         'lookahead' => 0,
                                                                                                         'matchrule' => 0,
                                                                                                         'subrule' => 'list_item'
@@ -7147,7 +7231,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                bless( {
                                                                                                         'code' => '{ $return=$item{list_item} }',
                                                                                                         'hashname' => '__ACTION1__',
-                                                                                                        'line' => 90,
+                                                                                                        'line' => 91,
                                                                                                         'lookahead' => 0
                                                                                                       }, 'Parse::RecDescent::Action' )
                                                                                              ],
@@ -7164,7 +7248,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                 'calls' => [],
                                                 'changed' => 0,
                                                 'impcount' => 0,
-                                                'line' => 69,
+                                                'line' => 70,
                                                 'name' => 'eos',
                                                 'opcount' => 0,
                                                 'prods' => [
@@ -7176,7 +7260,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                    bless( {
                                                                                             'code' => '{ $text=~/^[\\s;]+$/ ? 1 : undef;}',
                                                                                             'hashname' => '__ACTION1__',
-                                                                                            'line' => 69,
+                                                                                            'line' => 70,
                                                                                             'lookahead' => 0
                                                                                           }, 'Parse::RecDescent::Action' )
                                                                                  ],
@@ -7196,7 +7280,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                    ],
                                                         'changed' => 0,
                                                         'impcount' => 0,
-                                                        'line' => 73,
+                                                        'line' => 74,
                                                         'name' => 'import_list',
                                                         'opcount' => 0,
                                                         'prods' => [
@@ -7209,7 +7293,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'description' => '/[(]?/',
                                                                                                     'hashname' => '__PATTERN1__',
                                                                                                     'ldelim' => '/',
-                                                                                                    'line' => 73,
+                                                                                                    'line' => 74,
                                                                                                     'lookahead' => 0,
                                                                                                     'mod' => '',
                                                                                                     'pattern' => '[(]?',
@@ -7218,7 +7302,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                            bless( {
                                                                                                     'argcode' => undef,
                                                                                                     'implicit' => undef,
-                                                                                                    'line' => 74,
+                                                                                                    'line' => 75,
                                                                                                     'lookahead' => 0,
                                                                                                     'matchrule' => 0,
                                                                                                     'subrule' => 'list_item'
@@ -7226,7 +7310,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                            bless( {
                                                                                                     'argcode' => undef,
                                                                                                     'expected' => undef,
-                                                                                                    'line' => 75,
+                                                                                                    'line' => 76,
                                                                                                     'lookahead' => 0,
                                                                                                     'matchrule' => 0,
                                                                                                     'max' => 100000000,
@@ -7238,7 +7322,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'description' => '/[)]?/',
                                                                                                     'hashname' => '__PATTERN2__',
                                                                                                     'ldelim' => '/',
-                                                                                                    'line' => 76,
+                                                                                                    'line' => 77,
                                                                                                     'lookahead' => 0,
                                                                                                     'mod' => '',
                                                                                                     'pattern' => '[)]?',
@@ -7249,7 +7333,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
 		  $return.=" ".join(" ",@{$item[3]}) if $item[3];
 		}',
                                                                                                     'hashname' => '__ACTION1__',
-                                                                                                    'line' => 77,
+                                                                                                    'line' => 78,
                                                                                                     'lookahead' => 0
                                                                                                   }, 'Parse::RecDescent::Action' )
                                                                                          ],
@@ -7268,7 +7352,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     'description' => '/[(]\\\\s*[)]/',
                                                                                                     'hashname' => '__PATTERN1__',
                                                                                                     'ldelim' => '/',
-                                                                                                    'line' => 81,
+                                                                                                    'line' => 82,
                                                                                                     'lookahead' => 0,
                                                                                                     'mod' => '',
                                                                                                     'pattern' => '[(]\\s*[)]',
@@ -7277,11 +7361,11 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                            bless( {
                                                                                                     'code' => '{ $return=\'\' }',
                                                                                                     'hashname' => '__ACTION1__',
-                                                                                                    'line' => 81,
+                                                                                                    'line' => 82,
                                                                                                     'lookahead' => 0
                                                                                                   }, 'Parse::RecDescent::Action' )
                                                                                          ],
-                                                                              'line' => 80,
+                                                                              'line' => 81,
                                                                               'number' => '1',
                                                                               'patcount' => 1,
                                                                               'strcount' => 0,
@@ -7294,7 +7378,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                       'calls' => [],
                                                       'changed' => 0,
                                                       'impcount' => 0,
-                                                      'line' => 83,
+                                                      'line' => 84,
                                                       'name' => 'list_item',
                                                       'opcount' => 0,
                                                       'prods' => [
@@ -7310,14 +7394,14 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                       $match ? \\@res : undef;
                     ',
                                                                                                   'hashname' => '__DIRECTIVE1__',
-                                                                                                  'line' => 83,
+                                                                                                  'line' => 84,
                                                                                                   'lookahead' => 0,
                                                                                                   'name' => '<perl_quotelike>'
                                                                                                 }, 'Parse::RecDescent::Directive' ),
                                                                                          bless( {
                                                                                                   'code' => '{ $return=$item[1][2] }',
                                                                                                   'hashname' => '__ACTION1__',
-                                                                                                  'line' => 83,
+                                                                                                  'line' => 84,
                                                                                                   'lookahead' => 0
                                                                                                 }, 'Parse::RecDescent::Action' )
                                                                                        ],
@@ -7336,18 +7420,18 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                   'code' => 'Text::Balanced::extract_codeblock($text,undef,$skip,\'(){}[]\');
                     ',
                                                                                                   'hashname' => '__DIRECTIVE1__',
-                                                                                                  'line' => 85,
+                                                                                                  'line' => 86,
                                                                                                   'lookahead' => 0,
                                                                                                   'name' => '<perl_codeblock>'
                                                                                                 }, 'Parse::RecDescent::Directive' ),
                                                                                          bless( {
                                                                                                   'code' => '{ $return=$item[1] }',
                                                                                                   'hashname' => '__ACTION1__',
-                                                                                                  'line' => 85,
+                                                                                                  'line' => 86,
                                                                                                   'lookahead' => 0
                                                                                                 }, 'Parse::RecDescent::Action' )
                                                                                        ],
-                                                                            'line' => 84,
+                                                                            'line' => 85,
                                                                             'number' => '1',
                                                                             'patcount' => 0,
                                                                             'strcount' => 0,
@@ -7362,7 +7446,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                   'description' => '/-?\\\\w+/',
                                                                                                   'hashname' => '__PATTERN1__',
                                                                                                   'ldelim' => '/',
-                                                                                                  'line' => 87,
+                                                                                                  'line' => 88,
                                                                                                   'lookahead' => 0,
                                                                                                   'mod' => '',
                                                                                                   'pattern' => '-?\\w+',
@@ -7371,11 +7455,11 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                          bless( {
                                                                                                   'code' => '{ $return=$item[1] }',
                                                                                                   'hashname' => '__ACTION1__',
-                                                                                                  'line' => 87,
+                                                                                                  'line' => 88,
                                                                                                   'lookahead' => 0
                                                                                                 }, 'Parse::RecDescent::Action' )
                                                                                        ],
-                                                                            'line' => 86,
+                                                                            'line' => 87,
                                                                             'number' => '2',
                                                                             'patcount' => 1,
                                                                             'strcount' => 0,
@@ -7603,124 +7687,158 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                      ],
                                                                           'vars' => ''
                                                                         }, 'Parse::RecDescent::Rule' ),
-                              'module_runtime_use_module' => bless( {
-                                                                      'calls' => [
-                                                                                   '_alternation_1_of_production_1_of_rule_module_runtime_use_module',
-                                                                                   '_alternation_2_of_production_1_of_rule_module_runtime_use_module'
-                                                                                 ],
-                                                                      'changed' => 0,
-                                                                      'impcount' => 2,
-                                                                      'line' => 55,
-                                                                      'name' => 'module_runtime_use_module',
-                                                                      'opcount' => 0,
-                                                                      'prods' => [
-                                                                                   bless( {
-                                                                                            'actcount' => 1,
-                                                                                            'dircount' => 1,
-                                                                                            'error' => undef,
-                                                                                            'items' => [
-                                                                                                         bless( {
-                                                                                                                  'argcode' => undef,
-                                                                                                                  'implicit' => '\'Module::Runtime::use_module(\', or /\\\\buse_module\\\\(/',
-                                                                                                                  'line' => 55,
-                                                                                                                  'lookahead' => 0,
-                                                                                                                  'matchrule' => 0,
-                                                                                                                  'subrule' => '_alternation_1_of_production_1_of_rule_module_runtime_use_module'
-                                                                                                                }, 'Parse::RecDescent::Subrule' ),
-                                                                                                         bless( {
-                                                                                                                  'code' => 'my ($match,@res);
+                              'module_runtime_use' => bless( {
+                                                               'calls' => [
+                                                                            '_alternation_1_of_production_1_of_rule_module_runtime_use',
+                                                                            'module_runtime_version'
+                                                                          ],
+                                                               'changed' => 0,
+                                                               'impcount' => 1,
+                                                               'line' => 59,
+                                                               'name' => 'module_runtime_use',
+                                                               'opcount' => 0,
+                                                               'prods' => [
+                                                                            bless( {
+                                                                                     'actcount' => 1,
+                                                                                     'dircount' => 1,
+                                                                                     'error' => undef,
+                                                                                     'items' => [
+                                                                                                  bless( {
+                                                                                                           'argcode' => undef,
+                                                                                                           'implicit' => '\'Module::Runtime::\', or /\\\\b/',
+                                                                                                           'line' => 59,
+                                                                                                           'lookahead' => 0,
+                                                                                                           'matchrule' => 0,
+                                                                                                           'subrule' => '_alternation_1_of_production_1_of_rule_module_runtime_use'
+                                                                                                         }, 'Parse::RecDescent::Subrule' ),
+                                                                                                  bless( {
+                                                                                                           'code' => 'my ($match,@res);
                      ($match,$text,undef,@res) =
                           Text::Balanced::extract_quotelike($text,$skip);
                       $match ? \\@res : undef;
                     ',
-                                                                                                                  'hashname' => '__DIRECTIVE1__',
-                                                                                                                  'line' => 55,
-                                                                                                                  'lookahead' => 0,
-                                                                                                                  'name' => '<perl_quotelike>'
-                                                                                                                }, 'Parse::RecDescent::Directive' ),
-                                                                                                         bless( {
-                                                                                                                  'argcode' => undef,
-                                                                                                                  'implicit' => '\',\', or \')\'',
-                                                                                                                  'line' => 55,
-                                                                                                                  'lookahead' => 0,
-                                                                                                                  'matchrule' => 0,
-                                                                                                                  'subrule' => '_alternation_2_of_production_1_of_rule_module_runtime_use_module'
-                                                                                                                }, 'Parse::RecDescent::Subrule' ),
-                                                                                                         bless( {
-                                                                                                                  'code' => '{ $return = $item[2][2] }',
-                                                                                                                  'hashname' => '__ACTION1__',
-                                                                                                                  'line' => 56,
-                                                                                                                  'lookahead' => 0
-                                                                                                                }, 'Parse::RecDescent::Action' )
-                                                                                                       ],
-                                                                                            'line' => undef,
-                                                                                            'number' => '0',
-                                                                                            'patcount' => 0,
-                                                                                            'strcount' => 0,
-                                                                                            'uncommit' => undef
-                                                                                          }, 'Parse::RecDescent::Production' )
-                                                                                 ],
-                                                                      'vars' => ''
-                                                                    }, 'Parse::RecDescent::Rule' ),
-                              'module_runtime_use_package_optimistically' => bless( {
-                                                                                      'calls' => [
-                                                                                                   '_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically',
-                                                                                                   '_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically'
-                                                                                                 ],
-                                                                                      'changed' => 0,
-                                                                                      'impcount' => 2,
-                                                                                      'line' => 58,
-                                                                                      'name' => 'module_runtime_use_package_optimistically',
-                                                                                      'opcount' => 0,
-                                                                                      'prods' => [
-                                                                                                   bless( {
-                                                                                                            'actcount' => 1,
-                                                                                                            'dircount' => 1,
-                                                                                                            'error' => undef,
-                                                                                                            'items' => [
-                                                                                                                         bless( {
-                                                                                                                                  'argcode' => undef,
-                                                                                                                                  'implicit' => '\'Module::Runtime::use_package_optimistically(\', or /\\\\buse_package_optimistically\\\\(/',
-                                                                                                                                  'line' => 58,
-                                                                                                                                  'lookahead' => 0,
-                                                                                                                                  'matchrule' => 0,
-                                                                                                                                  'subrule' => '_alternation_1_of_production_1_of_rule_module_runtime_use_package_optimistically'
-                                                                                                                                }, 'Parse::RecDescent::Subrule' ),
-                                                                                                                         bless( {
-                                                                                                                                  'code' => 'my ($match,@res);
-                     ($match,$text,undef,@res) =
-                          Text::Balanced::extract_quotelike($text,$skip);
-                      $match ? \\@res : undef;
-                    ',
-                                                                                                                                  'hashname' => '__DIRECTIVE1__',
-                                                                                                                                  'line' => 58,
-                                                                                                                                  'lookahead' => 0,
-                                                                                                                                  'name' => '<perl_quotelike>'
-                                                                                                                                }, 'Parse::RecDescent::Directive' ),
-                                                                                                                         bless( {
-                                                                                                                                  'argcode' => undef,
-                                                                                                                                  'implicit' => '\',\', or \')\'',
-                                                                                                                                  'line' => 58,
-                                                                                                                                  'lookahead' => 0,
-                                                                                                                                  'matchrule' => 0,
-                                                                                                                                  'subrule' => '_alternation_2_of_production_1_of_rule_module_runtime_use_package_optimistically'
-                                                                                                                                }, 'Parse::RecDescent::Subrule' ),
-                                                                                                                         bless( {
-                                                                                                                                  'code' => '{ return $item[2][2] }',
-                                                                                                                                  'hashname' => '__ACTION1__',
-                                                                                                                                  'line' => 59,
-                                                                                                                                  'lookahead' => 0
-                                                                                                                                }, 'Parse::RecDescent::Action' )
-                                                                                                                       ],
-                                                                                                            'line' => undef,
-                                                                                                            'number' => '0',
-                                                                                                            'patcount' => 0,
-                                                                                                            'strcount' => 0,
-                                                                                                            'uncommit' => undef
-                                                                                                          }, 'Parse::RecDescent::Production' )
-                                                                                                 ],
-                                                                                      'vars' => ''
-                                                                                    }, 'Parse::RecDescent::Rule' ),
+                                                                                                           'hashname' => '__DIRECTIVE1__',
+                                                                                                           'line' => 59,
+                                                                                                           'lookahead' => 0,
+                                                                                                           'name' => '<perl_quotelike>'
+                                                                                                         }, 'Parse::RecDescent::Directive' ),
+                                                                                                  bless( {
+                                                                                                           'argcode' => undef,
+                                                                                                           'expected' => undef,
+                                                                                                           'line' => 59,
+                                                                                                           'lookahead' => 0,
+                                                                                                           'matchrule' => 0,
+                                                                                                           'max' => 1,
+                                                                                                           'min' => 0,
+                                                                                                           'repspec' => '?',
+                                                                                                           'subrule' => 'module_runtime_version'
+                                                                                                         }, 'Parse::RecDescent::Repetition' ),
+                                                                                                  bless( {
+                                                                                                           'description' => '\')\'',
+                                                                                                           'hashname' => '__STRING1__',
+                                                                                                           'line' => 59,
+                                                                                                           'lookahead' => 0,
+                                                                                                           'pattern' => ')'
+                                                                                                         }, 'Parse::RecDescent::Literal' ),
+                                                                                                  bless( {
+                                                                                                           'code' => '{ $return = $item[2][2] }',
+                                                                                                           'hashname' => '__ACTION1__',
+                                                                                                           'line' => 60,
+                                                                                                           'lookahead' => 0
+                                                                                                         }, 'Parse::RecDescent::Action' )
+                                                                                                ],
+                                                                                     'line' => undef,
+                                                                                     'number' => '0',
+                                                                                     'patcount' => 0,
+                                                                                     'strcount' => 1,
+                                                                                     'uncommit' => undef
+                                                                                   }, 'Parse::RecDescent::Production' )
+                                                                          ],
+                                                               'vars' => ''
+                                                             }, 'Parse::RecDescent::Rule' ),
+                              'module_runtime_use_fcn' => bless( {
+                                                                   'calls' => [
+                                                                                '_alternation_1_of_production_1_of_rule_module_runtime_use_fcn'
+                                                                              ],
+                                                                   'changed' => 0,
+                                                                   'impcount' => 1,
+                                                                   'line' => 55,
+                                                                   'name' => 'module_runtime_use_fcn',
+                                                                   'opcount' => 0,
+                                                                   'prods' => [
+                                                                                bless( {
+                                                                                         'actcount' => 0,
+                                                                                         'dircount' => 0,
+                                                                                         'error' => undef,
+                                                                                         'items' => [
+                                                                                                      bless( {
+                                                                                                               'argcode' => undef,
+                                                                                                               'implicit' => '\'use_module\', or \'use_package_optimistically\'',
+                                                                                                               'line' => 55,
+                                                                                                               'lookahead' => 0,
+                                                                                                               'matchrule' => 0,
+                                                                                                               'subrule' => '_alternation_1_of_production_1_of_rule_module_runtime_use_fcn'
+                                                                                                             }, 'Parse::RecDescent::Subrule' )
+                                                                                                    ],
+                                                                                         'line' => undef,
+                                                                                         'number' => '0',
+                                                                                         'patcount' => 0,
+                                                                                         'strcount' => 0,
+                                                                                         'uncommit' => undef
+                                                                                       }, 'Parse::RecDescent::Production' )
+                                                                              ],
+                                                                   'vars' => ''
+                                                                 }, 'Parse::RecDescent::Rule' ),
+                              'module_runtime_version' => bless( {
+                                                                   'calls' => [
+                                                                                'version'
+                                                                              ],
+                                                                   'changed' => 0,
+                                                                   'impcount' => 0,
+                                                                   'line' => 57,
+                                                                   'name' => 'module_runtime_version',
+                                                                   'opcount' => 0,
+                                                                   'prods' => [
+                                                                                bless( {
+                                                                                         'actcount' => 0,
+                                                                                         'dircount' => 0,
+                                                                                         'error' => undef,
+                                                                                         'items' => [
+                                                                                                      bless( {
+                                                                                                               'description' => '\',\'',
+                                                                                                               'hashname' => '__STRING1__',
+                                                                                                               'line' => 57,
+                                                                                                               'lookahead' => 0,
+                                                                                                               'pattern' => ','
+                                                                                                             }, 'Parse::RecDescent::Literal' ),
+                                                                                                      bless( {
+                                                                                                               'description' => '/\\\\s*/',
+                                                                                                               'hashname' => '__PATTERN1__',
+                                                                                                               'ldelim' => '/',
+                                                                                                               'line' => 57,
+                                                                                                               'lookahead' => 0,
+                                                                                                               'mod' => '',
+                                                                                                               'pattern' => '\\s*',
+                                                                                                               'rdelim' => '/'
+                                                                                                             }, 'Parse::RecDescent::Token' ),
+                                                                                                      bless( {
+                                                                                                               'argcode' => undef,
+                                                                                                               'implicit' => undef,
+                                                                                                               'line' => 57,
+                                                                                                               'lookahead' => 0,
+                                                                                                               'matchrule' => 0,
+                                                                                                               'subrule' => 'version'
+                                                                                                             }, 'Parse::RecDescent::Subrule' )
+                                                                                                    ],
+                                                                                         'line' => undef,
+                                                                                         'number' => '0',
+                                                                                         'patcount' => 1,
+                                                                                         'strcount' => 1,
+                                                                                         'uncommit' => undef
+                                                                                       }, 'Parse::RecDescent::Production' )
+                                                                              ],
+                                                                   'vars' => ''
+                                                                 }, 'Parse::RecDescent::Rule' ),
                               'no_stuff' => bless( {
                                                      'calls' => [
                                                                   '_alternation_1_of_production_1_of_rule_no_stuff'
@@ -7881,12 +7999,11 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                               'token_module_runtime' => bless( {
                                                                  'calls' => [
                                                                               'module_runtime_require_module',
-                                                                              'module_runtime_use_module',
-                                                                              'module_runtime_use_package_optimistically'
+                                                                              'module_runtime_use'
                                                                             ],
                                                                  'changed' => 0,
                                                                  'impcount' => 0,
-                                                                 'line' => 61,
+                                                                 'line' => 62,
                                                                  'name' => 'token_module_runtime',
                                                                  'opcount' => 0,
                                                                  'prods' => [
@@ -7898,7 +8015,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     bless( {
                                                                                                              'argcode' => undef,
                                                                                                              'implicit' => undef,
-                                                                                                             'line' => 61,
+                                                                                                             'line' => 62,
                                                                                                              'lookahead' => 0,
                                                                                                              'matchrule' => 0,
                                                                                                              'subrule' => 'module_runtime_require_module'
@@ -7918,34 +8035,14 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                     bless( {
                                                                                                              'argcode' => undef,
                                                                                                              'implicit' => undef,
-                                                                                                             'line' => 61,
+                                                                                                             'line' => 62,
                                                                                                              'lookahead' => 0,
                                                                                                              'matchrule' => 0,
-                                                                                                             'subrule' => 'module_runtime_use_module'
+                                                                                                             'subrule' => 'module_runtime_use'
                                                                                                            }, 'Parse::RecDescent::Subrule' )
                                                                                                   ],
-                                                                                       'line' => 61,
+                                                                                       'line' => 62,
                                                                                        'number' => '1',
-                                                                                       'patcount' => 0,
-                                                                                       'strcount' => 0,
-                                                                                       'uncommit' => undef
-                                                                                     }, 'Parse::RecDescent::Production' ),
-                                                                              bless( {
-                                                                                       'actcount' => 0,
-                                                                                       'dircount' => 0,
-                                                                                       'error' => undef,
-                                                                                       'items' => [
-                                                                                                    bless( {
-                                                                                                             'argcode' => undef,
-                                                                                                             'implicit' => undef,
-                                                                                                             'line' => 61,
-                                                                                                             'lookahead' => 0,
-                                                                                                             'matchrule' => 0,
-                                                                                                             'subrule' => 'module_runtime_use_package_optimistically'
-                                                                                                           }, 'Parse::RecDescent::Subrule' )
-                                                                                                  ],
-                                                                                       'line' => 61,
-                                                                                       'number' => '2',
                                                                                        'patcount' => 0,
                                                                                        'strcount' => 0,
                                                                                        'uncommit' => undef
@@ -8167,7 +8264,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                 'calls' => [],
                                                 'changed' => 0,
                                                 'impcount' => 0,
-                                                'line' => 71,
+                                                'line' => 72,
                                                 'name' => 'var',
                                                 'opcount' => 0,
                                                 'prods' => [
@@ -8180,7 +8277,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                             'description' => '/\\\\$[\\\\w+]/',
                                                                                             'hashname' => '__PATTERN1__',
                                                                                             'ldelim' => '/',
-                                                                                            'line' => 71,
+                                                                                            'line' => 72,
                                                                                             'lookahead' => 0,
                                                                                             'mod' => '',
                                                                                             'pattern' => '\\$[\\w+]',
@@ -8200,7 +8297,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                     'calls' => [],
                                                     'changed' => 0,
                                                     'impcount' => 0,
-                                                    'line' => 65,
+                                                    'line' => 66,
                                                     'name' => 'version',
                                                     'opcount' => 0,
                                                     'prods' => [
@@ -8213,7 +8310,7 @@ package Module::ExtractUse::Grammar; sub new { my $self = bless( {
                                                                                                 'description' => '/v?[\\\\d\\\\._]+/',
                                                                                                 'hashname' => '__PATTERN1__',
                                                                                                 'ldelim' => '/',
-                                                                                                'line' => 67,
+                                                                                                'line' => 68,
                                                                                                 'lookahead' => 0,
                                                                                                 'mod' => '',
                                                                                                 'pattern' => 'v?[\\d\\._]+',
