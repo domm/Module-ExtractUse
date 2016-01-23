@@ -46,6 +46,34 @@ token_no:		/\bno\s/ no_stuff /[;}]/
 no_stuff:	(base | version | module)
 
 #-----------------------------------------------------------------
+# Functions provided by Class::Load
+#-----------------------------------------------------------------
+
+hash_pair: /\S+/ comma ( <perl_quotelike> | /\S+/ )
+
+comma_hash_pair: comma hash_pair
+
+hashref:    '{' hash_pair comma_hash_pair(s?) '}'
+
+comma_hashref:  comma hashref
+
+class_load_functions:   'load_class' | 'try_load_class' | 'load_optional_class'
+
+class_load:     ( ( 'Class::Load::' class_load_functions ) | ( /\b/ class_load_functions ) ) '(' <perl_quotelike> comma_hashref(?) ')'
+                { $return = $item[3][2] }
+
+first_existing_arg: <perl_quotelike> comma_hashref(?)
+                    { $return = $item[1][2] }
+
+comma_first_existing_arg:   comma first_existing_arg
+                            { $return = $item{first_existing_arg} }
+
+class_load_first_existing:  ( 'Class::Load::load_first_existing' /\bload_first_existing/ ) '(' first_existing_arg comma_first_existing_arg(s?) ')'
+                            { $return = $item{import_list} }
+
+token_class_load:   class_load | class_load_first_existing
+
+#-----------------------------------------------------------------
 # General Rules
 #-----------------------------------------------------------------
 
