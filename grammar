@@ -49,7 +49,7 @@ no_stuff:	(base | version | module)
 # Functions provided by Class::Load
 #-----------------------------------------------------------------
 
-hash_pair: /\S+/ comma ( <perl_quotelike> | /\S+/ )
+hash_pair: /\S+/ comma ( <perl_quotelike> | /[^\s,}]+/ )
 
 comma_hash_pair: comma hash_pair
 
@@ -68,8 +68,11 @@ first_existing_arg: <perl_quotelike> comma_hashref(?)
 comma_first_existing_arg:   comma first_existing_arg
                             { $return = $item{first_existing_arg} }
 
-class_load_first_existing:  ( 'Class::Load::load_first_existing' /\bload_first_existing/ ) '(' first_existing_arg comma_first_existing_arg(s?) ')'
-                            { $return = $item{import_list} }
+class_load_first_existing:  ( 'Class::Load::load_first_existing_class' | /\bload_first_existing_class/ ) '(' first_existing_arg comma_first_existing_arg(s?) ')'
+                            { $return = $item{first_existing_arg};
+                              $return .= " " . join(" ", @{$item{'comma_first_existing_arg(s?)'}}) if $item{'comma_first_existing_arg(s?)'};
+                              1;
+                            }
 
 token_class_load:   class_load | class_load_first_existing
 
