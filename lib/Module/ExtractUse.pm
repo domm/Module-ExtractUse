@@ -51,7 +51,7 @@ use version; our $VERSION=version->new('0.33');
 
 =head1 DESCRIPTION
 
-Module::ExtractUse is basically a Parse::RecDescent grammar to parse
+Module::ExtractUse is basically a L<Parse::RecDescent> grammar to parse
 Perl code. It tries very hard to find all modules (whether pragmas,
 Core, or from CPAN) used by the parsed code.
 
@@ -90,7 +90,7 @@ $code_to_parse. Or a reference to a SCALAR, in which case
 Module::ExtractUse assumes the referenced scalar contains the source
 code.
 
-The code will be stripped from POD (using Pod::Strip) and split on ";"
+The code will be stripped from POD (using L<Pod::Strip>) and split on ";"
 (semicolon). Each statement (i.e. the stuff between two semicolons) is
 checked by a simple regular expression.
 
@@ -194,7 +194,16 @@ sub extract_use {
         # parse it! (using different entry point to save some more
         # time)
         my $type;
-        if ($statement=~/\buse/) {
+        if ($statement=~m/require_module|use_module|use_package_optimistically/) {
+            $statement=~s/^(.*?)\b(\S+(?:require_module|use_module|use_package_optimistically)\([^)]*\))/$2/;
+            next if $1 && $1 =~ /->\s*$/;
+            eval {
+                my $parser=Module::ExtractUse::Grammar->new();
+                $result=$parser->token_module_runtime($statement);
+            };
+            $type = $statement =~ m/require/ ? 'require' : 'use';
+        }
+        elsif ($statement=~/\buse/) {
             $statement=~s/^(.*?)use\b/use/;
             next if $1 && $1 =~ /->\s*$/;
             eval {
@@ -220,6 +229,15 @@ sub extract_use {
                 $result=$parser->token_no($statement.';');
             };
             $type = 'no';
+        }
+        elsif ($statement=~m/load_class|try_load_class|load_first_existing_class|load_optional_class/) {
+            $statement=~s/^(.*?)\b(\S+(?:load_class|try_load_class|load_first_existing_class|load_optional_class)\([^)]*\))/$2/;
+            next if $1 && $1 =~ /->\s*$/;
+            eval {
+                my $parser=Module::ExtractUse::Grammar->new();
+                $result = $parser->token_class_load($statement.';');
+            };
+            $type = 'require';
         }
 
         next unless $result;
@@ -537,7 +555,7 @@ Nothing.
 
 =head1 SEE ALSO
 
-Parse::RecDescent, Module::ScanDeps, Module::Info, Module::CPANTS::Analyse
+L<Parse::RecDescent>, L<Module::Extract::Use>, L<Module::ScanDeps>, L<Module::Info>, L<Module::CPANTS::Analyse>
 
 =cut
 
