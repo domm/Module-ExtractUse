@@ -2,6 +2,10 @@
 # Changes for Module::ExtractUse
 #-----------------------------------------------------------------
 
+0.341   2016-01-30T22:18:20
+    - fixed 20_parse_self.t; version.pm is not used anymore (Kenichi Ishigaki)
+
+
 0.340   2016-01-30T20:42:39
     - load_first_existing_class() is now working (Anthony Brummett)
     - Class::Load::load_class(), try_load_class() and load_optional_class() are working (Anthony Brummett)
