@@ -2,6 +2,14 @@
 # Changes for Module::ExtractUse
 #-----------------------------------------------------------------
 
+0.340   2016-01-30T20:42:39
+    - load_first_existing_class() is now working (Anthony Brummett)
+    - Class::Load::load_class(), try_load_class() and load_optional_class() are working (Anthony Brummett)
+    - Detect uses of Module::Runtime (Anthony Brummett)
+    - include extractuse as provided by Jonathan Yu in example/ (Anthony Brummett)
+    - Linkify POD modules, mention Module::Extract::Use to resolve RT#45571. (Jeremy Mates)
+
+
 0.33    2014-04-11T21:04:52+0200
     - added base() handling to no (Thomas Klausner)
     - support 'no MODULE' etc (for RT-94305) (Kenichi Ishigaki)
