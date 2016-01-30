@@ -557,5 +557,19 @@ Nothing.
 
 L<Parse::RecDescent>, L<Module::Extract::Use>, L<Module::ScanDeps>, L<Module::Info>, L<Module::CPANTS::Analyse>
 
+=head1 CONTRIBUTORS
+
+=over
+
+=item * L<Anthony Brummett|https://github.com/brummett> implemented support for Module::Runtime and Class::Load while participating in the L<CPAN Pull Request Challenge|http://cpan-prc.org/>
+
+=item * L<Jeremy Mates|https://github.com/thrig> fixed some documentation errors
+
+=item * Jonathan Yu provided a nice script, C<example/extractuse.pl>
+
+=back
+
+If I forgot to mention your contribution, please send an email or open an issue / ticket.
+
 =cut
 
