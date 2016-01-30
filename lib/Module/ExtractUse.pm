@@ -194,7 +194,16 @@ sub extract_use {
         # parse it! (using different entry point to save some more
         # time)
         my $type;
-        if ($statement=~/\buse/) {
+        if ($statement=~m/require_module|use_module|use_package_optimistically/) {
+            $statement=~s/^(.*?)\b(\S+(?:require_module|use_module|use_package_optimistically)\([^)]*\))/$2/;
+            next if $1 && $1 =~ /->\s*$/;
+            eval {
+                my $parser=Module::ExtractUse::Grammar->new();
+                $result=$parser->token_module_runtime($statement);
+            };
+            $type = $statement =~ m/require/ ? 'require' : 'use';
+        }
+        elsif ($statement=~/\buse/) {
             $statement=~s/^(.*?)use\b/use/;
             next if $1 && $1 =~ /->\s*$/;
             eval {
