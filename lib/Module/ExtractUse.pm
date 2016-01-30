@@ -230,6 +230,15 @@ sub extract_use {
             };
             $type = 'no';
         }
+        elsif ($statement=~m/load_class|try_load_class|load_first_existing_class|load_optional_class/) {
+            $statement=~s/^(.*?)\b(\S+(?:load_class|try_load_class|load_first_existing_class|load_optional_class)\([^)]*\))/$2/;
+            next if $1 && $1 =~ /->\s*$/;
+            eval {
+                my $parser=Module::ExtractUse::Grammar->new();
+                $result = $parser->token_class_load($statement.';');
+            };
+            $type = 'require';
+        }
 
         next unless $result;
 
