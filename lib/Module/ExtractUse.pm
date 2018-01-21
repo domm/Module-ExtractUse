@@ -110,13 +110,13 @@ count how many files where examined and how often each module was used.
 my $re_block;
 $re_block = qr {
     ( # eval BLOCK, corresponding to the group 10 in the entire regex
-        {
+        \{
             ((?:
                 (?> [^{}]+ )  # Non-braces without backtracking
             |
                 (??{$re_block}) # Recurse to group 10
             )*)
-        }
+        \}
     )
 }xs;
 my $re = qr{
@@ -141,13 +141,13 @@ my $re = qr{
             (?:(['"])(.*?)\8) # eval '' or eval "", group 8, group 9
             |
             ( # eval BLOCK, group 10
-                {
+                \{
                     ((?: # group 11
                         (?> [^{}]+ )  # Non-braces without backtracking
                     |
                         (??{$re_block}) # Recurse to group 10
                     )*)
-                }
+                \}
             )
         ))
     )
