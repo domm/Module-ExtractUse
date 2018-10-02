@@ -555,7 +555,7 @@ Nothing.
 
 =head1 SEE ALSO
 
-L<Parse::RecDescent>, L<Module::Extract::Use>, L<Module::ScanDeps>, L<Module::Info>, L<Module::CPANTS::Analyse>
+L<Parse::RecDescent>, L<Module::Extract::Use>, L<Module::ScanDeps>, L<Module::Info>, L<Module::CPANTS::Analyse>, L<Perl::PrereqScanner>, L<Perl::PrereqScanner::Lite>, L<Perl::PrereqScanner::NotQuiteLite>
 
 =head1 CONTRIBUTORS
 
