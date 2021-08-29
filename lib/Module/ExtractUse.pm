@@ -35,14 +35,14 @@ our $VERSION = '0.343';
   my @used=$p->array;
   my $used=$p->string;
   
-  # you can get optional modules, that is use in eval context, in the same style
+  # you can get optional modules, that is used in eval context, in the same style
   my $used=$p->used_in_eval;           # $used is a HASHREF
   print $p->used_in_eval('strict')     # true if code includes 'use strict'
   
   my @used=$p->array_in_eval;
   my $used=$p->string_in_eval;
   
-  # and mandatory modules, that is use out of eval context, in the same style, also.
+  # and mandatory modules, that is used out of eval context, in the same style, also.
   my $used=$p->used_out_of_eval;           # $used is a HASHREF
   print $p->used_out_of_eval('strict')     # true if code includes 'use strict'
   
@@ -51,7 +51,7 @@ our $VERSION = '0.343';
 
 =head1 DESCRIPTION
 
-Module::ExtractUse is basically a L<Parse::RecDescent> grammar to parse
+C<Module::ExtractUse> is basically a L<Parse::RecDescent> grammar to parse
 Perl code. It tries very hard to find all modules (whether pragmas,
 Core, or from CPAN) used by the parsed code.
 
@@ -77,7 +77,7 @@ sub new {
     },$class;
 }
 
-=head3 extract_use
+=head3 extract_use($code_to_parse)
   
   $p->extract_use('/path/to/module.pm');
   $p->extract_use(\$string_containg_code);
@@ -85,9 +85,9 @@ sub new {
 Runs the parser.
 
 C<$code_to_parse> can be either a SCALAR, in which case
-Module::ExtractUse tries to open the file specified in
+C<Module::ExtractUse> tries to open the file specified in
 $code_to_parse. Or a reference to a SCALAR, in which case
-Module::ExtractUse assumes the referenced scalar contains the source
+C<Module::ExtractUse> assumes the referenced scalar contains the source
 code.
 
 The code will be stripped from POD (using L<Pod::Strip>) and split on ";"
@@ -100,7 +100,7 @@ used or required. The results will be saved in a data structure that
 you can examine afterwards.
 
 You can call C<extract_use> several times on different files. It will
-count how many files where examined and how often each module was used.
+count how many files were examined and how often each module was used.
 
 =cut
 
@@ -268,7 +268,7 @@ Note that C<extract_use> returns the parser object, so you can say
     my $used=$p->used;           # $used is a HASHREF
     print $p->used('strict')     # true if code includes 'use strict'
 
-If called without an argument, returns a reference to an hash of all
+If called without an argument, returns a reference to a hash of all
 used modules. Keys are the names of the modules, values are the number
 of times they were used.
 
@@ -561,7 +561,7 @@ L<Parse::RecDescent>, L<Module::Extract::Use>, L<Module::ScanDeps>, L<Module::In
 
 =over
 
-=item * L<Anthony Brummett|https://github.com/brummett> implemented support for Module::Runtime and Class::Load while participating in the L<CPAN Pull Request Challenge|http://cpan-prc.org/>
+=item * L<Anthony Brummett|https://github.com/brummett> implemented support for C<Module::Runtime> and C<Class::Load> while participating in the L<CPAN Pull Request Challenge|http://cpan-prc.org/>
 
 =item * L<Jeremy Mates|https://github.com/thrig> fixed some documentation errors
 
