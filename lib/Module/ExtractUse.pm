@@ -243,7 +243,7 @@ sub extract_use {
         next unless $result;
 
         foreach (split(/\s+/,$result)) {
-            $self->_add($_, $eval, $type) if($_);
+            $self->_add($_, $eval, $type) if( $_ && ! /\$/ );
         }
     }
 
